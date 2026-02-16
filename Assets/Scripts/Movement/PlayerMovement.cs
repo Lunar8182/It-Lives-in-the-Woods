@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpCooldown;
     public float airMultiplier;
     bool readyToJump;
+    //creates a variable that makes the jump key space
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
     public LayerMask whatIsGround;
@@ -32,14 +33,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        //freezes the rotation of the player so that it doesn't tip over when moving
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        //makes the variable ready to jump true so the player can jump at the start of the game
         readyToJump = true;
     }
 
     private void Update()
     {
-
+        //checks if the player is grounded by casting a ray down from half way of the playes position
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         if (grounded)
         {
@@ -64,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+
+        //checks if the player is ready to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
@@ -76,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        //calculates the move direction based on the orientation of the player and the input from the horizontal and vertical axis
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (grounded)
@@ -90,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
+        //controls the speed of the player by limiting the velocity to the move speed
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         if (flatVel.magnitude > moveSpeed)
@@ -101,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        //resets the y velocity to 0 before jumping so that the player doesn't jump higher if they are falling
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
