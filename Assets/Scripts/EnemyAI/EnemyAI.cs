@@ -4,10 +4,10 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform player;
-    public float roamRadius = 10f;
-    public float detectionRange = 15f;
+    public float roamRadius = 100f;
+    public float detectionRange = 50f;
     public float fieldOfView = 90f;
-    public float chaseSpeed = 6f;
+    public float chaseSpeed = 12f;
     public float roamSpeed = 3f;
 
     private UnityEngine.AI.NavMeshAgent agent;
