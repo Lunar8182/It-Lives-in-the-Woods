@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public float fieldOfView = 90f;
     public float chaseSpeed = 12f;
     public float roamSpeed = 3f;
+    public Animator anim;
 
     private UnityEngine.AI.NavMeshAgent agent;
     private Vector3 roamPoint;
@@ -24,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("Speed", agent.velocity.magnitude);
         if (CanSeePlayer()) {
             chasing = true;
         }
