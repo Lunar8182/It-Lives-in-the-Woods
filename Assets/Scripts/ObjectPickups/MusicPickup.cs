@@ -35,8 +35,6 @@ public class MusicPickup : MonoBehaviour
         playerMusic.SetActive(true);
         pressEText.SetActive(false);
 
-        // Hide the ground radio model but keep this script running
-        // We disable the MeshRenderer and Collider instead of the whole GameObject
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
     }
