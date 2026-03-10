@@ -5824,7 +5824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   scarySound: {fileID: 8300000, guid: babdaac8e8bc8452ca9f2d823cd6ed32, type: 3}
-  voiceLine: {fileID: 8300000, guid: f3b5e7c58cd2e4702b1bad0fb4d354e0, type: 3}
+  voiceLine: {fileID: 8300000, guid: 74a403dce192c47b39a0151e9711238a, type: 3}
   playerAudio: {fileID: 649148668}
 --- !u!65 &1361669900
 BoxCollider:
