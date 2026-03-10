@@ -1,23 +1,23 @@
 using UnityEngine;
 using System.Collections;
 
-public class CarInteract : MonoBehaviour
+public class BubblingSound : MonoBehaviour
 {
-    public GameObject pressEText;
+    private AudioSource voiceline1;
 
-    public AudioClip voiceLine1;
+    public AudioClip voiceline;
     public AudioClip voiceLine2;
-    public GameObject eText;
+
+    public GameObject eText;        // "Press E" prompt
+    public GameObject pressEText;   // message after both lines
 
     private bool playerNearby = false;
-    private bool voice1Played = false;
+    private bool voicePlayed = false;
     private bool voice2Played = false;
-
-    private AudioSource voice;
 
     void Start()
     {
-        voice = GetComponent<AudioSource>();
+        voiceline1 = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,16 +30,16 @@ public class CarInteract : MonoBehaviour
 
     void Interact()
     {
-        if (voice.isPlaying) return;
+        if (voiceline1.isPlaying) return;
 
-        if (!voice1Played)
+        if (!voicePlayed)
         {
-            voice.PlayOneShot(voiceLine1);
-            voice1Played = true;
+            voiceline1.PlayOneShot(voiceline);
+            voicePlayed = true;
         }
         else if (!voice2Played)
         {
-            voice.PlayOneShot(voiceLine2);
+            voiceline1.PlayOneShot(voiceLine2);
             voice2Played = true;
         }
         else
@@ -53,7 +53,12 @@ public class CarInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            pressEText.SetActive(true);
+            eText.SetActive(true);
+        }
+        else if (other.CompareTag("Player") && voicePlayed && voice2Played)
+        {
+            playerNearby = true;
+            eText.SetActive(false);
         }
     }
 
@@ -62,17 +67,16 @@ public class CarInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            pressEText.SetActive(false);
+            eText.SetActive(false);
         }
     }
 
-
     IEnumerator ShowTextTemporary()
     {
-        eText.SetActive(true);
+        pressEText.SetActive(true);
 
         yield return new WaitForSeconds(3f);
 
-        eText.SetActive(false);
+        pressEText.SetActive(false);
     }
 }
