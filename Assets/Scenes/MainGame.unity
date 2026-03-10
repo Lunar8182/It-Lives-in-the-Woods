@@ -438,6 +438,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: c8dbbd17831aecb419cf9f688e85e672, type: 3}
   m_PrefabInstance: {fileID: 2113142166}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &197405652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+  m_PrefabInstance: {fileID: 1403821975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &226355032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -582,6 +587,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 903663774}
   m_SourcePrefab: {fileID: 100100000, guid: 2b120c828398db5439578c6f50bef162, type: 3}
+--- !u!4 &298447841 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+  m_PrefabInstance: {fileID: 557945018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &301852608
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +656,66 @@ Transform:
   - {fileID: 451330168}
   m_Father: {fileID: 2004189156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &353537736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353537737}
+  - component: {fileID: 353537738}
+  m_Layer: 0
+  m_Name: BloodProjector (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353537737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353537736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7165437, y: -0.10221045, z: 0.030268198, w: 0.6893491}
+  m_LocalPosition: {x: -7.13, y: 2.56, z: -1.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 96.234985, y: 63.910004, z: 74.676}
+--- !u!114 &353537738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353537736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: dd5b643d41e5c43e3bdc8ec8cd536766, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 5, y: 5, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1 &366569948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1445,85 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &557945018
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1645780539}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61993
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6199301
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61993
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.1331177
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.5056095
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.3322997
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.46524417
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.46967536
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.528023
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5330522
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90.543
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 262.767
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1605129155911306062, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d24a1b44f6ada410887052cbcba25fec, type: 2}
+    - target: {fileID: 919132149155446097, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8776c22df9cc64138a2b2bad36fd95e2, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+    - {fileID: -8700617353114198275, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
 --- !u!1001 &561926132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1389,15 +1538,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4062497489107852, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 299.24
+      value: 288.636
       objectReference: {fileID: 0}
     - target: {fileID: 4062497489107852, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.752
+      value: 0.052
       objectReference: {fileID: 0}
     - target: {fileID: 4062497489107852, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.6
+      value: -0.968
       objectReference: {fileID: 0}
     - target: {fileID: 4062497489107852, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3555,6 +3704,126 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &1252877713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252877714}
+  - component: {fileID: 1252877715}
+  m_Layer: 0
+  m_Name: BloodProjector (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252877714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252877713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7165437, y: -0.10221045, z: 0.030268198, w: 0.6893491}
+  m_LocalPosition: {x: -12.53, y: 3.01, z: -0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 96.234985, y: 63.910004, z: 74.676}
+--- !u!114 &1252877715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252877713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: dd5b643d41e5c43e3bdc8ec8cd536766, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 5, y: 5, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!1 &1266829813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1266829814}
+  - component: {fileID: 1266829815}
+  m_Layer: 0
+  m_Name: BloodProjector (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1266829814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266829813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.49077365, y: 0.18578784, z: 0.50478464, w: 0.68543166}
+  m_LocalPosition: {x: -8.660004, y: 5.71, z: -2.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 29.027, y: 59.084, z: 89.432}
+--- !u!114 &1266829815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266829813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 6f50c15ef3c304a1b89ef15c2a4ae964, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 4, y: 4, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1001 &1268022465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4011,11 +4280,214 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: d1311714dd3a7442a9b999547532da5a, type: 3}
   m_PrefabInstance: {fileID: 1392969683}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1398586211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1398586213}
+  - component: {fileID: 1398586212}
+  m_Layer: 0
+  m_Name: BloodProjector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1398586212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398586211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 6f50c15ef3c304a1b89ef15c2a4ae964, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 4, y: 4, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
+--- !u!4 &1398586213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398586211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.513092, y: 1.9156201, z: -0.51231}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1403821975
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1645780539}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61993
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6199301
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61993
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.52
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.12
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.846609
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5322155
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -64.311
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1605129155911306062, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d24a1b44f6ada410887052cbcba25fec, type: 2}
+    - target: {fileID: 919132149155446097, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_Name
+      value: NPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 86c0e219843bb4d8f84cfe2b1a35cba6, type: 2}
+    - target: {fileID: 5866666021909216657, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+    - {fileID: -8700617353114198275, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
 --- !u!4 &1431733950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8, type: 3}
   m_PrefabInstance: {fileID: 68111580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450909523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450909524}
+  - component: {fileID: 1450909525}
+  m_Layer: 0
+  m_Name: BloodProjector (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1450909524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450909523}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6930668, y: -0.24886005, z: 0.12379319, w: 0.6651334}
+  m_LocalPosition: {x: -21.15, y: 0.98, z: 2.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 79.602, y: -117.933, z: -87.247}
+--- !u!114 &1450909525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450909523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 6f50c15ef3c304a1b89ef15c2a4ae964, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 4, y: 4, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!4 &1541937274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4910968943597984, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
@@ -4135,6 +4607,99 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597681783}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1645780538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1645780539}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1645780539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645780538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 312.6831, y: 2.10439, z: -3.1177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 298447841}
+  - {fileID: 197405652}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1676046798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1676046799}
+  - component: {fileID: 1676046800}
+  m_Layer: 0
+  m_Name: BloodProjector (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676046799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676046798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7165437, y: -0.10221045, z: 0.030268198, w: 0.6893491}
+  m_LocalPosition: {x: -16.84, y: 3.35, z: 1.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 96.234985, y: 63.910004, z: 74.676}
+--- !u!114 &1676046800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676046798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: dd5b643d41e5c43e3bdc8ec8cd536766, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 5, y: 5, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1001 &1694216092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4203,6 +4768,44 @@ PrefabInstance:
       addedObject: {fileID: 773918209}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0297c1d9dc5137043b0bde39f96ff5b2, type: 3}
+--- !u!1 &1695922242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695922243}
+  m_Layer: 0
+  m_Name: Blood
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1695922243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695922242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 312.6831, y: 2.10438, z: -3.11769}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1398586213}
+  - {fileID: 1963872046}
+  - {fileID: 1266829814}
+  - {fileID: 1450909524}
+  - {fileID: 1676046799}
+  - {fileID: 1252877714}
+  - {fileID: 353537737}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1736869207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2b120c828398db5439578c6f50bef162, type: 3}
@@ -4780,6 +5383,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2535954103604261512, guid: 838c0bef810bfe94d8e33947c3cba7c6, type: 3}
   m_PrefabInstance: {fileID: 1955822893}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1963872045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963872046}
+  - component: {fileID: 1963872047}
+  m_Layer: 0
+  m_Name: BloodProjector (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963872046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963872045}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5042333, y: 0.4957305, z: 0.4957306, w: 0.5042333}
+  m_LocalPosition: {x: -7.12, y: 5.68, z: -0.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1695922243}
+  m_LocalEulerAnglesHint: {x: 0.974, y: 90, z: 90}
+--- !u!114 &1963872047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963872045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.DecalProjector
+  m_Material: {fileID: 2100000, guid: 6f50c15ef3c304a1b89ef15c2a4ae964, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_RenderingLayerMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 4, y: 4, z: 10}
+  m_FadeFactor: 1
+  version: 1
+  m_DecalLayerMask: 1
 --- !u!1001 &1969101702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5422,3 +6085,5 @@ SceneRoots:
   - {fileID: 1019408394}
   - {fileID: 1315312751}
   - {fileID: 22011925}
+  - {fileID: 1695922243}
+  - {fileID: 1645780539}
