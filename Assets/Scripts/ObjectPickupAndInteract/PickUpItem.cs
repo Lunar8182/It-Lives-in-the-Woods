@@ -11,10 +11,12 @@ public class Interactable : MonoBehaviour
     }
 
     public ItemType itemType;
-
+    //object to activate is the object that will be activated on the screen.
     public GameObject objectToActivate;
     public GameObject keyPrompt;
-    public GameObject playerMusic;
+    //Use this if you want to play music or a sound from an item.
+    //Add the object that has the audio source attached (usually the same as object to activate) 
+    public GameObject playerItem;
 
     private bool playerNearby = false;
     private bool hasMusicBox = false;
@@ -58,7 +60,7 @@ public class Interactable : MonoBehaviour
 
     void ToggleMusic()
     {
-        AudioSource playerSource = playerMusic.GetComponent<AudioSource>();
+        AudioSource playerSource = playerItem.GetComponent<AudioSource>();
 
         if (playerSource.isPlaying)
         {
