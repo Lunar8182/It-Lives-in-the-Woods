@@ -1872,7 +1872,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2522,9 +2522,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  itemType: 0
   objectToActivate: {fileID: 451330167}
   keyPrompt: {fileID: 1863950022}
-  voiceLine: {fileID: 0}
+  playerMusic: {fileID: 0}
 --- !u!1 &611407150
 GameObject:
   m_ObjectHideFlags: 0
@@ -7240,9 +7241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  itemType: 1
   objectToActivate: {fileID: 539630126}
   keyPrompt: {fileID: 1863950022}
-  voiceLine: {fileID: 0}
+  playerMusic: {fileID: 539630126}
 --- !u!4 &1842222379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4945915258126434362, guid: df31d0d4726e7954c9a5bdf35497688b, type: 3}
@@ -7616,9 +7618,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  itemType: 0
   objectToActivate: {fileID: 823338484}
   keyPrompt: {fileID: 1863950022}
-  voiceLine: {fileID: 0}
+  playerMusic: {fileID: 0}
 --- !u!1001 &1954727039
 PrefabInstance:
   m_ObjectHideFlags: 0

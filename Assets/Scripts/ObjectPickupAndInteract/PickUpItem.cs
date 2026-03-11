@@ -2,27 +2,33 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    //This script is the default for picking up any item in the game.
-    public GameObject objectToActivate; // item player receives
-    public GameObject keyPrompt;
+    //script for picking up any items. use the item type in unity to set the item type.
+    //add it to the enum function so you can easily add more item types.
+    public enum ItemType
+    {
+        Normal,
+        MusicBox
+    }
 
-    public AudioClip voiceLine;
+    public ItemType itemType;
+
+    public GameObject objectToActivate;
+    public GameObject keyPrompt;
+    public GameObject playerMusic;
 
     private bool playerNearby = false;
-    private bool voicePlayed = false;
-
-    private AudioSource audioSource;
-
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private bool hasMusicBox = false;
 
     void Update()
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
             Interact();
+        }
+
+        if (hasMusicBox && itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
+        {
+            ToggleMusic();
         }
     }
 
@@ -33,8 +39,35 @@ public class Interactable : MonoBehaviour
             objectToActivate.SetActive(true);
         }
 
-        keyPrompt.SetActive(false);
-        gameObject.SetActive(false);
+        if (itemType == ItemType.MusicBox)
+        {
+            hasMusicBox = true;
+        }
+
+        if (keyPrompt != null)
+        {
+            keyPrompt.SetActive(false);
+        }
+
+        if (GetComponent<MeshRenderer>() != null)
+            GetComponent<MeshRenderer>().enabled = false;
+
+        if (GetComponent<Collider>() != null)
+            GetComponent<Collider>().enabled = false;
+    }
+
+    void ToggleMusic()
+    {
+        AudioSource playerSource = playerMusic.GetComponent<AudioSource>();
+
+        if (playerSource.isPlaying)
+        {
+            playerSource.Pause();
+        }
+        else
+        {
+            playerSource.Play();
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -43,12 +76,6 @@ public class Interactable : MonoBehaviour
         {
             playerNearby = true;
             keyPrompt.SetActive(true);
-
-            if (audioSource && voiceLine && !voicePlayed)
-            {
-                audioSource.PlayOneShot(voiceLine);
-                voicePlayed = true;
-            }
         }
     }
 
