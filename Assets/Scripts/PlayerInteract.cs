@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
     public GameObject keyPromptUI;
 
     private Camera playerCamera;
+
 
     void Start()
     {

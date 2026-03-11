@@ -15,6 +15,9 @@ public class Interactable : MonoBehaviour
 
     }
 
+    [Header("Inventory Settings")]
+    public Sprite itemIcon;
+
     public ItemType itemType;
     //object to activate is the object that will be activated on the screen.
     public GameObject objectToActivate;
@@ -43,10 +46,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (objectToActivate != null)
-        {
-            objectToActivate.SetActive(true);
-        }
+
 
         if (itemType == ItemType.MusicBox)
         {
@@ -56,6 +56,11 @@ public class Interactable : MonoBehaviour
         if (keyPrompt != null)
         {
             keyPrompt.SetActive(false);
+        }
+
+        if (itemIcon != null && objectToActivate != null)
+        {
+            InventoryManager.instance.AddItem(itemIcon, objectToActivate);
         }
 
         Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
