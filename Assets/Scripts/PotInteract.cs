@@ -1,24 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class BubblingSound : MonoBehaviour
+public class PotInteract : MonoBehaviour
 {
-    private AudioSource voiceline1;
+    public AudioSource bubbleSource;
+    public AudioSource voiceSource;
 
     public AudioClip voiceline;
     public AudioClip voiceLine2;
 
-    public GameObject eText;        // "Press E" prompt
-    public GameObject pressEText;   // message after both lines
+    public GameObject keyPrompt;
+
+    public GameObject pressEText;
 
     private bool playerNearby = false;
     private bool voicePlayed = false;
     private bool voice2Played = false;
-
-    void Start()
-    {
-        voiceline1 = GetComponent<AudioSource>();
-    }
 
     void Update()
     {
@@ -30,16 +27,16 @@ public class BubblingSound : MonoBehaviour
 
     void Interact()
     {
-        if (voiceline1.isPlaying) return;
+        if (voiceSource.isPlaying) return;
 
         if (!voicePlayed)
         {
-            voiceline1.PlayOneShot(voiceline);
+            voiceSource.PlayOneShot(voiceline);
             voicePlayed = true;
         }
         else if (!voice2Played)
         {
-            voiceline1.PlayOneShot(voiceLine2);
+            voiceSource.PlayOneShot(voiceLine2);
             voice2Played = true;
         }
         else
@@ -53,12 +50,9 @@ public class BubblingSound : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            eText.SetActive(true);
-        }
-        else if (other.CompareTag("Player") && voicePlayed && voice2Played)
-        {
-            playerNearby = true;
-            eText.SetActive(false);
+            keyPrompt.SetActive(true);
+
+            bubbleSource.Play();
         }
     }
 
@@ -67,7 +61,8 @@ public class BubblingSound : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            eText.SetActive(false);
+            keyPrompt.SetActive(false);
+            bubbleSource.Stop();
         }
     }
 

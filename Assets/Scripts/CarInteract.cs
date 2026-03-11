@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CarInteract : MonoBehaviour
 {
-    public GameObject pressEText;
-
+    public GameObject keyPrompt;
     public AudioClip voiceLine1;
     public AudioClip voiceLine2;
-    public GameObject eText;
+
+    public GameObject pressEText;
 
     private bool playerNearby = false;
     private bool voice1Played = false;
@@ -53,7 +53,8 @@ public class CarInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            pressEText.SetActive(true);
+            //pressEText.SetActive(true);
+            keyPrompt.SetActive(true);
         }
     }
 
@@ -62,17 +63,18 @@ public class CarInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            pressEText.SetActive(false);
+            //pressEText.SetActive(false);
+            keyPrompt.SetActive(false);
         }
     }
 
 
     IEnumerator ShowTextTemporary()
     {
-        eText.SetActive(true);
+        pressEText.SetActive(true);
 
         yield return new WaitForSeconds(3f);
 
-        eText.SetActive(false);
+        pressEText.SetActive(false);
     }
 }

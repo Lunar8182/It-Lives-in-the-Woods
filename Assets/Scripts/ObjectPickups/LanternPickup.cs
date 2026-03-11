@@ -3,8 +3,9 @@ using UnityEngine;
 public class LanternPickup : MonoBehaviour
 {
     public GameObject playerLantern;
-    public GameObject pressEText;
 
+
+    public GameObject keyPrompt;
     private bool playerNearby = false;
     private AudioSource audioSource;
     private bool voicePlayed = false;
@@ -25,7 +26,7 @@ public class LanternPickup : MonoBehaviour
     void PickUpLantern()
     {
         playerLantern.SetActive(true);
-        pressEText.SetActive(false);
+        keyPrompt.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -34,7 +35,7 @@ public class LanternPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            pressEText.SetActive(true);
+            keyPrompt.SetActive(true);
 
             if (!voicePlayed)
             {
@@ -49,7 +50,7 @@ public class LanternPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            pressEText.SetActive(false);
+            keyPrompt.SetActive(false);
         }
     }
 }
