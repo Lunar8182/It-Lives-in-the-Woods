@@ -25,7 +25,7 @@ public class PotInteract : MonoBehaviour
         }
     }
 
-    void Interact()
+    public void Interact()
     {
         if (voiceSource.isPlaying) return;
 
@@ -50,8 +50,6 @@ public class PotInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = true;
-            keyPrompt.SetActive(true);
-
             bubbleSource.Play();
         }
     }
@@ -61,10 +59,10 @@ public class PotInteract : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNearby = false;
-            keyPrompt.SetActive(false);
             bubbleSource.Stop();
         }
     }
+
 
     IEnumerator ShowTextTemporary()
     {

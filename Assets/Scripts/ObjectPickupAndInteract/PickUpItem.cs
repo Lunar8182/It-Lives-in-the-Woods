@@ -7,7 +7,12 @@ public class Interactable : MonoBehaviour
     public enum ItemType
     {
         Normal,
-        MusicBox
+        MusicBox,
+        Lantern,
+        BabyRattle,
+        Doll,
+        Blanket,
+
     }
 
     public ItemType itemType;
@@ -20,6 +25,9 @@ public class Interactable : MonoBehaviour
 
     private bool playerNearby = false;
     private bool hasMusicBox = false;
+    private bool hasPlayedLanternAudio = false;
+
+    private bool hasPlayedBabyRattleAudio = false;
 
     void Update()
     {
@@ -34,7 +42,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    void Interact()
+    public void Interact()
     {
         if (objectToActivate != null)
         {
@@ -51,14 +59,25 @@ public class Interactable : MonoBehaviour
             keyPrompt.SetActive(false);
         }
 
-        if (GetComponent<MeshRenderer>() != null)
-            GetComponent<MeshRenderer>().enabled = false;
+        Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in allRenderers)
+        {
+            r.enabled = false;
+        }
+
+        Light[] allLights = GetComponentsInChildren<Light>();
+        foreach (Light light in allLights)
+        {
+            light.enabled = false;
+        }
 
         if (GetComponent<Collider>() != null)
+        {
             GetComponent<Collider>().enabled = false;
+        }
     }
 
-    void ToggleMusic()
+    public void ToggleMusic()
     {
         AudioSource playerSource = playerItem.GetComponent<AudioSource>();
 
@@ -72,21 +91,23 @@ public class Interactable : MonoBehaviour
         }
     }
 
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (itemType == ItemType.Lantern && hasPlayedLanternAudio == false)
         {
-            playerNearby = true;
-            keyPrompt.SetActive(true);
+            hasPlayedLanternAudio = true;
+            AudioSource lanternAudio = GetComponent<AudioSource>();
+            lanternAudio.Play();
+        }
+        else if (itemType == ItemType.BabyRattle && hasPlayedBabyRattleAudio == false)
+        {
+            hasPlayedBabyRattleAudio = true;
+            AudioSource babyRattleAudio = GetComponent<AudioSource>();
+            babyRattleAudio.Play();
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = false;
-            keyPrompt.SetActive(false);
-        }
-    }
+
+
 }

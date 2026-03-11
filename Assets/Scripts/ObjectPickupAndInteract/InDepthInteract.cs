@@ -32,7 +32,7 @@ public class InDepthInteract : MonoBehaviour
         }
     }
 
-    void Interact()
+    public void Interact()
     {
         if (voice.isPlaying) return;
 
@@ -52,23 +52,7 @@ public class InDepthInteract : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = true;
-            keyPrompt.SetActive(true);
-        }
-    }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            playerNearby = false;
-            keyPrompt.SetActive(false);
-        }
-    }
 
 
     IEnumerator ShowTextTemporary()
