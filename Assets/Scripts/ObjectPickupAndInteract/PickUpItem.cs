@@ -26,7 +26,6 @@ public class Interactable : MonoBehaviour
     private bool playerNearby = false;
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
-
     private bool hasPlayedBabyRattleAudio = false;
 
     void Update()
