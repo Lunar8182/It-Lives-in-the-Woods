@@ -26,6 +26,7 @@ public class PlayerInteract : MonoBehaviour
             Interactable standardInteract = hit.collider.GetComponent<Interactable>();
             InDepthInteract inDepthInteract = hit.collider.GetComponent<InDepthInteract>();
             PotInteract potInteract = hit.collider.GetComponent<PotInteract>();
+            DemonicAltar_Controller altarInteract = hit.collider.GetComponentInParent<DemonicAltar_Controller>();
 
             if (standardInteract != null)
             {
@@ -49,6 +50,16 @@ public class PlayerInteract : MonoBehaviour
                 {
 
                     inDepthInteract.Interact();
+                }
+            }
+
+            else if (altarInteract != null)
+            {
+                keyPromptUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    altarInteract.ToggleDemonicAltar();
                 }
             }
             else if (potInteract != null)
