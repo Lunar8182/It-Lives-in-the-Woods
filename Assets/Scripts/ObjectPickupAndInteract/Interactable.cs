@@ -34,21 +34,18 @@ public class Interactable : MonoBehaviour
     //Add the object that has the audio source attached (usually the same as object to activate) 
     public GameObject playerItem;
     public DemonicAltar_Controller altar;
+    public BloodPool_Controller pool;
+    public HellGate_Controller hellGate;
 
-    private bool playerNearby = false;
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
     private bool hasPlayedBabyRattleAudio = false;
-
+    private bool poolOn = false;
+    private bool portalOn = false;
     private bool alterOn = false;
 
     void Update()
     {
-        if (playerNearby && Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
-        }
-
         if (hasMusicBox && itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
         {
             ToggleMusic();
@@ -80,21 +77,27 @@ public class Interactable : MonoBehaviour
 
         if (itemType == ItemType.Portal)
         {
-
-
-            //portal interact here
+            if (portalOn) return;
+            hellGate.ToggleHellGate();
+            portalOn = true;
+            keyPrompt.SetActive(false);
+            return;
         }
 
         if (itemType == ItemType.Telescope)
         {
-
-
-            //telescope interact here   
+            TelescopeController telescope = GetComponentInParent<TelescopeController>();
+            telescope.UseTelescope();
+            return;
         }
 
         if (itemType == ItemType.Pool)
         {
-            //pool interact here
+            if (poolOn) return;
+            pool.F_ToggleBloodPool();
+            poolOn = true;
+            keyPrompt.SetActive(false);
+            return;
         }
 
         if (itemIcon != null && objectToActivate != null)
