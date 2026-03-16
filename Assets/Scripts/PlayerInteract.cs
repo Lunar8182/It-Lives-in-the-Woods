@@ -22,6 +22,7 @@ public class PlayerInteract : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactDistance, interactLayer))
         {
             Interactable interact = hit.collider.GetComponentInParent<Interactable>();
+            InDepthInteract inDepthInteract = hit.collider.GetComponentInParent<InDepthInteract>();
 
             if (interact != null)
             {
@@ -35,6 +36,15 @@ public class PlayerInteract : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && interact.itemType == Interactable.ItemType.MusicBox)
                 {
                     interact.ToggleMusic();
+                }
+            }
+            else if (inDepthInteract != null)
+            {
+                keyPromptUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    inDepthInteract.Interact();
                 }
             }
             else
