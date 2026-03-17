@@ -13,6 +13,7 @@ public class EnemyAI : MonoBehaviour
     public float loseSightDelay = 2f;
 
     public Animator anim;
+    public Transform[] patrolPoints;
 
     private NavMeshAgent agent;
     private Vector3 lastSeenPosition;
@@ -20,6 +21,11 @@ public class EnemyAI : MonoBehaviour
 
     private float searchTimer;
     private float loseSightTimer;
+
+    public float patrolWaitTime = 3f;
+    private float patrolTimer;
+
+    int lastPatrolIndex = -1;
 
     enum EnemyState
     {
@@ -31,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        patrolTimer = patrolWaitTime;
         currentState = EnemyState.Roaming;
         PickRoamPoint();
     }
@@ -54,7 +61,7 @@ public class EnemyAI : MonoBehaviour
                     currentState = EnemyState.Chasing;
                 }
 
-            break;
+                break;
 
             case EnemyState.Chasing:
                 Chase();
@@ -75,7 +82,7 @@ public class EnemyAI : MonoBehaviour
                     }
                 }
 
-            break;
+                break;
 
             case EnemyState.Searching:
                 Search();
@@ -86,7 +93,7 @@ public class EnemyAI : MonoBehaviour
                     currentState = EnemyState.Chasing;
                 }
 
-            break;
+                break;
         }
     }
 
@@ -94,14 +101,18 @@ public class EnemyAI : MonoBehaviour
     {
         agent.speed = roamSpeed;
 
-        if (!agent.pathPending)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.3f)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            patrolTimer -= Time.deltaTime;
+
+            if (patrolTimer <= 0f)
             {
-                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-                {
-                    PickRoamPoint();
-                }
+                PickRoamPoint();
+                patrolTimer = patrolWaitTime;
+            }
+            else
+            {
+                LookAround();
             }
         }
     }
@@ -138,17 +149,31 @@ public class EnemyAI : MonoBehaviour
 
     void PickRoamPoint()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * roamRadius;
-        randomDirection.y = 0;
-        randomDirection += transform.position;
+        if (patrolPoints.Length == 0) return;
 
-        NavMeshHit hit;
+        int chosenIndex = -1;
+        float bestScore = float.MinValue;
 
-        if (NavMesh.SamplePosition(randomDirection, out hit, roamRadius, NavMesh.AllAreas))
+        for (int i = 0; i < patrolPoints.Length; i++)
         {
-            roamPoint = hit.position;
-            agent.SetDestination(roamPoint);
+            if (i == lastPatrolIndex) continue;
+
+            float distanceToPlayer = Vector3.Distance(patrolPoints[i].position, player.position);
+            float score = Random.value * 20f - distanceToPlayer;
+
+            if (score > bestScore)
+            {
+                bestScore = score;
+                chosenIndex = i;
+            }
         }
+
+        if (chosenIndex == -1) return;
+
+        lastPatrolIndex = chosenIndex;
+        roamPoint = patrolPoints[chosenIndex].position;
+
+        agent.SetDestination(roamPoint);
     }
 
     bool CanSeePlayer()
@@ -176,6 +201,11 @@ public class EnemyAI : MonoBehaviour
         }
 
         return false;
+    }
+
+    void LookAround()
+    {
+        transform.Rotate(0, 40f * Time.deltaTime, 0);
     }
 
     // debugger - shows ai movement
