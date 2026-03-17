@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b59c9a3c1b6944f489715f1ba66b3beb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298372
+  packageName: Anlian RV Trailer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/SampleScene/Global Volume Profile.asset
+  uploadId: 804216

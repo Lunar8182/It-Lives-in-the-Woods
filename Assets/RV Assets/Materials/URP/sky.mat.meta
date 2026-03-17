@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ae5d78a11b884942a28ce5444ba4a48
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298372
+  packageName: Anlian RV Trailer
+  packageVersion: 1.0
+  assetPath: Assets/RV Assets/Materials/URP/sky.mat
+  uploadId: 804216

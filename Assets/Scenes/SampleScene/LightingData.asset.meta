@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7142101ba51a70b43ab04c655ff94f34
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298372
+  packageName: Anlian RV Trailer
+  packageVersion: 1.0
+  assetPath: Assets/Scenes/SampleScene/LightingData.asset
+  uploadId: 804216

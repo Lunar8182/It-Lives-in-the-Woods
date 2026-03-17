@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 26c503e13b2b9bc4da1a0665e13658bb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298372
+  packageName: Anlian RV Trailer
+  packageVersion: 1.0
+  assetPath: Assets/RV Assets/Materials/URP/Glass.mat
+  uploadId: 804216
