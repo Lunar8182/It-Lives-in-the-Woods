@@ -3,40 +3,70 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("References")]
     public Transform player;
+    public Animator anim;
+    public Transform[] patrolPoints;
+    public GameObject gameOverScreen;
+    public Camera playerCamera;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip jumpscareSound;
+
+    [Header("Movement")]
     public float roamRadius = 100f;
     public float detectionRange = 50f;
     public float fieldOfView = 90f;
     public float chaseSpeed = 12f;
     public float roamSpeed = 3f;
+    public float patrolWaitTime = 3f;
     public float searchDuration = 5f;
     public float loseSightDelay = 2f;
 
-    public Animator anim;
-    public Transform[] patrolPoints;
+    [Header("Jumpscare")]
+    public float jumpscareDistance = 3f;
+    public float jumpscareDuration = 2f;
+    public float shakeIntensity = 0.3f;
+    public float shakeSpeed = 20f;
+
+    [Header("Jumpscare Camera Offsets")]
+    public Vector3 cameraPositionOffset = new Vector3(0f, 1.6f, 0f); // relative to player
+    public Vector3 cameraLookOffset = new Vector3(0f, 1.5f, 0f);     // relative to enemy
 
     private NavMeshAgent agent;
+    private PlayerCam playerCamScript;
+    private CharacterController playerController;
+
     private Vector3 lastSeenPosition;
     private Vector3 roamPoint;
+    private Vector3 originalCamPos;
+    private Quaternion originalCamRot;
+    private Transform originalCamParent;
 
     private float searchTimer;
     private float loseSightTimer;
-
-    public float patrolWaitTime = 3f;
     private float patrolTimer;
+    private float jumpscareTimer;
 
-    int lastPatrolIndex = -1;
+    private int lastPatrolIndex = -1;
+    private bool isJumpscaring = false;
+    private bool hasSnapped = false;
 
-    enum EnemyState
-    {
-        Roaming, Chasing, Searching
-    }
+    private int animStateHash = Animator.StringToHash("State");
 
+    private enum EnemyState { Roaming, Chasing, Searching, Jumpscare }
     private EnemyState currentState;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        playerCamScript = player.GetComponentInChildren<PlayerCam>();
+        playerController = player.GetComponent<CharacterController>();
+
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         patrolTimer = patrolWaitTime;
         currentState = EnemyState.Roaming;
         PickRoamPoint();
@@ -44,28 +74,28 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(transform.position + Vector3.up * 1f, transform.forward * detectionRange, Color.red);
-
         anim.SetFloat("Speed", agent.velocity.magnitude);
 
         bool playerVisible = CanSeePlayer();
 
+        if (!isJumpscaring && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
+            StartJumpscare();
+
         switch (currentState)
         {
             case EnemyState.Roaming:
+                anim.SetInteger(animStateHash, 0);
                 Roam();
-
                 if (playerVisible)
                 {
                     lastSeenPosition = player.position;
                     currentState = EnemyState.Chasing;
                 }
-
                 break;
 
             case EnemyState.Chasing:
+                anim.SetInteger(animStateHash, 1);
                 Chase();
-
                 if (playerVisible)
                 {
                     lastSeenPosition = player.position;
@@ -74,77 +104,140 @@ public class EnemyAI : MonoBehaviour
                 else
                 {
                     loseSightTimer -= Time.deltaTime;
-
                     if (loseSightTimer <= 0)
                     {
                         currentState = EnemyState.Searching;
                         searchTimer = searchDuration;
                     }
                 }
-
                 break;
 
             case EnemyState.Searching:
+                anim.SetInteger(animStateHash, 2);
                 Search();
-
                 if (playerVisible)
                 {
                     lastSeenPosition = player.position;
                     currentState = EnemyState.Chasing;
                 }
+                break;
 
+            case EnemyState.Jumpscare:
+                Jumpscare();
                 break;
         }
+    }
+
+    void StartJumpscare()
+    {
+        if (isJumpscaring) return;
+
+        isJumpscaring = true;
+        currentState = EnemyState.Jumpscare;
+        agent.isStopped = true;
+        anim.SetTrigger("Jumpscare");
+        jumpscareTimer = jumpscareDuration;
+
+        // Play sound
+        if (jumpscareSound != null && audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.clip = jumpscareSound;
+            audioSource.Play();
+        }
+
+        // Freeze player
+        if (playerCamScript != null) playerCamScript.enabled = false;
+        if (playerController != null) playerController.enabled = false;
+
+        // Save original camera state
+        originalCamPos = playerCamera.transform.position;
+        originalCamRot = playerCamera.transform.rotation;
+        originalCamParent = playerCamera.transform.parent;
+
+        // Detach camera
+        playerCamera.transform.SetParent(null);
+
+        // Position camera manually with offset
+        playerCamera.transform.position = player.position + cameraPositionOffset;
+
+        // Look at enemy with offset
+        playerCamera.transform.LookAt(transform.position + cameraLookOffset);
+    }
+
+    void Jumpscare()
+    {
+        if (!isJumpscaring) return;
+
+        jumpscareTimer -= Time.deltaTime;
+
+        // Shake locally
+        float x = (Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) - 0.5f) * shakeIntensity;
+        float y = (Mathf.PerlinNoise(0f, Time.time * shakeSpeed) - 0.5f) * shakeIntensity;
+
+        playerCamera.transform.position = player.position + cameraPositionOffset + new Vector3(x, y, 0);
+
+        // Keep looking at enemy head
+        playerCamera.transform.LookAt(transform.position + cameraLookOffset);
+
+        if (jumpscareTimer <= 0f)
+            EndJumpscare();
+    }
+
+    void EndJumpscare()
+    {
+        isJumpscaring = false;
+
+        // Restore player controls
+        if (playerCamScript != null) playerCamScript.enabled = true;
+        if (playerController != null) playerController.enabled = true;
+
+        // Reattach camera and restore original transform
+        playerCamera.transform.SetParent(originalCamParent);
+        playerCamera.transform.position = originalCamPos;
+        playerCamera.transform.rotation = originalCamRot;
+
+        // Game over
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameOverScreen.SetActive(true);
     }
 
     void Roam()
     {
         agent.speed = roamSpeed;
-
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.3f)
         {
             patrolTimer -= Time.deltaTime;
-
             if (patrolTimer <= 0f)
             {
                 PickRoamPoint();
                 patrolTimer = patrolWaitTime;
             }
-            else
-            {
-                LookAround();
-            }
+            else LookAround();
         }
     }
 
     void Chase()
     {
         agent.speed = chaseSpeed;
-
         if (Vector3.Distance(agent.destination, player.position) > 1f)
-        {
             agent.SetDestination(player.position);
-        }
     }
 
     void Search()
     {
         agent.speed = roamSpeed;
-
         if (agent.destination != lastSeenPosition)
-        {
             agent.SetDestination(lastSeenPosition);
-        }
 
         searchTimer -= Time.deltaTime;
-
-        if (searchTimer <= 0)
+        if (searchTimer <= 0f)
         {
             searchTimer = searchDuration;
             currentState = EnemyState.Roaming;
             PickRoamPoint();
         }
-
     }
 
     void PickRoamPoint()
@@ -160,7 +253,6 @@ public class EnemyAI : MonoBehaviour
 
             float distanceToPlayer = Vector3.Distance(patrolPoints[i].position, player.position);
             float score = Random.value * 20f - distanceToPlayer;
-
             if (score > bestScore)
             {
                 bestScore = score;
@@ -169,10 +261,8 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (chosenIndex == -1) return;
-
         lastPatrolIndex = chosenIndex;
         roamPoint = patrolPoints[chosenIndex].position;
-
         agent.SetDestination(roamPoint);
     }
 
@@ -180,35 +270,19 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, player.position);
-        Debug.DrawRay(transform.position + Vector3.up * 1f, directionToPlayer * detectionRange, Color.green);
+        if (distance > detectionRange) return false;
 
-        if (distance < detectionRange)
-        {
-            float angle = Vector3.Angle(transform.forward, directionToPlayer);
-            if (angle < fieldOfView / 2f)
-            {
-                Ray ray = new Ray(transform.position + Vector3.up, directionToPlayer);
-                RaycastHit hit;
+        float angle = Vector3.Angle(transform.forward, directionToPlayer);
+        if (angle > fieldOfView / 2f) return false;
 
-                if (Physics.Raycast(ray, out hit, detectionRange))
-                {
-                    if (hit.transform.root == player)
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
+        if (Physics.Raycast(transform.position + Vector3.up, directionToPlayer, out RaycastHit hit, detectionRange))
+            return hit.transform.root == player;
 
         return false;
     }
 
-    void LookAround()
-    {
-        transform.Rotate(0, 40f * Time.deltaTime, 0);
-    }
+    void LookAround() => transform.Rotate(0, 40f * Time.deltaTime, 0);
 
-    // debugger - shows ai movement
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
