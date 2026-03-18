@@ -16,7 +16,9 @@ public class Interactable : MonoBehaviour
         Altar,
         Portal,
         Telescope,
-        Pool
+        Pool,
+        Letter
+
 
 
 
@@ -36,6 +38,7 @@ public class Interactable : MonoBehaviour
     public DemonicAltar_Controller altar;
     public BloodPool_Controller pool;
     public HellGate_Controller hellGate;
+    public LetterInteract letterInteract;
 
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
@@ -55,6 +58,16 @@ public class Interactable : MonoBehaviour
     public void Interact()
     {
 
+        if (itemType == ItemType.Letter)
+        {
+            if (keyPrompt != null)
+            {
+                letterInteract.InteractPaper();
+                keyPrompt.SetActive(false);
+                return;
+            }
+
+        }
 
         if (itemType == ItemType.MusicBox)
         {

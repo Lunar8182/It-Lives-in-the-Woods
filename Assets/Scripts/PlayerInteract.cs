@@ -50,15 +50,7 @@ public class PlayerInteract : MonoBehaviour
                     door.Interact();
                 }
             }
-            else if (letter != null)
-            {
-                keyPromptUI.SetActive(true);
 
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    letter.Interact();
-                }
-            }
             else if (inDepthInteract != null)
             {
                 keyPromptUI.SetActive(true);

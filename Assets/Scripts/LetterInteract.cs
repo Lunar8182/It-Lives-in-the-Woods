@@ -3,6 +3,7 @@ using TMPro;
 
 public class LetterInteract : MonoBehaviour
 {
+    public PlayerMovement playerController;
     [TextArea(5, 10)]
     public string letterText;
 
@@ -11,7 +12,7 @@ public class LetterInteract : MonoBehaviour
 
     private bool isReading = false;
 
-    public void Interact()
+    public void InteractPaper()
     {
         if (!isReading)
         {
@@ -28,8 +29,13 @@ public class LetterInteract : MonoBehaviour
         letterUIPanel.SetActive(true);
         letterUIText.text = letterText;
 
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
+
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
 
         isReading = true;
     }
@@ -38,8 +44,13 @@ public class LetterInteract : MonoBehaviour
     {
         letterUIPanel.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = false;
+
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
 
         isReading = false;
     }
