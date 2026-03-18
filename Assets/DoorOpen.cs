@@ -7,7 +7,6 @@ public class DoorInteract : MonoBehaviour
     public float openSpeed = 3f;
 
     private bool isOpen = false;
-
     private Quaternion closedRotation;
     private Quaternion openRotation;
 
@@ -18,15 +17,15 @@ public class DoorInteract : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ToggleDoor();
-        }
-
         if (isOpen)
             transform.rotation = Quaternion.Lerp(transform.rotation, openRotation, Time.deltaTime * openSpeed);
         else
             transform.rotation = Quaternion.Lerp(transform.rotation, closedRotation, Time.deltaTime * openSpeed);
+    }
+
+    public void Interact()
+    {
+        ToggleDoor();
     }
 
     void ToggleDoor()

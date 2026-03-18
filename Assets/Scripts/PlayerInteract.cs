@@ -23,6 +23,9 @@ public class PlayerInteract : MonoBehaviour
         {
             Interactable interact = hit.collider.GetComponentInParent<Interactable>();
             InDepthInteract inDepthInteract = hit.collider.GetComponentInParent<InDepthInteract>();
+            DoorInteract door = hit.collider.GetComponentInParent<DoorInteract>();
+            LetterInteract letter = hit.collider.GetComponentInParent<LetterInteract>();
+
 
             if (interact != null)
             {
@@ -36,6 +39,24 @@ public class PlayerInteract : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && interact.itemType == Interactable.ItemType.MusicBox)
                 {
                     interact.ToggleMusic();
+                }
+            }
+            else if (door != null)
+            {
+                keyPromptUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    door.Interact();
+                }
+            }
+            else if (letter != null)
+            {
+                keyPromptUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    letter.Interact();
                 }
             }
             else if (inDepthInteract != null)
