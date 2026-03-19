@@ -8,7 +8,10 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     public Transform[] patrolPoints;
     public GameObject gameOverScreen;
+    
+    [Header("Cameras")]
     public Camera playerCamera;
+    public Camera jumpscareCamera;
 
     [Header("Audio")]
     public AudioSource audioSource;
@@ -40,9 +43,7 @@ public class EnemyAI : MonoBehaviour
 
     private Vector3 lastSeenPosition;
     private Vector3 roamPoint;
-    private Vector3 originalCamPos;
-    private Quaternion originalCamRot;
-    private Transform originalCamParent;
+    private Vector3 initialJumpscareCamLocalPos;
 
     private float searchTimer;
     private float loseSightTimer;
@@ -66,6 +67,12 @@ public class EnemyAI : MonoBehaviour
 
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
+
+        if (jumpscareCamera != null)
+        {
+            initialJumpscareCamLocalPos = jumpscareCamera.transform.localPosition;
+            jumpscareCamera.gameObject.SetActive(false); // Make sure it's off to start
+        }
 
         patrolTimer = patrolWaitTime;
         currentState = EnemyState.Roaming;
@@ -123,7 +130,9 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyState.Jumpscare:
-                Jumpscare();
+                jumpscareTimer -= Time.deltaTime;
+                if (jumpscareTimer <= 0f)
+                    EndJumpscare();
                 break;
         }
     }
@@ -138,63 +147,40 @@ public class EnemyAI : MonoBehaviour
         anim.SetTrigger("Jumpscare");
         jumpscareTimer = jumpscareDuration;
 
-        // Play sound
+        // Force enemy to face player
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        directionToPlayer.y = 0;
+        transform.rotation = Quaternion.LookRotation(directionToPlayer);
+
         if (jumpscareSound != null && audioSource != null && !audioSource.isPlaying)
         {
             audioSource.clip = jumpscareSound;
             audioSource.Play();
         }
 
-        // Freeze player
         if (playerCamScript != null) playerCamScript.enabled = false;
         if (playerController != null) playerController.enabled = false;
 
-        // Save original camera state
-        originalCamPos = playerCamera.transform.position;
-        originalCamRot = playerCamera.transform.rotation;
-        originalCamParent = playerCamera.transform.parent;
-
-        // Detach camera
-        playerCamera.transform.SetParent(null);
-
-        // Position camera manually with offset
-        playerCamera.transform.position = player.position + cameraPositionOffset;
-
-        // Look at enemy with offset
-        playerCamera.transform.LookAt(transform.position + cameraLookOffset);
+        // THE MAGIC: Turn off the player's eyes, turn on the enemy's camera
+        playerCamera.gameObject.SetActive(false);
+        jumpscareCamera.gameObject.SetActive(true);
     }
 
-    void Jumpscare()
+    void LateUpdate()
     {
-        if (!isJumpscaring) return;
+        if (!isJumpscaring || jumpscareCamera == null) return;
 
-        jumpscareTimer -= Time.deltaTime;
-
-        // Shake locally
+        // Apply a violent shake directly to the dedicated camera
         float x = (Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) - 0.5f) * shakeIntensity;
-        float y = (Mathf.PerlinNoise(0f, Time.time * shakeSpeed) - 0.5f) * shakeIntensity;
+        float y = (Mathf.PerlinNoise(100f, Time.time * shakeSpeed) - 0.5f) * shakeIntensity;
 
-        playerCamera.transform.position = player.position + cameraPositionOffset + new Vector3(x, y, 0);
-
-        // Keep looking at enemy head
-        playerCamera.transform.LookAt(transform.position + cameraLookOffset);
-
-        if (jumpscareTimer <= 0f)
-            EndJumpscare();
+        // Shake relative to its local position so it stays locked onto the enemy's face
+        jumpscareCamera.transform.localPosition = initialJumpscareCamLocalPos + new Vector3(x, y, 0);
     }
 
     void EndJumpscare()
     {
         isJumpscaring = false;
-
-        // Restore player controls
-        if (playerCamScript != null) playerCamScript.enabled = true;
-        if (playerController != null) playerController.enabled = true;
-
-        // Reattach camera and restore original transform
-        playerCamera.transform.SetParent(originalCamParent);
-        playerCamera.transform.position = originalCamPos;
-        playerCamera.transform.rotation = originalCamRot;
 
         // Game over
         Time.timeScale = 0f;
