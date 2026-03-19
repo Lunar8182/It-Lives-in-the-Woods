@@ -10,7 +10,6 @@ public class InventoryManager : MonoBehaviour
     public bool[] isFull;
 
     [Header("Hand Items")]
-    // FIX: Removed the hardcoded [5] so Unity can handle whatever size we give it!
     public GameObject[] handItems;
 
     private int selectedSlot = 0;
@@ -28,10 +27,11 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        // FIX: Only check for keys 1, 2, and 3 now!
         if (Input.GetKeyDown(KeyCode.Alpha1)) SelectSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
+        if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
     }
 
     public void SelectSlot(int index)

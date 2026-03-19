@@ -29,7 +29,7 @@ public class LetterInteract : MonoBehaviour
         letterUIPanel.SetActive(true);
         letterUIText.text = letterText;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         if (playerController != null)
@@ -44,7 +44,7 @@ public class LetterInteract : MonoBehaviour
     {
         letterUIPanel.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         if (playerController != null)
