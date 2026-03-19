@@ -17,7 +17,8 @@ public class Interactable : MonoBehaviour
         Portal,
         Telescope,
         Pool,
-        Letter
+        Letter,
+        Key
 
 
 
@@ -67,6 +68,11 @@ public class Interactable : MonoBehaviour
                 return;
             }
 
+        }
+        if (itemType == ItemType.Key)
+        {
+            InventoryManager.instance.hasKey = true;
+            Debug.Log("Key obtained!");
         }
 
         if (itemType == ItemType.MusicBox)

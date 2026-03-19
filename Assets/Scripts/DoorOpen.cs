@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
@@ -5,11 +6,12 @@ public class DoorInteract : MonoBehaviour
     public Transform player;
     public float openAngle = 90f;
     public float openSpeed = 3f;
-
+    public bool isLocked = true;
     private bool isOpen = false;
+    public GameObject Lock;
     private Quaternion closedRotation;
     private Quaternion openRotation;
-
+    public GameObject lockedMessage;
     void Start()
     {
         closedRotation = transform.rotation;
@@ -25,7 +27,24 @@ public class DoorInteract : MonoBehaviour
 
     public void Interact()
     {
-        ToggleDoor();
+        if (isLocked)
+        {
+            if (InventoryManager.instance.hasKey)
+            {
+                isLocked = false;
+                Destroy(Lock);
+                ToggleDoor();
+            }
+            else
+            {
+                ShowLockedMessage();
+                return;
+            }
+        }
+        else
+        {
+            ToggleDoor();
+        }
     }
 
     void ToggleDoor()
@@ -42,5 +61,20 @@ public class DoorInteract : MonoBehaviour
             else
                 openRotation = Quaternion.Euler(0, transform.eulerAngles.y - openAngle, 0);
         }
+    }
+
+    void ShowLockedMessage()
+    {
+        if (lockedMessage != null)
+        {
+            StartCoroutine(HideLockedMessage());
+        }
+    }
+
+    IEnumerator HideLockedMessage()
+    {
+        lockedMessage.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        lockedMessage.SetActive(false);
     }
 }

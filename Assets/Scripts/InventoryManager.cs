@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Hand Items")]
     public GameObject[] handItems;
+    public bool hasKey = false;
 
     private int selectedSlot = 0;
 
