@@ -56,8 +56,8 @@ public class EnemyAI : MonoBehaviour
 
     private int animStateHash = Animator.StringToHash("State");
 
-    private enum EnemyState { Roaming, Chasing, Searching, Jumpscare }
-    private EnemyState currentState;
+    public enum EnemyState { Roaming, Chasing, Searching, Jumpscare }
+    public EnemyState currentState;
 
     void Start()
     {
