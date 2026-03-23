@@ -9,7 +9,6 @@ public class LetterInteract : MonoBehaviour
 
     public GameObject letterUIPanel;
     public TextMeshProUGUI letterUIText;
-
     private bool isReading = false;
 
     public void InteractPaper()

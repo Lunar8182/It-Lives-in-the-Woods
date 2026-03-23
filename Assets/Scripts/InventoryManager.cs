@@ -33,6 +33,9 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
+        if (Input.GetKeyDown(KeyCode.Alpha6)) SelectSlot(5);
+        if (Input.GetKeyDown(KeyCode.Alpha7)) SelectSlot(6);
+        if (Input.GetKeyDown(KeyCode.Alpha8)) SelectSlot(7);
     }
 
     public void SelectSlot(int index)

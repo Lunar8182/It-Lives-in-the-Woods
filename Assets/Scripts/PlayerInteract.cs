@@ -60,6 +60,7 @@ public class PlayerInteract : MonoBehaviour
                     inDepthInteract.Interact();
                 }
             }
+
             else
             {
                 keyPromptUI.SetActive(false);

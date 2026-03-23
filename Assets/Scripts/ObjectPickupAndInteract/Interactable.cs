@@ -64,7 +64,6 @@ public class Interactable : MonoBehaviour
             if (keyPrompt != null)
             {
                 letterInteract.InteractPaper();
-                keyPrompt.SetActive(false);
                 return;
             }
 
