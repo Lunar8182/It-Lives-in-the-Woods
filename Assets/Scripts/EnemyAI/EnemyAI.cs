@@ -8,7 +8,8 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     public Transform[] patrolPoints;
     public GameObject gameOverScreen;
-    
+    public GameObject mainCanvas;
+
     [Header("Cameras")]
     public Camera playerCamera;
     public Camera jumpscareCamera;
@@ -26,12 +27,23 @@ public class EnemyAI : MonoBehaviour
     public float patrolWaitTime = 3f;
     public float searchDuration = 5f;
     public float loseSightDelay = 2f;
+    public float searchRadius = 15f;
+
 
     [Header("Jumpscare")]
     public float jumpscareDistance = 3f;
     public float jumpscareDuration = 2f;
     public float shakeIntensity = 0.3f;
     public float shakeSpeed = 20f;
+
+    [Header("Lighting")]
+    public Light enemyLight;
+    public Color roamColor = Color.green;
+    public Color searchColor = Color.yellow;
+    public Color chaseColor = Color.red;
+
+    public Vector3 jumpscareLightOffset = new Vector3(0f, -1f, -0.5f);
+    private Vector3 originalLightPosition;
 
     [Header("Jumpscare Camera Offsets")]
     public Vector3 cameraPositionOffset = new Vector3(0f, 1.6f, 0f); // relative to player
@@ -52,7 +64,11 @@ public class EnemyAI : MonoBehaviour
 
     private int lastPatrolIndex = -1;
     private bool isJumpscaring = false;
+    private bool isGameOver = false;
     private bool hasSnapped = false;
+
+    private bool reachedLastSeen = false;
+    private float pointWaitTimer = 0f;
 
     private int animStateHash = Animator.StringToHash("State");
 
@@ -64,6 +80,7 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         playerCamScript = player.GetComponentInChildren<PlayerCam>();
         playerController = player.GetComponent<CharacterController>();
+        enemyLight.enabled = true;
 
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -71,7 +88,12 @@ public class EnemyAI : MonoBehaviour
         if (jumpscareCamera != null)
         {
             initialJumpscareCamLocalPos = jumpscareCamera.transform.localPosition;
-            jumpscareCamera.gameObject.SetActive(false); // Make sure it's off to start
+            jumpscareCamera.gameObject.SetActive(false);
+        }
+
+        if (enemyLight != null)
+        {
+            originalLightPosition = enemyLight.transform.localPosition;
         }
 
         patrolTimer = patrolWaitTime;
@@ -81,6 +103,8 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        if (isGameOver) return;
+
         anim.SetFloat("Speed", agent.velocity.magnitude);
 
         bool playerVisible = CanSeePlayer();
@@ -91,6 +115,7 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Roaming:
+                if (enemyLight != null) enemyLight.color = roamColor;
                 anim.SetInteger(animStateHash, 0);
                 Roam();
                 if (playerVisible)
@@ -101,6 +126,7 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyState.Chasing:
+                if (enemyLight != null) enemyLight.color = chaseColor;
                 anim.SetInteger(animStateHash, 1);
                 Chase();
                 if (playerVisible)
@@ -115,11 +141,13 @@ public class EnemyAI : MonoBehaviour
                     {
                         currentState = EnemyState.Searching;
                         searchTimer = searchDuration;
+                        reachedLastSeen = false;
                     }
                 }
                 break;
 
             case EnemyState.Searching:
+                if (enemyLight != null) enemyLight.color = searchColor;
                 anim.SetInteger(animStateHash, 2);
                 Search();
                 if (playerVisible)
@@ -130,6 +158,12 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyState.Jumpscare:
+                if (enemyLight != null)
+                {
+                    enemyLight.color = Color.red;
+                    enemyLight.intensity = Random.Range(10f, 100f);
+                    enemyLight.range = 1000000f;
+                }
                 jumpscareTimer -= Time.deltaTime;
                 if (jumpscareTimer <= 0f)
                     EndJumpscare();
@@ -144,10 +178,18 @@ public class EnemyAI : MonoBehaviour
         isJumpscaring = true;
         currentState = EnemyState.Jumpscare;
         agent.isStopped = true;
+
+        anim.SetInteger(animStateHash, 3);
         anim.SetTrigger("Jumpscare");
         jumpscareTimer = jumpscareDuration;
 
-        // Force enemy to face player
+        if (enemyLight != null)
+        {
+            enemyLight.enabled = true;
+            enemyLight.color = chaseColor;
+            enemyLight.transform.localPosition = originalLightPosition + jumpscareLightOffset;
+        }
+
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         directionToPlayer.y = 0;
         transform.rotation = Quaternion.LookRotation(directionToPlayer);
@@ -161,7 +203,8 @@ public class EnemyAI : MonoBehaviour
         if (playerCamScript != null) playerCamScript.enabled = false;
         if (playerController != null) playerController.enabled = false;
 
-        // THE MAGIC: Turn off the player's eyes, turn on the enemy's camera
+        if (mainCanvas != null) mainCanvas.SetActive(false);
+
         playerCamera.gameObject.SetActive(false);
         jumpscareCamera.gameObject.SetActive(true);
     }
@@ -170,22 +213,22 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isJumpscaring || jumpscareCamera == null) return;
 
-        // Apply a violent shake directly to the dedicated camera
         float x = (Mathf.PerlinNoise(Time.time * shakeSpeed, 0f) - 0.5f) * shakeIntensity;
         float y = (Mathf.PerlinNoise(100f, Time.time * shakeSpeed) - 0.5f) * shakeIntensity;
 
-        // Shake relative to its local position so it stays locked onto the enemy's face
         jumpscareCamera.transform.localPosition = initialJumpscareCamLocalPos + new Vector3(x, y, 0);
     }
 
     void EndJumpscare()
     {
         isJumpscaring = false;
+        isGameOver = true;
 
-        // Game over
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (mainCanvas != null) mainCanvas.SetActive(true);
         gameOverScreen.SetActive(true);
     }
 
@@ -214,15 +257,49 @@ public class EnemyAI : MonoBehaviour
     void Search()
     {
         agent.speed = roamSpeed;
-        if (agent.destination != lastSeenPosition)
-            agent.SetDestination(lastSeenPosition);
-
         searchTimer -= Time.deltaTime;
+
         if (searchTimer <= 0f)
         {
-            searchTimer = searchDuration;
             currentState = EnemyState.Roaming;
+            reachedLastSeen = false;
             PickRoamPoint();
+            return;
+        }
+
+        if (!reachedLastSeen)
+        {
+            if (Vector3.Distance(agent.destination, lastSeenPosition) > 1f)
+                agent.SetDestination(lastSeenPosition);
+
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
+            {
+                reachedLastSeen = true;
+                pointWaitTimer = 1.5f;
+            }
+        }
+
+        else
+        {
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
+            {
+                if (pointWaitTimer > 0)
+                {
+                    pointWaitTimer -= Time.deltaTime;
+                    LookAround();
+                }
+                else
+                {
+                    Vector3 randomDirection = Random.insideUnitSphere * searchRadius;
+                    randomDirection += lastSeenPosition;
+
+                    if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, searchRadius, 1))
+                    {
+                        agent.SetDestination(hit.position);
+                        pointWaitTimer = 1.5f;
+                    }
+                }
+            }
         }
     }
 
@@ -267,7 +344,11 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
 
-    void LookAround() => transform.Rotate(0, 40f * Time.deltaTime, 0);
+    void LookAround()
+    {
+        anim.SetInteger(animStateHash, 4);
+        transform.Rotate(0, 40f * Time.deltaTime, 0);
+    }
 
     void OnDrawGizmosSelected()
     {
