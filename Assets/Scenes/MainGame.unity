@@ -2799,8 +2799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 2100000, guid: b058975941b7d4f229db808698ba96f0, type: 2}
-  m_Color: {r: 0.16837892, g: 0.9245283, b: 0, a: 1}
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11530,13 +11530,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3516bcf90417f430c93c541f8d76c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  walkSpeed: 5
-  sprintSpeed: 20
+  staminaScript: {fileID: 649148676}
   playerHeight: 5
   groundDrag: 0.5
   jumpForce: 7
   jumpCooldown: 0.25
   airMultiplier: 0.4
+  jumpKey: 32
   sprintKey: 304
   whatIsGround:
     serializedVersion: 2
@@ -11723,6 +11723,10 @@ MonoBehaviour:
   currentStamina: 100
   drainRate: 20
   regenRate: 15
+  normalSpeed: 5
+  sprintSpeed: 10
+  exhaustedSpeed: 2.5
+  currentMoveSpeed: 0
   staminaFill: {fileID: 170136793}
 --- !u!136 &649148677
 CapsuleCollider:
