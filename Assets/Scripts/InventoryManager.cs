@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public bool hasDoll = false;
     public bool hasRattle = false;
     public bool hasBlanket = false;
+    public bool hasVoodooDoll = false;
 
     private int selectedSlot = 0;
 

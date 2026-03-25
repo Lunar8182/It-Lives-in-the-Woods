@@ -34,13 +34,9 @@ public class PotInteract : MonoBehaviour
             voiceSource.PlayOneShot(voiceline);
             voicePlayed = true;
         }
-        else if (!voice2Played)
-        {
-            voiceSource.PlayOneShot(voiceLine2);
-            voice2Played = true;
-        }
         else
         {
+            StopAllCoroutines();
             StartCoroutine(ShowTextTemporary());
         }
     }

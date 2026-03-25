@@ -18,7 +18,8 @@ public class Interactable : MonoBehaviour
         Telescope,
         Pool,
         Letter,
-        Key
+        Key,
+        VoodooDoll
 
 
     }
@@ -81,6 +82,11 @@ public class Interactable : MonoBehaviour
         if (itemType == ItemType.Blanket)
         {
             InventoryManager.instance.hasBlanket = true;
+        }
+
+        if (itemType == ItemType.VoodooDoll)
+        {
+            InventoryManager.instance.hasVoodooDoll = true;
         }
 
         if (itemType == ItemType.Key)
