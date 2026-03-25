@@ -10,13 +10,20 @@ public class InDepthInteract : MonoBehaviour
     public AudioClip voiceLine1;
     public AudioClip voiceLine2;
 
-    public GameObject pressEText;
+    public GameObject pressETextCar;
+    public GameObject pressETextLock;
+
+    public enum ItemType
+    {
+        Car,
+        Lock
+    }
 
 
-    private bool playerNearby = false;
+
     private bool voice1Played = false;
     private bool voice2Played = false;
-
+    public ItemType itemType;
     private AudioSource voice;
 
     void Start()
@@ -24,43 +31,65 @@ public class InDepthInteract : MonoBehaviour
         voice = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        if (playerNearby && Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
-        }
-    }
+
 
     public void Interact()
     {
         if (voice.isPlaying) return;
 
-        if (!voice1Played)
+        if (itemType == ItemType.Lock)
         {
-            voice.PlayOneShot(voiceLine1);
-            voice1Played = true;
+            if (!voice1Played)
+            {
+                voice.PlayOneShot(voiceLine1);
+                voice1Played = true;
+            }
+            else if (!voice2Played)
+            {
+                voice.PlayOneShot(voiceLine2);
+                voice2Played = true;
+            }
+            else
+            {
+                StartCoroutine(ShowTextTemporaryLock());
+            }
         }
-        else if (!voice2Played)
+        else if (itemType == ItemType.Car)
         {
-            voice.PlayOneShot(voiceLine2);
-            voice2Played = true;
-        }
-        else
-        {
-            StartCoroutine(ShowTextTemporary());
+            if (!voice1Played)
+            {
+                voice.PlayOneShot(voiceLine1);
+                voice1Played = true;
+            }
+            else if (!voice2Played)
+            {
+                voice.PlayOneShot(voiceLine2);
+                voice2Played = true;
+            }
+            else
+            {
+                StartCoroutine(ShowTextTemporaryCar());
+            }
         }
     }
 
 
 
 
-    IEnumerator ShowTextTemporary()
+    IEnumerator ShowTextTemporaryCar()
     {
-        pressEText.SetActive(true);
+        pressETextCar.SetActive(true);
 
         yield return new WaitForSeconds(3f);
 
-        pressEText.SetActive(false);
+        pressETextCar.SetActive(false);
+    }
+    IEnumerator ShowTextTemporaryLock()
+    {
+        pressETextLock.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        pressETextLock.SetActive(false);
     }
 }

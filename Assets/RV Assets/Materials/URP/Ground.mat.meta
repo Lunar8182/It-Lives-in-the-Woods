@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 98fc05d8b8ccaab40a90eef7827d137a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 298372
+  packageName: Anlian RV Trailer
+  packageVersion: 1.0
+  assetPath: Assets/RV Assets/Materials/URP/Ground.mat
+  uploadId: 804216

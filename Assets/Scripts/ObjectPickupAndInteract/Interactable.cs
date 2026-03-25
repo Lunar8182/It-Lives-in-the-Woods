@@ -16,9 +16,9 @@ public class Interactable : MonoBehaviour
         Altar,
         Portal,
         Telescope,
-        Pool
-
-
+        Pool,
+        Letter,
+        Key
 
 
     }
@@ -34,21 +34,23 @@ public class Interactable : MonoBehaviour
     //Add the object that has the audio source attached (usually the same as object to activate) 
     public GameObject playerItem;
     public DemonicAltar_Controller altar;
+    public BloodPool_Controller pool;
+    public HellGate_Controller hellGate;
+    public LetterInteract letterInteract;
 
-    private bool playerNearby = false;
+    public GameObject alterDoll;
+    public GameObject alterRattle;
+    public GameObject alterBlanket;
+
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
     private bool hasPlayedBabyRattleAudio = false;
-
+    private bool poolOn = false;
+    private bool portalOn = false;
     private bool alterOn = false;
 
     void Update()
     {
-        if (playerNearby && Input.GetKeyDown(KeyCode.E))
-        {
-            Interact();
-        }
-
         if (hasMusicBox && itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
         {
             ToggleMusic();
@@ -58,6 +60,33 @@ public class Interactable : MonoBehaviour
     public void Interact()
     {
 
+        if (itemType == ItemType.Letter)
+        {
+            if (keyPrompt != null)
+            {
+                letterInteract.InteractPaper();
+                return;
+            }
+
+        }
+
+        if (itemType == ItemType.Doll)
+        {
+            InventoryManager.instance.hasDoll = true;
+        }
+        if (itemType == ItemType.BabyRattle)
+        {
+            InventoryManager.instance.hasRattle = true;
+        }
+        if (itemType == ItemType.Blanket)
+        {
+            InventoryManager.instance.hasBlanket = true;
+        }
+
+        if (itemType == ItemType.Key)
+        {
+            InventoryManager.instance.hasKey = true;
+        }
 
         if (itemType == ItemType.MusicBox)
         {
@@ -71,7 +100,22 @@ public class Interactable : MonoBehaviour
 
         if (itemType == ItemType.Altar)
         {
-            if (alterOn) return;
+            if (alterOn)
+            {
+                switch (itemType)
+                {
+                    case ItemType.Doll:
+                        alterDoll.SetActive(true);
+                        break;
+                    case ItemType.BabyRattle:
+                        alterRattle.SetActive(true);
+                        break;
+                    case ItemType.Blanket:
+                        alterBlanket.SetActive(true);
+                        break;
+                }
+                return;
+            }
             altar.ToggleDemonicAltar();
             alterOn = true;
             keyPrompt.SetActive(false);
@@ -80,21 +124,27 @@ public class Interactable : MonoBehaviour
 
         if (itemType == ItemType.Portal)
         {
-
-
-            //portal interact here
+            if (portalOn) return;
+            hellGate.ToggleHellGate();
+            portalOn = true;
+            keyPrompt.SetActive(false);
+            return;
         }
 
         if (itemType == ItemType.Telescope)
         {
-
-
-            //telescope interact here   
+            TelescopeController telescope = GetComponentInParent<TelescopeController>();
+            telescope.UseTelescope();
+            return;
         }
 
         if (itemType == ItemType.Pool)
         {
-            //pool interact here
+            if (poolOn) return;
+            pool.F_ToggleBloodPool();
+            poolOn = true;
+            keyPrompt.SetActive(false);
+            return;
         }
 
         if (itemIcon != null && objectToActivate != null)
@@ -137,6 +187,11 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player"))
+        {
+            return;
+        }
+
         if (itemType == ItemType.Lantern && hasPlayedLanternAudio == false)
         {
             hasPlayedLanternAudio = true;

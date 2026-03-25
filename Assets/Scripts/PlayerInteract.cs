@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerInteract : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class PlayerInteract : MonoBehaviour
     public GameObject keyPromptUI;
 
     private Camera playerCamera;
-
 
     void Start()
     {
@@ -23,60 +21,50 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactDistance, interactLayer))
         {
-            Interactable standardInteract = hit.collider.GetComponent<Interactable>();
-            InDepthInteract inDepthInteract = hit.collider.GetComponent<InDepthInteract>();
-            PotInteract potInteract = hit.collider.GetComponent<PotInteract>();
-            DemonicAltar_Controller altarInteract = hit.collider.GetComponentInParent<DemonicAltar_Controller>();
+            Interactable interact = hit.collider.GetComponentInParent<Interactable>();
+            InDepthInteract inDepthInteract = hit.collider.GetComponentInParent<InDepthInteract>();
+            DoorInteract door = hit.collider.GetComponentInParent<DoorInteract>();
+            LetterInteract letter = hit.collider.GetComponentInParent<LetterInteract>();
 
-            if (standardInteract != null)
+
+            if (interact != null)
             {
                 keyPromptUI.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    standardInteract.Interact();
+                    interact.Interact();
                 }
 
-                if (Input.GetMouseButtonDown(0) && standardInteract.itemType == Interactable.ItemType.MusicBox)
+                if (Input.GetMouseButtonDown(0) && interact.itemType == Interactable.ItemType.MusicBox)
                 {
-                    standardInteract.ToggleMusic();
+                    interact.ToggleMusic();
                 }
             }
+            else if (door != null)
+            {
+                keyPromptUI.SetActive(true);
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    door.Interact();
+                }
+            }
+
             else if (inDepthInteract != null)
             {
                 keyPromptUI.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
                     inDepthInteract.Interact();
                 }
             }
 
-            else if (altarInteract != null)
-            {
-                keyPromptUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    altarInteract.ToggleDemonicAltar();
-                }
-            }
-            else if (potInteract != null)
-            {
-                keyPromptUI.SetActive(true);
-
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    potInteract.Interact();
-                }
-            }
             else
             {
                 keyPromptUI.SetActive(false);
             }
-
-
         }
         else
         {
