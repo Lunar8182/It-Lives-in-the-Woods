@@ -21,9 +21,6 @@ public class Interactable : MonoBehaviour
         Key
 
 
-
-
-
     }
 
     [Header("Inventory Settings")]
@@ -40,6 +37,10 @@ public class Interactable : MonoBehaviour
     public BloodPool_Controller pool;
     public HellGate_Controller hellGate;
     public LetterInteract letterInteract;
+
+    public GameObject alterDoll;
+    public GameObject alterRattle;
+    public GameObject alterBlanket;
 
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
@@ -68,10 +69,23 @@ public class Interactable : MonoBehaviour
             }
 
         }
+
+        if (itemType == ItemType.Doll)
+        {
+            InventoryManager.instance.hasDoll = true;
+        }
+        if (itemType == ItemType.BabyRattle)
+        {
+            InventoryManager.instance.hasRattle = true;
+        }
+        if (itemType == ItemType.Blanket)
+        {
+            InventoryManager.instance.hasBlanket = true;
+        }
+
         if (itemType == ItemType.Key)
         {
             InventoryManager.instance.hasKey = true;
-            Debug.Log("Key obtained!");
         }
 
         if (itemType == ItemType.MusicBox)
@@ -86,7 +100,22 @@ public class Interactable : MonoBehaviour
 
         if (itemType == ItemType.Altar)
         {
-            if (alterOn) return;
+            if (alterOn)
+            {
+                switch (itemType)
+                {
+                    case ItemType.Doll:
+                        alterDoll.SetActive(true);
+                        break;
+                    case ItemType.BabyRattle:
+                        alterRattle.SetActive(true);
+                        break;
+                    case ItemType.Blanket:
+                        alterBlanket.SetActive(true);
+                        break;
+                }
+                return;
+            }
             altar.ToggleDemonicAltar();
             alterOn = true;
             keyPrompt.SetActive(false);

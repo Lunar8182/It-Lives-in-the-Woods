@@ -413,6 +413,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!65 &15422475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1784,6 +1787,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!4 &79084187 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1302944531070337134, guid: 14cac76a1450b424d8c1186a597e8ca9, type: 3}
@@ -4714,6 +4720,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 1845097410}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!1001 &291786680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5736,6 +5745,9 @@ MonoBehaviour:
   pool: {fileID: 1404348651}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!65 &371327160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6462,6 +6474,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!4 &427475437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1731621413674928719, guid: 9090dfe2bb858f8458fb9275a1c6e090, type: 3}
@@ -7827,6 +7842,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!23 &493479080
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9646,6 +9664,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!23 &561926146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12051,11 +12072,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_Name
-      value: Blanket_Ground
+      value: BlanketAltar
       objectReference: {fileID: 0}
     - target: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8757551085509158726, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_LocalScale.x
@@ -12118,6 +12143,11 @@ PrefabInstance:
 --- !u!4 &700127980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8757551085509158726, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
+  m_PrefabInstance: {fileID: 700127979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &700127981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
   m_PrefabInstance: {fileID: 700127979}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &704106298
@@ -12628,6 +12658,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 1710752369}
+  alterRattle: {fileID: 1359613094}
+  alterBlanket: {fileID: 700127981}
 --- !u!65 &729188843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13343,6 +13376,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!1001 &764874417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24632,6 +24668,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   hasKey: 0
+  hasDoll: 0
+  hasRattle: 0
+  hasBlanket: 0
 --- !u!1 &1026207444
 GameObject:
   m_ObjectHideFlags: 0
@@ -26874,6 +26913,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!4 &1133867159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 164856941173739165, guid: 6c7007cc152ffb644b7461858684f0d6, type: 3}
@@ -30964,11 +31006,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7079996773577453726, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
       propertyPath: m_Name
-      value: Rattle_Ground
+      value: RattleAltar
       objectReference: {fileID: 0}
     - target: {fileID: 7079996773577453726, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7079996773577453726, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012199159660137919, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
       propertyPath: m_Layer
@@ -30982,6 +31028,11 @@ PrefabInstance:
 --- !u!4 &1359613093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4358935838228951454, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
+  m_PrefabInstance: {fileID: 1359613092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1359613094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7079996773577453726, guid: 67a98633cfb81495f8475e22d1bcf930, type: 3}
   m_PrefabInstance: {fileID: 1359613092}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1360176369
@@ -32749,6 +32800,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!1 &1409003187
 GameObject:
   m_ObjectHideFlags: 0
@@ -37593,7 +37647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6203387693560352197, guid: 0e62efebf92a44f9881e0edf84009acd, type: 3}
       propertyPath: m_Name
-      value: DollGround
+      value: DollAltar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6203387693560352197, guid: 0e62efebf92a44f9881e0edf84009acd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6727547235741046655, guid: 0e62efebf92a44f9881e0edf84009acd, type: 3}
       propertyPath: m_LocalScale.x
@@ -37710,6 +37768,14 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
+--- !u!1 &1710752369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6203387693560352197, guid: 0e62efebf92a44f9881e0edf84009acd, type: 3}
+  m_PrefabInstance: {fileID: 1710752364}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1710841200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2763921481354444034, guid: 9480407949b1e0b43bef93cbdebe6c0e, type: 3}
@@ -41303,6 +41369,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 1939878488}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!114 &1939878488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
@@ -41388,6 +41457,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!82 &1940734464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -42274,6 +42346,9 @@ MonoBehaviour:
   pool: {fileID: 0}
   hellGate: {fileID: 0}
   letterInteract: {fileID: 1992546196}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
 --- !u!1001 &1999326876
 PrefabInstance:
   m_ObjectHideFlags: 0
