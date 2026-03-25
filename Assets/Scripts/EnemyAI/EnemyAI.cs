@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     public float chaseSpeed = 12f;
     public float roamSpeed = 3f;
     public float patrolWaitTime = 3f;
-    public float searchDuration = 5f;
+    public float searchDuration = 10f;
     public float loseSightDelay = 2f;
     public float searchRadius = 15f;
 
