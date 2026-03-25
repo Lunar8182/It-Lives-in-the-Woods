@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Stamina Link")]
+    public PlayerStamina staminaScript; // <-- Link to your stamina script
+
     [Header("Movement")]
-    public float walkSpeed = 5f;
-    public float sprintSpeed = 10f;
-    private float moveSpeed;
+    private float moveSpeed; // We'll get this from staminaScript now
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
+    // Sprint key removed from here because staminaScript handles it!
 
     public LayerMask whatIsGround;
     bool grounded;
@@ -79,13 +80,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-        if (grounded && Input.GetKey(sprintKey))
+        // Tell the movement script to sync its speed with whatever 
+        // the Stamina script says we should be doing!
+        if (staminaScript != null)
         {
-            moveSpeed = sprintSpeed;
-        }
-        else if (grounded)
-        {
-            moveSpeed = walkSpeed;
+            moveSpeed = staminaScript.currentMoveSpeed;
         }
     }
 
