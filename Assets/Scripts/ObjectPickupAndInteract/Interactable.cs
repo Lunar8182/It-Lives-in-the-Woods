@@ -42,6 +42,12 @@ public class Interactable : MonoBehaviour
     public GameObject alterDoll;
     public GameObject alterRattle;
     public GameObject alterBlanket;
+    [Header("Altar Ritual Settings")]
+    public GameObject voodooDollReward;
+    private bool placedDoll = false;
+    private bool placedRattle = false;
+    private bool placedBlanket = false;
+    private bool ritualComplete = false;
 
     private bool hasMusicBox = false;
     private bool hasPlayedLanternAudio = false;
@@ -106,37 +112,58 @@ public class Interactable : MonoBehaviour
 
         if (itemType == ItemType.Altar)
         {
-            if (alterOn)
+            if (!alterOn)
             {
-                switch (itemType)
-                {
-                    case ItemType.Doll:
-                        alterDoll.SetActive(true);
-                        break;
-                    case ItemType.BabyRattle:
-                        alterRattle.SetActive(true);
-                        break;
-                    case ItemType.Blanket:
-                        alterBlanket.SetActive(true);
-                        break;
-                }
+                altar.ToggleDemonicAltar();
+                alterOn = true;
+                if (keyPrompt != null) keyPrompt.SetActive(false);
                 return;
             }
-            altar.ToggleDemonicAltar();
-            alterOn = true;
-            keyPrompt.SetActive(false);
+
+            if (alterOn && !ritualComplete)
+            {
+                GameObject itemInHand = InventoryManager.instance.GetSelectedItem();
+
+                if (itemInHand != null)
+                {
+                    if (InventoryManager.instance.hasDoll && itemInHand.name.Contains("Doll"))
+                    {
+                        alterDoll.SetActive(true);
+                        InventoryManager.instance.hasDoll = false;
+                        InventoryManager.instance.RemoveSelectedItem();
+                        placedDoll = true;
+                    }
+                    else if (InventoryManager.instance.hasRattle && itemInHand.name.Contains("Rattle"))
+                    {
+                        alterRattle.SetActive(true);
+                        InventoryManager.instance.hasRattle = false;
+                        InventoryManager.instance.RemoveSelectedItem();
+                        placedRattle = true;
+                    }
+                    else if (InventoryManager.instance.hasBlanket && itemInHand.name.Contains("Blanket"))
+                    {
+                        alterBlanket.SetActive(true);
+                        InventoryManager.instance.hasBlanket = false;
+                        InventoryManager.instance.RemoveSelectedItem();
+                        placedBlanket = true;
+                    }
+
+
+
+                    if (placedDoll && placedRattle && placedBlanket)
+                    {
+                        ritualComplete = true;
+
+                        if (voodooDollReward != null)
+                        {
+                            voodooDollReward.SetActive(true);
+                        }
+
+                    }
+                }
+            }
             return;
         }
-
-        if (itemType == ItemType.Portal)
-        {
-            if (portalOn) return;
-            hellGate.ToggleHellGate();
-            portalOn = true;
-            keyPrompt.SetActive(false);
-            return;
-        }
-
         if (itemType == ItemType.Telescope)
         {
             TelescopeController telescope = GetComponentInParent<TelescopeController>();

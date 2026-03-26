@@ -106,4 +106,29 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+    public GameObject GetSelectedItem()
+    {
+        if (selectedSlot >= 0 && selectedSlot < handItems.Length)
+        {
+            return handItems[selectedSlot];
+        }
+        return null;
+    }
+
+    public void RemoveSelectedItem()
+    {
+        if (selectedSlot >= 0 && selectedSlot < inventorySlots.Length)
+        {
+            inventorySlots[selectedSlot].sprite = null;
+            inventorySlots[selectedSlot].color = new Color(1, 1, 1, 0.5f);
+            isFull[selectedSlot] = false;
+
+            // Clear the hand item
+            if (handItems[selectedSlot] != null)
+            {
+                handItems[selectedSlot].SetActive(false);
+                handItems[selectedSlot] = null;
+            }
+        }
+    }
 }
