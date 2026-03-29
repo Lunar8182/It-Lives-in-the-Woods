@@ -19,6 +19,8 @@ public class PlayerStamina : MonoBehaviour
     public Image staminaFill;
 
     private bool isExhausted = false;
+    // NEW: Tracks if the player needs to let go of Shift to sprint again
+    private bool requireShiftRelease = false;
 
     void Start()
     {
@@ -30,9 +32,17 @@ public class PlayerStamina : MonoBehaviour
     {
         bool isHoldingShift = Input.GetKey(KeyCode.LeftShift);
 
+        // Reset the requirement to release shift if the player lets go of the key
+        if (!isHoldingShift)
+        {
+            requireShiftRelease = false;
+        }
+
+        // Determine if the player should actively be sprinting right now
+        bool isSprinting = isHoldingShift && !isExhausted && currentStamina > 0 && !requireShiftRelease;
+
         // 1. Sprinting & Draining
-        // Only works if holding shift, NOT exhausted, and has stamina
-        if (isHoldingShift && !isExhausted && currentStamina > 0)
+        if (isSprinting)
         {
             currentStamina -= drainRate * Time.deltaTime;
             currentMoveSpeed = sprintSpeed;
@@ -41,16 +51,14 @@ public class PlayerStamina : MonoBehaviour
             if (currentStamina <= 5f)
             {
                 isExhausted = true;
+                requireShiftRelease = true; // Force them to release shift to sprint again
             }
         }
         else
         {
             // 2. Regeneration
-            // Only refill if the player has completely let go of the Shift key
-            if (!isHoldingShift)
-            {
-                currentStamina += regenRate * Time.deltaTime;
-            }
+            // This now happens anytime the player isn't actively sprinting
+            currentStamina += regenRate * Time.deltaTime;
 
             // 3. State Management (Exhausted vs Normal)
             if (isExhausted)
@@ -61,6 +69,7 @@ public class PlayerStamina : MonoBehaviour
                 if (currentStamina >= maxStamina * 0.5f)
                 {
                     isExhausted = false;
+                    // Note: requireShiftRelease stays true until they physically let go of Shift
                 }
             }
             else
