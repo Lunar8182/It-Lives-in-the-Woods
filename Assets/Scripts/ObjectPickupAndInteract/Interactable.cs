@@ -67,6 +67,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    void LateUpdate()
+    {
+        if (letterInteract != null && letterInteract.isReading)
+        {
+            if (keyPrompt != null) keyPrompt.SetActive(false);
+        }
+    }
+
     public void Interact()
     {
 
