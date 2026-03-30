@@ -25,7 +25,7 @@ public class PlayerInteract : MonoBehaviour
             InDepthInteract inDepthInteract = hit.collider.GetComponentInParent<InDepthInteract>();
             DoorInteract door = hit.collider.GetComponentInParent<DoorInteract>();
             LetterInteract letter = hit.collider.GetComponentInParent<LetterInteract>();
-
+            PotEndingInteract pot = hit.collider.GetComponentInParent<PotEndingInteract>();
 
             if (interact != null)
             {
@@ -50,7 +50,6 @@ public class PlayerInteract : MonoBehaviour
                     door.Interact();
                 }
             }
-
             else if (inDepthInteract != null)
             {
                 keyPromptUI.SetActive(true);
@@ -60,7 +59,15 @@ public class PlayerInteract : MonoBehaviour
                     inDepthInteract.Interact();
                 }
             }
+            else if (pot != null) 
+            {
+                keyPromptUI.SetActive(true);
 
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    pot.Interact();
+                }
+            }
             else
             {
                 keyPromptUI.SetActive(false);
