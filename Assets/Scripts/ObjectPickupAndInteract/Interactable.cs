@@ -44,6 +44,9 @@ public class Interactable : MonoBehaviour
     public GameObject alterBlanket;
     [Header("Altar Ritual Settings")]
     public GameObject voodooDollReward;
+    public GameObject campsite;
+    public GameObject ritualSite;
+    public GameObject mapUpdateMessage;
     private bool placedDoll = false;
     private bool placedRattle = false;
     private bool placedBlanket = false;
@@ -154,10 +157,21 @@ public class Interactable : MonoBehaviour
                     {
                         ritualComplete = true;
 
+
                         if (voodooDollReward != null)
                         {
                             voodooDollReward.SetActive(true);
                         }
+                        if (campsite != null)
+                        {
+                            campsite.SetActive(false);
+                        }
+                        if (ritualSite != null)
+                        {
+                            ritualSite.SetActive(true);
+                        }
+
+                        StartCoroutine(ShowMapMessage());
 
                     }
                 }
@@ -239,6 +253,15 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private System.Collections.IEnumerator ShowMapMessage()
+    {
+        if (mapUpdateMessage != null)
+            mapUpdateMessage.SetActive(true);
 
+        yield return new WaitForSeconds(3f);
+
+        if (mapUpdateMessage != null)
+            mapUpdateMessage.SetActive(false);
+    }
 
 }
