@@ -1,95 +1,43 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class InDepthInteract : MonoBehaviour
 {
-    //This script is ONLY for objects that have in depth interaction and need more than one voice line
-    //With screen text.
 
     public GameObject keyPrompt;
     public AudioClip voiceLine1;
     public AudioClip voiceLine2;
 
     public GameObject pressETextCar;
-    public GameObject pressETextLock;
 
-    public enum ItemType
-    {
-        Car,
-        Lock
-    }
+    [Header("Alternate Ending")]
+    public string alternateEndingSceneName = "AlternateEnding";
 
 
-
-    private bool voice1Played = false;
-    private bool voice2Played = false;
-    public ItemType itemType;
-    private AudioSource voice;
 
     void Start()
     {
-        voice = GetComponent<AudioSource>();
     }
-
-
 
     public void Interact()
     {
-        if (voice.isPlaying) return;
 
-        if (itemType == ItemType.Lock)
+        if (InventoryManager.instance.hasWrench)
         {
-            if (!voice1Played)
-            {
-                voice.PlayOneShot(voiceLine1);
-                voice1Played = true;
-            }
-            else if (!voice2Played)
-            {
-                voice.PlayOneShot(voiceLine2);
-                voice2Played = true;
-            }
-            else
-            {
-                StartCoroutine(ShowTextTemporaryLock());
-            }
+            SceneManager.LoadScene(alternateEndingSceneName);
+            return;
         }
-        else if (itemType == ItemType.Car)
+        else
         {
-            if (!voice1Played)
-            {
-                voice.PlayOneShot(voiceLine1);
-                voice1Played = true;
-            }
-            else if (!voice2Played)
-            {
-                voice.PlayOneShot(voiceLine2);
-                voice2Played = true;
-            }
-            else
-            {
-                StartCoroutine(ShowTextTemporaryCar());
-            }
+            StartCoroutine(ShowTextTemporaryCar());
         }
     }
-
-
-
 
     IEnumerator ShowTextTemporaryCar()
     {
         pressETextCar.SetActive(true);
-
         yield return new WaitForSeconds(3f);
-
         pressETextCar.SetActive(false);
-    }
-    IEnumerator ShowTextTemporaryLock()
-    {
-        pressETextLock.SetActive(true);
-
-        yield return new WaitForSeconds(3f);
-
-        pressETextLock.SetActive(false);
     }
 }

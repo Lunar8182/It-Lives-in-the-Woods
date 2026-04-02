@@ -4783,7 +4783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7643295921862659074, guid: ae86fa710b46269499247837bde7c2e8, type: 3}
       propertyPath: m_Name
-      value: PipeWrench
+      value: PipeWrench_Player
       objectReference: {fileID: 0}
     - target: {fileID: 7643295921862659074, guid: ae86fa710b46269499247837bde7c2e8, type: 3}
       propertyPath: m_IsActive
@@ -8724,7 +8724,7 @@ PrefabInstance:
       addedObject: {fileID: 1308028101}
     - targetCorrespondingSourceObject: {fileID: 1654648867817274, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1308028100}
+      addedObject: {fileID: 1308028104}
   m_SourcePrefab: {fileID: 100100000, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
 --- !u!4 &441752315 stripped
 Transform:
@@ -28635,6 +28635,7 @@ MonoBehaviour:
   hasRattle: 0
   hasBlanket: 0
   hasVoodooDoll: 0
+  hasWrench: 0
   leftHandLantern: {fileID: 451330167}
   hasLantern: 0
 --- !u!1001 &1024031999
@@ -34922,24 +34923,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1654648867817274, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
   m_PrefabInstance: {fileID: 439522571}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1308028100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308028098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b863f04d4e203421495abe7df24fdb13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  keyPrompt: {fileID: 1863950022}
-  voiceLine1: {fileID: 8300000, guid: 0f9c500e30aa04684bb076af81de9a74, type: 3}
-  voiceLine2: {fileID: 8300000, guid: 9735c3acca6c044629b4870e5c0a6326, type: 3}
-  pressETextCar: {fileID: 751327511}
-  pressETextLock: {fileID: 0}
-  itemType: 0
 --- !u!82 &1308028101
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34951,18 +34934,18 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_Resource: {fileID: 8300000, guid: 1348866bf36374fa28369e89a475df35, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -34997,7 +34980,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -35063,6 +35046,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4352964966052378, guid: 8258fdccd226b584b8dc1c7ac1652db0, type: 3}
   m_PrefabInstance: {fileID: 439522571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1308028104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308028098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b863f04d4e203421495abe7df24fdb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InDepthInteract
+  keyPrompt: {fileID: 1863950022}
+  voiceLine1: {fileID: 0}
+  voiceLine2: {fileID: 0}
+  pressETextCar: {fileID: 751327511}
+  alternateEndingSceneName: AlternateEnding
 --- !u!4 &1311870031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1731621413674928719, guid: 9090dfe2bb858f8458fb9275a1c6e090, type: 3}
@@ -40660,7 +40660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
   itemIcon: {fileID: 21300000, guid: 61c5adc247b704341ab8bbd67b6be69a, type: 3}
-  itemType: 0
+  itemType: 13
   objectToActivate: {fileID: 243215573}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}

@@ -19,7 +19,9 @@ public class Interactable : MonoBehaviour
         Pool,
         Letter,
         Key,
-        VoodooDoll
+        VoodooDoll,
+        Wrench
+
 
 
     }
@@ -109,6 +111,11 @@ public class Interactable : MonoBehaviour
         if (itemType == ItemType.Key)
         {
             InventoryManager.instance.hasKey = true;
+        }
+
+        if (itemType == ItemType.Wrench)
+        {
+            InventoryManager.instance.hasWrench = true;
         }
 
         if (itemType == ItemType.MusicBox)
