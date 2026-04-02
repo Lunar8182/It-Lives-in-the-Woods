@@ -16,6 +16,9 @@ public class InventoryManager : MonoBehaviour
     public bool hasRattle = false;
     public bool hasBlanket = false;
     public bool hasVoodooDoll = false;
+    [Header("Permanent Off-Hand Items")]
+    public GameObject leftHandLantern;
+    public bool hasLantern = false;
 
     private int selectedSlot = 0;
 
@@ -129,6 +132,15 @@ public class InventoryManager : MonoBehaviour
                 handItems[selectedSlot].SetActive(false);
                 handItems[selectedSlot] = null;
             }
+        }
+    }
+
+    public void EquipLantern()
+    {
+        hasLantern = true;
+        if (leftHandLantern != null)
+        {
+            leftHandLantern.SetActive(true);
         }
     }
 }

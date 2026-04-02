@@ -121,6 +121,15 @@ public class Interactable : MonoBehaviour
             keyPrompt.SetActive(false);
         }
 
+        if (itemType == ItemType.Lantern)
+        {
+            InventoryManager.instance.EquipLantern();
+
+            gameObject.SetActive(false);
+
+            return;
+        }
+
         if (itemType == ItemType.Altar)
         {
             if (!alterOn)
@@ -186,12 +195,6 @@ public class Interactable : MonoBehaviour
             }
             return;
         }
-        if (itemType == ItemType.Telescope)
-        {
-            TelescopeController telescope = GetComponentInParent<TelescopeController>();
-            telescope.UseTelescope();
-            return;
-        }
 
         if (itemType == ItemType.Pool)
         {
@@ -202,28 +205,15 @@ public class Interactable : MonoBehaviour
             return;
         }
 
+
         if (itemIcon != null && objectToActivate != null)
         {
             InventoryManager.instance.AddItem(itemIcon, objectToActivate);
         }
 
-        Renderer[] allRenderers = GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in allRenderers)
-        {
-            r.enabled = false;
-        }
-
-        Light[] allLights = GetComponentsInChildren<Light>();
-        foreach (Light light in allLights)
-        {
-            light.enabled = false;
-        }
-
-        if (GetComponent<Collider>() != null)
-        {
-            GetComponent<Collider>().enabled = false;
-        }
+        gameObject.SetActive(false);
     }
+
 
     public void ToggleMusic()
     {
