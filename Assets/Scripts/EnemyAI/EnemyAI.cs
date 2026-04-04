@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip jumpscareSound;
+    public AudioClip stunnedSound;
+    public AudioClip afterStunSound;
 
     [Header("Movement")]
     public float detectionRange = 50f;
@@ -165,11 +167,22 @@ public class EnemyAI : MonoBehaviour
                 stunTimer -= Time.deltaTime;
                 if (stunTimer <= 0f)
                 {
+                    if (audioSource != null && audioSource.isPlaying)
+                    {
+                        audioSource.Stop();
+                    }
                     agent.isStopped = false;
+
+                    if (afterStunSound != null && audioSource != null && !audioSource.isPlaying)
+                    {
+                        audioSource.clip = afterStunSound;
+                        audioSource.Play();
+                    }
+
                     currentState = EnemyState.Searching;
                     searchTimer = searchDuration;
                     reachedLastSeen = false;
-                    lastSeenPosition = transform.position; 
+                    lastSeenPosition = transform.position;
                 }
                 break;
 
@@ -191,6 +204,12 @@ public class EnemyAI : MonoBehaviour
     {
         if (currentState == EnemyState.Jumpscare || isGameOver) return;
 
+        if (stunnedSound != null && audioSource != null)
+        {
+            audioSource.clip = stunnedSound;
+            audioSource.Play();
+        }
+
         currentState = EnemyState.Stunned;
         stunTimer = stunDuration;
 
@@ -203,6 +222,11 @@ public class EnemyAI : MonoBehaviour
     void StartJumpscare()
     {
         if (isJumpscaring) return;
+
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
 
         isJumpscaring = true;
         currentState = EnemyState.Jumpscare;
