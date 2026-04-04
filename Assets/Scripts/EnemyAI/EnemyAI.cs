@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public Transform[] patrolPoints;
     public GameObject gameOverScreen;
     public GameObject mainCanvas;
+    public GameObject forestAmbience;
 
     [Header("Cameras")]
     public Camera playerCamera;
@@ -50,18 +51,18 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Capture Setup")]
     public bool enableCaptureFeature = true;
-    public GameObject blackoutPanel; 
-    public Transform playerPrisonSpawn; 
-    public Transform enemyPostCaptureSpawn; 
-    public Transform enemyWalkAwayPoint; 
+    public GameObject blackoutPanel;
+    public Transform playerPrisonSpawn;
+    public Transform enemyPostCaptureSpawn;
+    public Transform enemyWalkAwayPoint;
     public float blackoutDuration = 3f;
     private bool hasBeenCaptured = false;
-    public float stareDuration = 5f; 
-    public float fadeInSpeed = 0.5f; 
+    public float stareDuration = 5f;
+    public float fadeInSpeed = 0.5f;
 
     [Header("Capture Audio")]
-    public AudioClip captureVoiceline; 
-    public AudioClip staringVoiceline; 
+    public AudioClip captureVoiceline;
+    public AudioClip staringVoiceline;
 
     [Header("Lighting")]
     public Light enemyLight;
@@ -140,6 +141,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (isGameOver) return;
 
+        // TEST
         if (Input.GetKeyDown(KeyCode.T))
         {
             StunEnemy();
@@ -149,8 +151,11 @@ public class EnemyAI : MonoBehaviour
 
         bool playerVisible = CanSeePlayer();
 
-        if (!isJumpscaring && currentState != EnemyState.Stunned && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
+        if (!isJumpscaring && !isSequenceRunning && currentState != EnemyState.Stunned && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
+        {
             StartJumpscare();
+            return;
+        }
 
         if (currentState != previousState && currentState != EnemyState.Jumpscare)
         {
@@ -174,14 +179,15 @@ public class EnemyAI : MonoBehaviour
         switch (currentState)
         {
             case EnemyState.Roaming:
-                if (enemyLight != null) enemyLight.color = roamColor;
-                anim.SetInteger(animStateHash, 0);
-                Roam();
                 if (playerVisible)
                 {
                     lastSeenPosition = player.position;
                     currentState = EnemyState.Chasing;
+                    return;
                 }
+                if (enemyLight != null) enemyLight.color = roamColor;
+                anim.SetInteger(animStateHash, 0);
+                Roam();
                 break;
 
             case EnemyState.Chasing:
@@ -201,19 +207,21 @@ public class EnemyAI : MonoBehaviour
                         currentState = EnemyState.Searching;
                         searchTimer = searchDuration;
                         reachedLastSeen = false;
+                        return;
                     }
                 }
                 break;
 
             case EnemyState.Searching:
-                if (enemyLight != null) enemyLight.color = searchColor;
-                anim.SetInteger(animStateHash, 2);
-                Search();
                 if (playerVisible)
                 {
                     lastSeenPosition = player.position;
                     currentState = EnemyState.Chasing;
+                    return;
                 }
+                if (enemyLight != null) enemyLight.color = searchColor;
+                anim.SetInteger(animStateHash, 2);
+                Search();
                 break;
 
             case EnemyState.Stunned:
@@ -231,8 +239,7 @@ public class EnemyAI : MonoBehaviour
 
                     if (afterStunSound != null && audioSource != null)
                     {
-                        audioSource.clip = afterStunSound;
-                        audioSource.Play();
+                        audioSource.PlayOneShot(afterStunSound);
                     }
 
                     currentState = EnemyState.Searching;
@@ -254,24 +261,24 @@ public class EnemyAI : MonoBehaviour
 
                 if (jumpscareTimer <= 0f)
                 {
-                    currentState = EnemyState.Roaming;
-
                     if (enableCaptureFeature && !hasBeenCaptured)
                     {
                         hasBeenCaptured = true;
+                        currentState = EnemyState.Staring;
                         StartCoroutine(CaptureSequence());
                     }
                     else
                     {
                         EndJumpscare();
                     }
+                    return; 
                 }
                 break;
 
             case EnemyState.Staring:
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
-                anim.SetInteger(animStateHash, 6); 
+                anim.SetInteger(animStateHash, 6);
 
                 Vector3 lookDir = (player.position - transform.position).normalized;
                 lookDir.y = 0;
@@ -362,12 +369,13 @@ public class EnemyAI : MonoBehaviour
     IEnumerator CaptureSequence()
     {
         isSequenceRunning = true;
+        if (forestAmbience != null) forestAmbience.SetActive(false);
 
         if (blackoutPanel != null)
         {
             blackoutPanel.SetActive(true);
             Image img = blackoutPanel.GetComponent<Image>();
-            if (img != null) img.color = new Color(0, 0, 0, 1); 
+            if (img != null) img.color = new Color(0, 0, 0, 1);
         }
 
         if (audioSource != null) audioSource.Stop();
@@ -406,7 +414,7 @@ public class EnemyAI : MonoBehaviour
         {
             enemyLight.transform.localPosition = originalLightPosition;
             enemyLight.intensity = originalLightIntensity;
-            enemyLight.color = searchColor; 
+            enemyLight.color = searchColor;
         }
 
         currentState = EnemyState.Staring;
@@ -427,8 +435,6 @@ public class EnemyAI : MonoBehaviour
             blackoutPanel.SetActive(false);
         }
 
-        if (mainCanvas != null) mainCanvas.SetActive(true);
-
         if (staringVoiceline != null && audioSource != null)
         {
             audioSource.clip = staringVoiceline;
@@ -440,10 +446,12 @@ public class EnemyAI : MonoBehaviour
         if (enemyWalkAwayPoint != null)
         {
             agent.SetDestination(enemyWalkAwayPoint.position);
+            if (mainCanvas != null) mainCanvas.SetActive(true);
         }
 
         currentState = EnemyState.Roaming;
         isSequenceRunning = false;
+        if (forestAmbience != null) forestAmbience.SetActive(true);
     }
 
     void EndJumpscare()
