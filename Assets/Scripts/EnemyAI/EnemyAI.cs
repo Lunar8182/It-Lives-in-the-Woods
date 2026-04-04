@@ -20,6 +20,13 @@ public class EnemyAI : MonoBehaviour
     public AudioClip stunnedSound;
     public AudioClip afterStunSound;
 
+    [Header("State Audio")]
+    public AudioClip[] roamSounds;
+    public AudioClip[] chaseSounds;
+    public AudioClip[] searchSounds;
+    public float minSoundInterval = 4f;
+    public float maxSoundInterval = 10f;
+
     [Header("Movement")]
     public float detectionRange = 50f;
     public float fieldOfView = 90f;
@@ -44,6 +51,7 @@ public class EnemyAI : MonoBehaviour
     public Color roamColor = Color.green;
     public Color searchColor = Color.yellow;
     public Color chaseColor = Color.red;
+    public Color stunColor = Color.purple;
 
     public Vector3 jumpscareLightOffset = new Vector3(0f, -1f, -0.5f);
     private Vector3 originalLightPosition;
@@ -60,6 +68,7 @@ public class EnemyAI : MonoBehaviour
     private float patrolTimer;
     private float jumpscareTimer;
     private float stunTimer;
+    private float stateSoundTimer;
 
     private int lastPatrolIndex = -1;
     private bool isJumpscaring = false;
@@ -72,6 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     public enum EnemyState { Roaming, Chasing, Searching, Jumpscare, Stunned }
     public EnemyState currentState;
+    private EnemyState previousState;
 
     void Start()
     {
@@ -96,6 +106,9 @@ public class EnemyAI : MonoBehaviour
 
         patrolTimer = patrolWaitTime;
         currentState = EnemyState.Roaming;
+        previousState = currentState;
+        stateSoundTimer = Random.Range(minSoundInterval, maxSoundInterval);
+
         PickRoamPoint();
     }
 
@@ -115,6 +128,25 @@ public class EnemyAI : MonoBehaviour
 
         if (!isJumpscaring && currentState != EnemyState.Stunned && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
             StartJumpscare();
+
+        if (currentState != previousState)
+        {
+            previousState = currentState;
+            PlayStateSound();
+            stateSoundTimer = Random.Range(minSoundInterval, maxSoundInterval);
+        }
+        else if (currentState == EnemyState.Roaming || currentState == EnemyState.Chasing || currentState == EnemyState.Searching)
+        {
+            stateSoundTimer -= Time.deltaTime;
+            if (stateSoundTimer <= 0f)
+            {
+                if (audioSource != null && !audioSource.isPlaying)
+                {
+                    PlayStateSound();
+                }
+                stateSoundTimer = Random.Range(minSoundInterval, maxSoundInterval);
+            }
+        }
 
         switch (currentState)
         {
@@ -162,6 +194,7 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case EnemyState.Stunned:
+                if (enemyLight != null) enemyLight.color = stunColor;
                 agent.isStopped = true;
 
                 stunTimer -= Time.deltaTime;
@@ -173,13 +206,15 @@ public class EnemyAI : MonoBehaviour
                     }
                     agent.isStopped = false;
 
-                    if (afterStunSound != null && audioSource != null && !audioSource.isPlaying)
+                    if (afterStunSound != null && audioSource != null)
                     {
                         audioSource.clip = afterStunSound;
                         audioSource.Play();
                     }
 
                     currentState = EnemyState.Searching;
+                    previousState = EnemyState.Searching;
+
                     searchTimer = searchDuration;
                     reachedLastSeen = false;
                     lastSeenPosition = transform.position;
@@ -247,7 +282,7 @@ public class EnemyAI : MonoBehaviour
         directionToPlayer.y = 0;
         transform.rotation = Quaternion.LookRotation(directionToPlayer);
 
-        if (jumpscareSound != null && audioSource != null && !audioSource.isPlaying)
+        if (jumpscareSound != null && audioSource != null)
         {
             audioSource.clip = jumpscareSound;
             audioSource.Play();
@@ -402,6 +437,32 @@ public class EnemyAI : MonoBehaviour
     {
         anim.SetInteger(animStateHash, 4);
         transform.Rotate(0, 40f * Time.deltaTime, 0);
+    }
+
+    void PlayStateSound()
+    {
+        if (audioSource == null) return;
+
+        AudioClip[] clipsToPlay = null;
+
+        switch (currentState)
+        {
+            case EnemyState.Roaming:
+                clipsToPlay = roamSounds;
+                break;
+            case EnemyState.Chasing:
+                clipsToPlay = chaseSounds;
+                break;
+            case EnemyState.Searching:
+                clipsToPlay = searchSounds;
+                break;
+        }
+
+        if (clipsToPlay != null && clipsToPlay.Length > 0)
+        {
+            audioSource.clip = clipsToPlay[Random.Range(0, clipsToPlay.Length)];
+            audioSource.Play();
+        }
     }
 
     void OnDrawGizmosSelected()

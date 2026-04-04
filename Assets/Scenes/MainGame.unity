@@ -13550,7 +13550,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f3b5e7c58cd2e4702b1bad0fb4d354e0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.701
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14012,7 +14012,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.701
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -14056,7 +14056,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -29241,7 +29241,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4772b3f347fd445d8b944635d1f6cbc9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.383
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -36628,6 +36628,19 @@ MonoBehaviour:
   jumpscareSound: {fileID: 8300000, guid: 644ff6c37e817436cb300e4bc8899403, type: 3}
   stunnedSound: {fileID: 8300000, guid: 8a22c00360022411986b7d19d2a35b1e, type: 3}
   afterStunSound: {fileID: 8300000, guid: f42bb7ffbf9bd48619d5fe619adedc08, type: 3}
+  roamSounds:
+  - {fileID: 8300000, guid: 3b18a99e581fc4a1280566404df3afea, type: 3}
+  - {fileID: 8300000, guid: 5da2d58a537024836a0797c141de88cc, type: 3}
+  - {fileID: 8300000, guid: f413365973c02411f92a219061b24e0a, type: 3}
+  chaseSounds:
+  - {fileID: 8300000, guid: f037181d5e72b49d891b20e0f5b1e4ca, type: 3}
+  - {fileID: 8300000, guid: a8e02e0d063324ad98858c3d134cb726, type: 3}
+  - {fileID: 8300000, guid: e826be55cdc964e738a7b054e111805a, type: 3}
+  searchSounds:
+  - {fileID: 8300000, guid: 09fafa19f6184480a9ca02ebfd722add, type: 3}
+  - {fileID: 8300000, guid: 51d760c744a6d441ca29f77c0266e643, type: 3}
+  minSoundInterval: 4
+  maxSoundInterval: 10
   detectionRange: 35
   fieldOfView: 90
   chaseSpeed: 10
@@ -36645,6 +36658,7 @@ MonoBehaviour:
   roamColor: {r: 0, g: 1, b: 0, a: 1}
   searchColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   chaseColor: {r: 1, g: 0, b: 0, a: 1}
+  stunColor: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
   jumpscareLightOffset: {x: 0, y: -1.5, z: 1.5}
   currentState: 0
 --- !u!114 &1361669899
@@ -36720,7 +36734,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.805
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -36861,7 +36875,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
