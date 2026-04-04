@@ -36,10 +36,6 @@ public class PlayerInteract : MonoBehaviour
                     interact.Interact();
                 }
 
-                if (Input.GetMouseButtonDown(0) && interact.itemType == Interactable.ItemType.MusicBox)
-                {
-                    interact.ToggleMusic();
-                }
             }
             else if (door != null)
             {
@@ -59,7 +55,7 @@ public class PlayerInteract : MonoBehaviour
                     inDepthInteract.Interact();
                 }
             }
-            else if (pot != null) 
+            else if (pot != null)
             {
                 keyPromptUI.SetActive(true);
 

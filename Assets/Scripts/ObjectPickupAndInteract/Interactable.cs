@@ -45,6 +45,7 @@ public class Interactable : MonoBehaviour
     public GameObject alterDoll;
     public GameObject alterRattle;
     public GameObject alterBlanket;
+
     [Header("Altar Ritual Settings")]
     public GameObject voodooDollReward;
     public GameObject campsite;
@@ -62,11 +63,58 @@ public class Interactable : MonoBehaviour
     private bool portalOn = false;
     private bool alterOn = false;
 
+    [Header("Music Box Settings")]
+    public float stunRange = 5f;
+    public AudioClip breakSound;
+
     void Update()
     {
-        if (hasMusicBox && itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
+        if (itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
         {
-            ToggleMusic();
+            GameObject heldItem = InventoryManager.instance.GetSelectedItem();
+
+            if (heldItem != null && heldItem == this.gameObject)
+            {
+                UseMusicBox();
+            }
+        }
+    }
+
+    public void UseMusicBox()
+    {
+        if (playerItem != null)
+        {
+            AudioSource playerSource = playerItem.GetComponent<AudioSource>();
+            if (playerSource != null)
+            {
+                playerSource.Stop();
+                playerSource.PlayOneShot(playerSource.clip);
+            }
+        }
+        Vector3 playerPos = Camera.main.transform.position;
+
+        Collider[] hitColliders = Physics.OverlapSphere(playerPos, 15f);
+        bool enemyWasStunned = false;
+
+        foreach (Collider col in hitColliders)
+        {
+            EnemyAI enemyScript = col.GetComponentInParent<EnemyAI>();
+            if (enemyScript != null)
+            {
+                enemyScript.StunEnemy();
+                enemyWasStunned = true;
+                break;
+            }
+        }
+
+        if (enemyWasStunned)
+        {
+            if (breakSound != null)
+                AudioSource.PlayClipAtPoint(breakSound, playerPos);
+
+            InventoryManager.instance.RemoveSelectedItem();
+            if (objectToActivate != null) Destroy(objectToActivate);
+            Destroy(gameObject);
         }
     }
 
@@ -226,22 +274,6 @@ public class Interactable : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
-
-    public void ToggleMusic()
-    {
-        AudioSource playerSource = playerItem.GetComponent<AudioSource>();
-
-        if (playerSource.isPlaying)
-        {
-            playerSource.Pause();
-        }
-        else
-        {
-            playerSource.Play();
-        }
-    }
-
 
     void OnTriggerEnter(Collider other)
     {

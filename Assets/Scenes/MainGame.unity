@@ -420,6 +420,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 8300000, guid: 2e5f111db88354edd81fc951c43ee670, type: 3}
 --- !u!65 &15422475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1873,6 +1875,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &77268442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5955,6 +5959,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!1001 &291786680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7100,6 +7106,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!65 &371327160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8267,6 +8275,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &419042169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11320,9 +11330,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 8f4d80072301047a7aee4ec7332b42a6, type: 3}
+  m_Resource: {fileID: 8300000, guid: a9cc6aecbd9c74069b02f34e56e7439a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.169
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11503,6 +11513,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &539630135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539630126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  itemIcon: {fileID: 0}
+  itemType: 1
+  objectToActivate: {fileID: 0}
+  keyPrompt: {fileID: 0}
+  playerItem: {fileID: 539630126}
+  altar: {fileID: 0}
+  pool: {fileID: 0}
+  hellGate: {fileID: 0}
+  letterInteract: {fileID: 0}
+  alterDoll: {fileID: 0}
+  alterRattle: {fileID: 0}
+  alterBlanket: {fileID: 0}
+  voodooDollReward: {fileID: 0}
+  campsite: {fileID: 0}
+  ritualSite: {fileID: 0}
+  mapUpdateMessage: {fileID: 0}
+  stunRange: 2
+  breakSound: {fileID: 8300000, guid: 2e5f111db88354edd81fc951c43ee670, type: 3}
 --- !u!4 &540711973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6313828025264574592, guid: a9463af14f991b4468f0e1968fe359b1, type: 3}
@@ -12170,6 +12210,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!23 &561926146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -13474,6 +13516,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6125377157684126347, guid: a49206e40dd072d47b1844bb2d713e07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 539630132}
+    - targetCorrespondingSourceObject: {fileID: 6125377157684126347, guid: a49206e40dd072d47b1844bb2d713e07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 539630135}
   m_SourcePrefab: {fileID: 100100000, guid: a49206e40dd072d47b1844bb2d713e07, type: 3}
 --- !u!1001 &641588814
 PrefabInstance:
@@ -13838,7 +13883,7 @@ Transform:
   m_GameObject: {fileID: 649148667}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.6501001, z: -0, w: 0.75984854}
-  m_LocalPosition: {x: 307.2, y: 2.095, z: -6.38}
+  m_LocalPosition: {x: 306.403, y: 1.07, z: -7.426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14695,6 +14740,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &671049127 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
@@ -15345,6 +15392,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!1001 &700127979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16026,6 +16075,8 @@ MonoBehaviour:
   campsite: {fileID: 712656606}
   ritualSite: {fileID: 342256150}
   mapUpdateMessage: {fileID: 1267965524}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!65 &729188843
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17311,6 +17362,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!1001 &764874417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36796,7 +36849,7 @@ GameObject:
   - component: {fileID: 1361669903}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37003,7 +37056,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361669892}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e75dbf10cada45b58b75ceb365cc70c, type: 3}
   m_Name: 
@@ -37028,7 +37081,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 75, y: 1, z: 75}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -38062,6 +38115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyModel
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d1311714dd3a7442a9b999547532da5a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d1311714dd3a7442a9b999547532da5a, type: 3}
       propertyPath: m_Controller
       value: 
@@ -38073,6 +38130,10 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: d1311714dd3a7442a9b999547532da5a, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869778216949820207, guid: d1311714dd3a7442a9b999547532da5a, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -38719,6 +38780,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &1407558300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41375,6 +41438,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &1534419448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44484,6 +44549,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!1 &1710752369 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6203387693560352197, guid: 0e62efebf92a44f9881e0edf84009acd, type: 3}
@@ -48934,6 +49001,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &1939878488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
@@ -49026,6 +49095,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!82 &1940734464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -49416,6 +49487,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!114 &1952598000 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
@@ -50336,6 +50409,8 @@ MonoBehaviour:
   campsite: {fileID: 0}
   ritualSite: {fileID: 0}
   mapUpdateMessage: {fileID: 0}
+  stunRange: 5
+  breakSound: {fileID: 0}
 --- !u!1001 &1999326876
 PrefabInstance:
   m_ObjectHideFlags: 0
