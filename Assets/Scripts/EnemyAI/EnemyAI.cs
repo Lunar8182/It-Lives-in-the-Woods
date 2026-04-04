@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     public AudioClip jumpscareSound;
     public AudioClip stunnedSound;
     public AudioClip afterStunSound;
+    public AudioClip shuttingCell;
 
     [Header("State Audio")]
     public AudioClip[] roamSounds;
@@ -382,6 +383,10 @@ public class EnemyAI : MonoBehaviour
         if (captureVoiceline != null && audioSource != null)
         {
             audioSource.PlayOneShot(captureVoiceline);
+        }
+        if (shuttingCell != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(shuttingCell);
         }
 
         agent.isStopped = true;

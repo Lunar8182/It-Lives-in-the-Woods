@@ -3,21 +3,39 @@ using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
 {
+    public enum DoorType { Normal, Prison }
     public DoorType doorType = DoorType.Normal;
+
+    [Header("Movement Settings")]
     public Transform player;
     public float openAngle = 90f;
     public float openSpeed = 3f;
     public bool isLocked = true;
     private bool isOpen = false;
+
+    [Header("Visuals & UI")]
     public GameObject Lock;
+    public GameObject lockedMessage;
+
+    [Header("Audio Settings")]
+    public AudioClip normalDoorSound; 
+    public AudioClip prisonDoorSound; 
+    private AudioSource audioSource;
+
     private Quaternion closedRotation;
     private Quaternion openRotation;
-    public GameObject lockedMessage;
-    public enum DoorType { Normal, Prison }
 
     void Start()
     {
         closedRotation = transform.rotation;
+        
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.spatialBlend = 1.0f; 
+        audioSource.playOnAwake = false;
     }
 
     void Update()
@@ -32,12 +50,10 @@ public class DoorInteract : MonoBehaviour
     {
         if (isLocked)
         {
-            // Logic for Normal Doors
             if (doorType == DoorType.Normal && InventoryManager.instance.hasKey)
             {
                 Unlock();
             }
-            // Logic for Prison Door
             else if (doorType == DoorType.Prison && InventoryManager.instance.hasPrisonKey)
             {
                 Unlock();
@@ -65,6 +81,15 @@ public class DoorInteract : MonoBehaviour
     {
         isOpen = !isOpen;
 
+        if (doorType == DoorType.Normal && normalDoorSound != null)
+        {
+            audioSource.PlayOneShot(normalDoorSound);
+        }
+        else if (doorType == DoorType.Prison && prisonDoorSound != null)
+        {
+            audioSource.PlayOneShot(prisonDoorSound);
+        }
+
         if (isOpen)
         {
             Vector3 doorToPlayer = player.position - transform.position;
@@ -81,6 +106,7 @@ public class DoorInteract : MonoBehaviour
     {
         if (lockedMessage != null)
         {
+            StopAllCoroutines();
             StartCoroutine(HideLockedMessage());
         }
     }
