@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
 {
+    public DoorType doorType = DoorType.Normal;
     public Transform player;
     public float openAngle = 90f;
     public float openSpeed = 3f;
@@ -12,6 +13,8 @@ public class DoorInteract : MonoBehaviour
     private Quaternion closedRotation;
     private Quaternion openRotation;
     public GameObject lockedMessage;
+    public enum DoorType { Normal, Prison }
+
     void Start()
     {
         closedRotation = transform.rotation;
@@ -29,11 +32,15 @@ public class DoorInteract : MonoBehaviour
     {
         if (isLocked)
         {
-            if (InventoryManager.instance.hasKey)
+            // Logic for Normal Doors
+            if (doorType == DoorType.Normal && InventoryManager.instance.hasKey)
             {
-                isLocked = false;
-                Destroy(Lock);
-                ToggleDoor();
+                Unlock();
+            }
+            // Logic for Prison Door
+            else if (doorType == DoorType.Prison && InventoryManager.instance.hasPrisonKey)
+            {
+                Unlock();
             }
             else
             {
@@ -45,6 +52,13 @@ public class DoorInteract : MonoBehaviour
         {
             ToggleDoor();
         }
+    }
+
+    void Unlock()
+    {
+        isLocked = false;
+        if (Lock != null) Destroy(Lock);
+        ToggleDoor();
     }
 
     void ToggleDoor()

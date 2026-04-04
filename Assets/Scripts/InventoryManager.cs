@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
     [Header("Hand Items")]
     public GameObject[] handItems;
     public bool hasKey = false;
+    public bool hasPrisonKey = false;
     public bool hasDoll = false;
     public bool hasRattle = false;
     public bool hasBlanket = false;
