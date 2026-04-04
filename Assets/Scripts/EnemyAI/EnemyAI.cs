@@ -19,7 +19,6 @@ public class EnemyAI : MonoBehaviour
     public AudioClip jumpscareSound;
 
     [Header("Movement")]
-    public float roamRadius = 100f;
     public float detectionRange = 50f;
     public float fieldOfView = 90f;
     public float chaseSpeed = 12f;
@@ -29,6 +28,8 @@ public class EnemyAI : MonoBehaviour
     public float loseSightDelay = 2f;
     public float searchRadius = 15f;
 
+    [Header("Stun Settings")]
+    public float stunDuration = 5f;
 
     [Header("Jumpscare")]
     public float jumpscareDistance = 3f;
@@ -45,34 +46,29 @@ public class EnemyAI : MonoBehaviour
     public Vector3 jumpscareLightOffset = new Vector3(0f, -1f, -0.5f);
     private Vector3 originalLightPosition;
 
-    [Header("Jumpscare Camera Offsets")]
-    public Vector3 cameraPositionOffset = new Vector3(0f, 1.6f, 0f); // relative to player
-    public Vector3 cameraLookOffset = new Vector3(0f, 1.5f, 0f);     // relative to enemy
-
     private NavMeshAgent agent;
     private PlayerCam playerCamScript;
     private CharacterController playerController;
 
     private Vector3 lastSeenPosition;
-    private Vector3 roamPoint;
     private Vector3 initialJumpscareCamLocalPos;
 
     private float searchTimer;
     private float loseSightTimer;
     private float patrolTimer;
     private float jumpscareTimer;
+    private float stunTimer;
 
     private int lastPatrolIndex = -1;
     private bool isJumpscaring = false;
     private bool isGameOver = false;
-    private bool hasSnapped = false;
 
     private bool reachedLastSeen = false;
     private float pointWaitTimer = 0f;
 
     private int animStateHash = Animator.StringToHash("State");
 
-    public enum EnemyState { Roaming, Chasing, Searching, Jumpscare }
+    public enum EnemyState { Roaming, Chasing, Searching, Jumpscare, Stunned }
     public EnemyState currentState;
 
     void Start()
@@ -105,11 +101,17 @@ public class EnemyAI : MonoBehaviour
     {
         if (isGameOver) return;
 
+        // FOR TESTING
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StunEnemy();
+        }
+
         anim.SetFloat("Speed", agent.velocity.magnitude);
 
         bool playerVisible = CanSeePlayer();
 
-        if (!isJumpscaring && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
+        if (!isJumpscaring && currentState != EnemyState.Stunned && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
             StartJumpscare();
 
         switch (currentState)
@@ -157,6 +159,20 @@ public class EnemyAI : MonoBehaviour
                 }
                 break;
 
+            case EnemyState.Stunned:
+                agent.isStopped = true;
+
+                stunTimer -= Time.deltaTime;
+                if (stunTimer <= 0f)
+                {
+                    agent.isStopped = false;
+                    currentState = EnemyState.Searching;
+                    searchTimer = searchDuration;
+                    reachedLastSeen = false;
+                    lastSeenPosition = transform.position; 
+                }
+                break;
+
             case EnemyState.Jumpscare:
                 if (enemyLight != null)
                 {
@@ -169,6 +185,19 @@ public class EnemyAI : MonoBehaviour
                     EndJumpscare();
                 break;
         }
+    }
+
+    public void StunEnemy()
+    {
+        if (currentState == EnemyState.Jumpscare || isGameOver) return;
+
+        currentState = EnemyState.Stunned;
+        stunTimer = stunDuration;
+
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+
+        anim.SetInteger(animStateHash, 5);
     }
 
     void StartJumpscare()
@@ -234,6 +263,7 @@ public class EnemyAI : MonoBehaviour
 
     void Roam()
     {
+        agent.isStopped = false;
         agent.speed = roamSpeed;
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.3f)
         {
@@ -249,6 +279,7 @@ public class EnemyAI : MonoBehaviour
 
     void Chase()
     {
+        agent.isStopped = false;
         agent.speed = chaseSpeed;
         if (Vector3.Distance(agent.destination, player.position) > 1f)
             agent.SetDestination(player.position);
@@ -256,6 +287,7 @@ public class EnemyAI : MonoBehaviour
 
     void Search()
     {
+        agent.isStopped = false;
         agent.speed = roamSpeed;
         searchTimer -= Time.deltaTime;
 
@@ -278,7 +310,6 @@ public class EnemyAI : MonoBehaviour
                 pointWaitTimer = 1.5f;
             }
         }
-
         else
         {
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
@@ -325,8 +356,7 @@ public class EnemyAI : MonoBehaviour
 
         if (chosenIndex == -1) return;
         lastPatrolIndex = chosenIndex;
-        roamPoint = patrolPoints[chosenIndex].position;
-        agent.SetDestination(roamPoint);
+        agent.SetDestination(patrolPoints[chosenIndex].position);
     }
 
     bool CanSeePlayer()

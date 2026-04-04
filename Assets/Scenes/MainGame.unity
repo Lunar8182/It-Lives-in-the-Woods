@@ -36527,7 +36527,6 @@ MonoBehaviour:
   jumpscareCamera: {fileID: 759266807}
   audioSource: {fileID: 0}
   jumpscareSound: {fileID: 8300000, guid: 644ff6c37e817436cb300e4bc8899403, type: 3}
-  roamRadius: 50
   detectionRange: 35
   fieldOfView: 90
   chaseSpeed: 10
@@ -36536,6 +36535,7 @@ MonoBehaviour:
   searchDuration: 15
   loseSightDelay: 2
   searchRadius: 15
+  stunDuration: 5
   jumpscareDistance: 3
   jumpscareDuration: 2
   shakeIntensity: 1
@@ -36545,8 +36545,6 @@ MonoBehaviour:
   searchColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   chaseColor: {r: 1, g: 0, b: 0, a: 1}
   jumpscareLightOffset: {x: 0, y: -1.5, z: 1.5}
-  cameraPositionOffset: {x: 0, y: 0, z: 0}
-  cameraLookOffset: {x: 2.3, y: 0.5, z: 0}
   currentState: 0
 --- !u!114 &1361669899
 MonoBehaviour:
@@ -52718,3 +52716,4 @@ SceneRoots:
   - {fileID: 1139894155}
   - {fileID: 778398193}
   - {fileID: 1959681658}
+  - {fileID: 5776819714335889608}
