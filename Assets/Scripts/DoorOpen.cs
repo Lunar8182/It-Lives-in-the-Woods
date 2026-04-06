@@ -11,6 +11,7 @@ public class DoorInteract : MonoBehaviour
     public float openAngle = 90f;
     public float openSpeed = 3f;
     public bool isLocked = true;
+
     private bool isOpen = false;
 
     [Header("Visuals & UI")]
@@ -18,8 +19,8 @@ public class DoorInteract : MonoBehaviour
     public GameObject lockedMessage;
 
     [Header("Audio Settings")]
-    public AudioClip normalDoorSound; 
-    public AudioClip prisonDoorSound; 
+    public AudioClip normalDoorSound;
+    public AudioClip prisonDoorSound;
     private AudioSource audioSource;
 
     private Quaternion closedRotation;
@@ -27,19 +28,21 @@ public class DoorInteract : MonoBehaviour
 
     void Start()
     {
+        // Store CLOSED rotation (should be 0,0,0 if using DoorPivot)
         closedRotation = transform.rotation;
-        
+
+        // Setup audio
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
-        audioSource.spatialBlend = 1.0f; 
+
+        audioSource.spatialBlend = 1f;
         audioSource.playOnAwake = false;
     }
 
     void Update()
     {
+        // Smooth rotation
         if (isOpen)
             transform.rotation = Quaternion.Lerp(transform.rotation, openRotation, Time.deltaTime * openSpeed);
         else
@@ -73,32 +76,60 @@ public class DoorInteract : MonoBehaviour
     void Unlock()
     {
         isLocked = false;
-        if (Lock != null) Destroy(Lock);
+
+        if (Lock != null)
+            Destroy(Lock);
+
         ToggleDoor();
     }
 
-    void ToggleDoor()
+    public void ToggleDoor()
     {
         isOpen = !isOpen;
 
         if (doorType == DoorType.Normal && normalDoorSound != null)
-        {
             audioSource.PlayOneShot(normalDoorSound);
-        }
         else if (doorType == DoorType.Prison && prisonDoorSound != null)
-        {
             audioSource.PlayOneShot(prisonDoorSound);
-        }
 
         if (isOpen)
         {
+            if (player == null)
+            {
+                Debug.LogError("Player not assigned on DoorInteract!");
+                return;
+            }
+
             Vector3 doorToPlayer = player.position - transform.position;
             float direction = Vector3.Dot(transform.right, doorToPlayer);
 
             if (direction > 0)
-                openRotation = Quaternion.Euler(0, transform.eulerAngles.y + openAngle, 0);
+                openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
             else
-                openRotation = Quaternion.Euler(0, transform.eulerAngles.y - openAngle, 0);
+                openRotation = closedRotation * Quaternion.Euler(0, -openAngle, 0);
+        }
+    }
+    public void ForceOpenFromPuzzle()
+    {
+        isLocked = false;
+
+        if (Lock != null)
+        {
+            Destroy(Lock);
+        }
+
+
+        if (!isOpen)
+        {
+            isOpen = true;
+
+            if (doorType == DoorType.Normal && normalDoorSound != null)
+                audioSource.PlayOneShot(normalDoorSound);
+            else if (doorType == DoorType.Prison && prisonDoorSound != null)
+                audioSource.PlayOneShot(prisonDoorSound);
+
+            openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
+
         }
     }
 

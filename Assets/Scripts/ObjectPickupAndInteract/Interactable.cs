@@ -138,6 +138,13 @@ public class Interactable : MonoBehaviour
             }
 
         }
+        CandleInteract candle = GetComponent<CandleInteract>();
+
+        if (candle != null)
+        {
+            candle.Interact();
+            return;
+        }
 
         if (itemType == ItemType.Doll)
         {
