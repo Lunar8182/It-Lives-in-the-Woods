@@ -28,7 +28,6 @@ public class DoorInteract : MonoBehaviour
 
     void Start()
     {
-        // Store CLOSED rotation (should be 0,0,0 if using DoorPivot)
         closedRotation = transform.rotation;
 
         // Setup audio
@@ -96,7 +95,6 @@ public class DoorInteract : MonoBehaviour
         {
             if (player == null)
             {
-                Debug.LogError("Player not assigned on DoorInteract!");
                 return;
             }
 
