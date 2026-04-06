@@ -5,35 +5,37 @@ using System.Collections.Generic;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Stamina Link")]
-    public PlayerStamina staminaScript; // <-- Link to your stamina script
+    public PlayerStamina staminaScript;
 
-    [Header("Movement")]
-    private float moveSpeed; // We'll get this from staminaScript now
+    [Header("Movement Settings")]
+    private float moveSpeed;
+    [Tooltip("How fast the player stops when releasing the keys (Higher = snappier)")]
+    public float brakeSpeed = 15f;
 
     [Header("Ground Check")]
-    public float playerHeight;
-    public float groundDrag;
+    public float playerHeight = 2f;
+    public float groundDrag = 5f;
+    public LayerMask whatIsGround;
+    private bool grounded;
 
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    [Header("Jumping")]
+    public float jumpForce = 12f;
+    public float jumpCooldown = 0.25f;
+    public float airMultiplier = 0.4f;
+    private bool readyToJump = true;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    // Sprint key removed from here because staminaScript handles it!
     public KeyCode sprintKey = KeyCode.LeftShift;
 
-    public LayerMask whatIsGround;
-    bool grounded;
-
+    [Header("References")]
     public Transform orientation;
+    private Rigidbody rb;
 
-    float horizontalInput;
-    float verticalInput;
-
-    Vector3 moveDirection;
-
-    Rigidbody rb;
+    // Input Tracking
+    private float horizontalInput;
+    private float verticalInput;
+    private Vector3 moveDirection;
 
     private void Start()
     {
@@ -45,17 +47,15 @@ public class PlayerMovement : MonoBehaviour
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
-        if (grounded)
-        {
-            rb.linearDamping = groundDrag;
-        }
-        else
-        {
-            rb.linearDamping = 0;
-        }
-
         MyInput();
+
         StateHandler();
+
+        if (grounded)
+            rb.linearDamping = groundDrag;
+        else
+            rb.linearDamping = 0;
+
         SpeedControl();
     }
 
@@ -69,16 +69,23 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-
+        if (Input.GetKey(jumpKey) && grounded && readyToJump)
+        {
+            readyToJump = false;
+            Jump();
+            Invoke(nameof(ResetJump), jumpCooldown);
+        }
     }
 
     private void StateHandler()
     {
-        // Tell the movement script to sync its speed with whatever 
-        // the Stamina script says we should be doing!
         if (staminaScript != null)
         {
             moveSpeed = staminaScript.currentMoveSpeed;
+        }
+        else
+        {
+            moveSpeed = 5f;
         }
     }
 
@@ -86,18 +93,37 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        bool isMoving = moveDirection.sqrMagnitude > 0.01f;
+
         if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            if (isMoving)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            }
+            else
+            {
+
+                Vector3 currentVelocity = rb.linearVelocity;
+                rb.linearVelocity = new Vector3(
+                    Mathf.Lerp(currentVelocity.x, 0f, brakeSpeed * Time.fixedDeltaTime),
+                    currentVelocity.y, // Leave gravity alone!
+                    Mathf.Lerp(currentVelocity.z, 0f, brakeSpeed * Time.fixedDeltaTime)
+                );
+            }
         }
         else
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            if (isMoving)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            }
         }
     }
 
     private void SpeedControl()
     {
+        // Get the player's horizontal velocity
         Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
         if (flatVel.magnitude > moveSpeed)
@@ -107,7 +133,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void Jump()
+    {
 
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
 
+    private void ResetJump()
+    {
+        readyToJump = true;
+    }
 }
