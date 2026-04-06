@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     public bool hasBlanket = false;
     public bool hasVoodooDoll = false;
     public bool hasWrench = false;
+
     [Header("Permanent Off-Hand Items")]
     public GameObject leftHandLantern;
     public bool hasLantern = false;
@@ -37,19 +38,18 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SelectSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SelectSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
-        if (Input.GetKeyDown(KeyCode.Alpha6)) SelectSlot(5);
-        if (Input.GetKeyDown(KeyCode.Alpha7)) SelectSlot(6);
-        if (Input.GetKeyDown(KeyCode.Alpha8)) SelectSlot(7);
+        // Cleaned up: Loops through numbers 1 to 8 on the keyboard
+        for (int i = 0; i < 8; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                SelectSlot(i);
+            }
+        }
     }
 
     public void SelectSlot(int index)
     {
-
         if (selectedSlot == index)
         {
             selectedSlot = -1;
@@ -74,7 +74,6 @@ public class InventoryManager : MonoBehaviour
 
             if (i < handItems.Length && handItems[i] != null)
             {
-
                 handItems[i].SetActive(i == selectedSlot);
             }
         }
@@ -82,7 +81,6 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Sprite itemSprite, GameObject itemModel)
     {
-
         for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (isFull[i] == false)
@@ -90,7 +88,12 @@ public class InventoryManager : MonoBehaviour
                 isFull[i] = true;
 
                 if (i < inventorySlots.Length)
+                {
                     inventorySlots[i].sprite = itemSprite;
+
+                    // FIX: Forces the image to keep its original proportions so it doesn't stretch
+                    inventorySlots[i].preserveAspect = true;
+                }
 
                 if (i < handItems.Length)
                 {
@@ -111,6 +114,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
+
     public GameObject GetSelectedItem()
     {
         if (selectedSlot >= 0 && selectedSlot < handItems.Length)

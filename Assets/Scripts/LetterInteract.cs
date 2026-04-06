@@ -4,6 +4,10 @@ using UnityEngine.Rendering;
 
 public class LetterInteract : MonoBehaviour
 {
+    [Header("Journal Settings")]
+    [Tooltip("Type 1 for the first letter, 2 for the second letter.")]
+    public int journalLetterID = 1;
+
     [Header("UI Panels")]
     public GameObject letterUIPanel;
     public TextMeshProUGUI letterUIText;
@@ -21,7 +25,7 @@ public class LetterInteract : MonoBehaviour
     [Header("Content")]
     [TextArea(10, 15)] public string letterText;
 
-    public bool isReading {get; private set;}
+    public bool isReading { get; private set; }
 
     void Update()
     {
@@ -59,7 +63,13 @@ public class LetterInteract : MonoBehaviour
             }
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
+        // --- NEW LINE: Tell the journal we found this letter! ---
+        if (JournalManager.instance != null)
+        {
+            JournalManager.instance.UnlockLetterInJournal(journalLetterID, letterText);
+        }
+
+        Cursor.lockState = CursorLockMode.None; // Changed this to None so you can click UI if needed
         Cursor.visible = true;
 
         if (postProcessVolume != null) postProcessVolume.weight = 1f;
