@@ -6,8 +6,10 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
 
     [Header("UI Slots")]
+    // Make sure these are the child "Icon" images, not the backgrounds!
     public Image[] inventorySlots;
-    public bool[] isFull;
+
+    // NOTE: Removed 'isFull' array because checking for an empty sprite is much safer!
 
     [Header("Hand Items")]
     public GameObject[] handItems;
@@ -33,12 +35,19 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if (inventorySlots[i].sprite == null)
+            {
+                inventorySlots[i].color = new Color(1, 1, 1, 0f); // 0f = perfectly invisible
+            }
+        }
+
         SelectSlot(0);
     }
 
     private void Update()
     {
-        // Cleaned up: Loops through numbers 1 to 8 on the keyboard
         for (int i = 0; i < 8; i++)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
@@ -61,15 +70,24 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            if (i == selectedSlot)
+            // Only adjust visibility/colors if there is actually an item in this slot!
+            if (inventorySlots[i].sprite != null)
             {
-                inventorySlots[i].rectTransform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                inventorySlots[i].color = Color.white;
+                if (i == selectedSlot)
+                {
+                    inventorySlots[i].rectTransform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                    inventorySlots[i].color = new Color(1, 1, 1, 1f); // 1f = fully visible
+                }
+                else
+                {
+                    inventorySlots[i].rectTransform.localScale = new Vector3(1f, 1f, 1f);
+                    inventorySlots[i].color = new Color(1, 1, 1, 0.5f); // 0.5f = slightly faded out
+                }
             }
             else
             {
-                inventorySlots[i].rectTransform.localScale = new Vector3(1f, 1f, 1f);
-                inventorySlots[i].color = new Color(1, 1, 1, 0.5f);
+                // Keep empty slots invisible so they don't look like white boxes
+                inventorySlots[i].color = new Color(1, 1, 1, 0f);
             }
 
             if (i < handItems.Length && handItems[i] != null)
@@ -81,19 +99,14 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Sprite itemSprite, GameObject itemModel)
     {
+
+
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            if (isFull[i] == false)
+            if (inventorySlots[i].sprite == null)
             {
-                isFull[i] = true;
-
-                if (i < inventorySlots.Length)
-                {
-                    inventorySlots[i].sprite = itemSprite;
-
-                    // FIX: Forces the image to keep its original proportions so it doesn't stretch
-                    inventorySlots[i].preserveAspect = true;
-                }
+                inventorySlots[i].sprite = itemSprite;
+                inventorySlots[i].preserveAspect = true;
 
                 if (i < handItems.Length)
                 {
@@ -129,8 +142,9 @@ public class InventoryManager : MonoBehaviour
         if (selectedSlot >= 0 && selectedSlot < inventorySlots.Length)
         {
             inventorySlots[selectedSlot].sprite = null;
-            inventorySlots[selectedSlot].color = new Color(1, 1, 1, 0.5f);
-            isFull[selectedSlot] = false;
+
+            // Make the slot completely invisible again now that it's empty
+            inventorySlots[selectedSlot].color = new Color(1, 1, 1, 0f);
 
             // Clear the hand item
             if (handItems[selectedSlot] != null)
