@@ -26,6 +26,9 @@ public class Interactable : MonoBehaviour
         Wrench
     }
 
+    [Header("Ritual Settings")]
+    public EnemyAI enemy;
+
     [Header("Blood Ritual Visuals")]
     public Volume bloodRitualVolume;
     public float fadeDuration = 5f;
@@ -330,9 +333,12 @@ public class Interactable : MonoBehaviour
             yield return null;
         }
 
-        bloodRitualVolume.weight = 1f;
+        if (enemy != null)
+        {
+            enemy.TriggerEnragedState();
+        }
 
-        Debug.Log("The blood ritual environment is fully active!");
+        bloodRitualVolume.weight = 1f;
     }
 
     void OnTriggerEnter(Collider other)

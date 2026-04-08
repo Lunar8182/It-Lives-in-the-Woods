@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -2381,6 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -4106,6 +4108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -5638,6 +5641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -7186,6 +7190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -8411,6 +8416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -9784,6 +9790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -13565,6 +13572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -14163,6 +14171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -17141,6 +17150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -17896,6 +17906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -18707,6 +18718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 1361669898}
   bloodRitualVolume: {fileID: 1374658122}
   fadeDuration: 10
   ritualMusicSource: {fileID: 1559601397}
@@ -20184,6 +20196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -36730,6 +36743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -43106,6 +43120,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 51d760c744a6d441ca29f77c0266e643, type: 3}
   minSoundInterval: 4
   maxSoundInterval: 10
+  enragedRoarSound: {fileID: 8300000, guid: 207acbda22ad7424b995e93b546cb2bc, type: 3}
+  enragedSpeed: 15
+  enragedWaitTime: 0.2
   detectionRange: 35
   fieldOfView: 90
   chaseSpeed: 10
@@ -43134,6 +43151,7 @@ MonoBehaviour:
   searchColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   chaseColor: {r: 1, g: 0, b: 0, a: 1}
   stunColor: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
+  enragedColor: {r: 0, g: 1, b: 0.796659, a: 1}
   jumpscareLightOffset: {x: 0, y: -1.5, z: 1.5}
   currentState: 0
 --- !u!114 &1361669899
@@ -44962,6 +44980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -48214,6 +48233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -51906,6 +51926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -56937,6 +56958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -57035,6 +57057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -57436,6 +57459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -58613,6 +58637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
@@ -58987,6 +59012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
