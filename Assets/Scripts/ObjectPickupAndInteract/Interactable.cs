@@ -27,8 +27,8 @@ public class Interactable : MonoBehaviour
     }
 
     [Header("Blood Ritual Visuals")]
-    public Volume bloodRitualVolume; 
-    public float fadeDuration = 5f;  
+    public Volume bloodRitualVolume;
+    public float fadeDuration = 5f;
     public AudioSource ritualMusicSource;
     public AudioClip bloodRitualClip;
 
@@ -96,8 +96,8 @@ public class Interactable : MonoBehaviour
                 playerSource.PlayOneShot(playerSource.clip);
             }
         }
-        Vector3 playerPos = Camera.main.transform.position;
 
+        Vector3 playerPos = Camera.main.transform.position;
         Collider[] hitColliders = Physics.OverlapSphere(playerPos, 15f);
         bool enemyWasStunned = false;
 
@@ -114,13 +114,33 @@ public class Interactable : MonoBehaviour
 
         if (enemyWasStunned)
         {
-            if (breakSound != null)
-                AudioSource.PlayClipAtPoint(breakSound, playerPos);
-
-            InventoryManager.instance.RemoveSelectedItem();
-            if (objectToActivate != null) Destroy(objectToActivate);
-            Destroy(gameObject);
+            StartCoroutine(DelayedBreakSequence(playerPos));
         }
+    }
+
+    private IEnumerator DelayedBreakSequence(Vector3 soundPos)
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (breakSound != null)
+        {
+            AudioSource camSource = Camera.main.GetComponent<AudioSource>();
+            if (camSource == null) camSource = Camera.main.gameObject.AddComponent<AudioSource>();
+
+            camSource.PlayOneShot(breakSound);
+            Debug.Log("Break sound should be playing now!");
+        }
+        else
+        {
+            Debug.LogError("The breakSound clip is EMPTY in the Inspector!");
+        }
+
+        InventoryManager.instance.RemoveSelectedItem();
+
+        if (objectToActivate != null) objectToActivate.SetActive(false);
+
+        yield return null;
+        Destroy(gameObject);
     }
 
     void LateUpdate()
@@ -298,8 +318,8 @@ public class Interactable : MonoBehaviour
         if (ritualMusicSource != null && bloodRitualClip != null)
         {
             ritualMusicSource.clip = bloodRitualClip;
-            ritualMusicSource.volume = 0.5f; 
-            ritualMusicSource.loop = true; 
+            ritualMusicSource.volume = 0.5f;
+            ritualMusicSource.loop = true;
             ritualMusicSource.Play();
         }
 
