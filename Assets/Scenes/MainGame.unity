@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.07
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
@@ -553,6 +553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: db92fffa15ecb49e9a5c23a72071f621, type: 3}
   itemType: 1
   objectToActivate: {fileID: 539630126}
@@ -2377,6 +2382,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3bf1166bd767d468a80928e2325d0a96, type: 3}
   itemType: 4
   objectToActivate: {fileID: 1781736604}
@@ -4098,6 +4108,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -5626,6 +5641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -7170,6 +7190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 7
   objectToActivate: {fileID: 0}
@@ -8391,6 +8416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 9
   objectToActivate: {fileID: 0}
@@ -9760,6 +9790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
@@ -13537,6 +13572,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 1
   objectToActivate: {fileID: 0}
@@ -14131,6 +14171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 2
   objectToActivate: {fileID: 0}
@@ -17105,6 +17150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -17856,6 +17906,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 8262125143e5c4313a6aa5e9a5a42e49, type: 3}
   itemType: 12
   objectToActivate: {fileID: 1808325076}
@@ -18663,6 +18718,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.4
+  transitionSpeed: 10
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 6
   objectToActivate: {fileID: 0}
@@ -19905,7 +19965,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -20136,6 +20196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
@@ -36678,6 +36743,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -44857,6 +44927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 1b7dccde573874aacaa889864afff2ea, type: 3}
   itemType: 11
   objectToActivate: {fileID: 1987834234}
@@ -48105,6 +48180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 61c5adc247b704341ab8bbd67b6be69a, type: 3}
   itemType: 13
   objectToActivate: {fileID: 243215573}
@@ -51664,6 +51744,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3bf1166bd767d468a80928e2325d0a96, type: 3}
   itemType: 4
   objectToActivate: {fileID: 1781736604}
@@ -56691,6 +56776,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -56785,6 +56875,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3b26c78616e954f1c88326a0e7686861, type: 3}
   itemType: 3
   objectToActivate: {fileID: 823338484}
@@ -57182,6 +57277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -58355,6 +58455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -58725,6 +58830,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  useBloodFog: 1
+  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
+  ritualFogDensity: 0.08
+  transitionSpeed: 2
+  directionalLight: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -59009,7 +59119,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

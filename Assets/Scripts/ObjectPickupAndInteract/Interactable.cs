@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class Interactable : MonoBehaviour
 {
@@ -22,10 +23,14 @@ public class Interactable : MonoBehaviour
         PrisonKey,
         VoodooDoll,
         Wrench
-
-
-
     }
+
+    [Header("Blood Ritual Settings")]
+    public bool useBloodFog = true;
+    public Color bloodRedColor = new Color(0.5f, 0, 0); 
+    public float ritualFogDensity = 0.08f;       
+    public float transitionSpeed = 2f;                 
+    public Light directionalLight;
 
     [Header("Inventory Settings")]
     public Sprite itemIcon;
@@ -280,6 +285,39 @@ public class Interactable : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    private IEnumerator StartBloodRitualEnvironment()
+    {
+        RenderSettings.fog = true;
+        RenderSettings.fogMode = FogMode.ExponentialSquared;
+
+        float elapsed = 0;
+        float duration = 5f; 
+
+        Color startFogColor = RenderSettings.fogColor;
+        Color startAmbient = RenderSettings.ambientLight;
+        float startDensity = RenderSettings.fogDensity;
+        float startLightIntensity = directionalLight != null ? directionalLight.intensity : 1f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+
+            RenderSettings.fogColor = Color.Lerp(startFogColor, bloodRedColor, t);
+            RenderSettings.fogDensity = Mathf.Lerp(startDensity, ritualFogDensity, t);
+
+            RenderSettings.ambientLight = Color.Lerp(startAmbient, bloodRedColor * 0.5f, t);
+
+            if (directionalLight != null)
+            {
+                directionalLight.intensity = Mathf.Lerp(startLightIntensity, 0.2f, t);
+                directionalLight.color = Color.Lerp(Color.white, Color.red, t);
+            }
+
+            yield return null;
+        }
     }
 
     void OnTriggerEnter(Collider other)
