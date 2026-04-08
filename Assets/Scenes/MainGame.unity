@@ -553,11 +553,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: db92fffa15ecb49e9a5c23a72071f621, type: 3}
   itemType: 1
   objectToActivate: {fileID: 539630126}
@@ -2382,11 +2381,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3bf1166bd767d468a80928e2325d0a96, type: 3}
   itemType: 4
   objectToActivate: {fileID: 1781736604}
@@ -4108,11 +4106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -5641,11 +5638,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -7190,11 +7186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 7
   objectToActivate: {fileID: 0}
@@ -8416,11 +8411,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 9
   objectToActivate: {fileID: 0}
@@ -9790,11 +9784,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
@@ -13572,11 +13565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 1
   objectToActivate: {fileID: 0}
@@ -14171,11 +14163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 2
   objectToActivate: {fileID: 0}
@@ -17150,11 +17141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -17906,11 +17896,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 8262125143e5c4313a6aa5e9a5a42e49, type: 3}
   itemType: 12
   objectToActivate: {fileID: 1808325076}
@@ -18718,11 +18707,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.4
-  transitionSpeed: 10
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 1374658122}
+  fadeDuration: 10
+  ritualMusicSource: {fileID: 1559601397}
+  bloodRitualClip: {fileID: 8300000, guid: 5d6a0e21122614dacbf5654dca8f31d0, type: 3}
   itemIcon: {fileID: 0}
   itemType: 6
   objectToActivate: {fileID: 0}
@@ -20196,11 +20184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
@@ -22250,7 +22237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
@@ -36743,11 +36730,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -43478,6 +43464,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5374082281567336925, guid: ea47d58c97503b441a05ebc078ba1a89, type: 3}
   m_PrefabInstance: {fileID: 1374439465}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1374658121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374658123}
+  - component: {fileID: 1374658122}
+  m_Layer: 0
+  m_Name: BloodFogVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1374658122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374658121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: f1eb05dd39cd44665918c350b8654960, type: 2}
+--- !u!4 &1374658123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374658121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -79, y: -44.52543, z: 53.92055}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1379362322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44927,11 +44962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 1b7dccde573874aacaa889864afff2ea, type: 3}
   itemType: 11
   objectToActivate: {fileID: 1987834234}
@@ -48180,11 +48214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 61c5adc247b704341ab8bbd67b6be69a, type: 3}
   itemType: 13
   objectToActivate: {fileID: 243215573}
@@ -48814,6 +48847,135 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1302944531070337134, guid: 14cac76a1450b424d8c1186a597e8ca9, type: 3}
   m_PrefabInstance: {fileID: 159057944}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1559601396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559601398}
+  - component: {fileID: 1559601397}
+  m_Layer: 0
+  m_Name: FinaleMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1559601397
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559601396}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 5d6a0e21122614dacbf5654dca8f31d0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.042
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 103
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1559601398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559601396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -78.99999, y: -2.7808, z: 11.10514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1560032605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51744,11 +51906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3bf1166bd767d468a80928e2325d0a96, type: 3}
   itemType: 4
   objectToActivate: {fileID: 1781736604}
@@ -56776,11 +56937,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -56875,11 +57035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 3b26c78616e954f1c88326a0e7686861, type: 3}
   itemType: 3
   objectToActivate: {fileID: 823338484}
@@ -57277,11 +57436,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -58455,11 +58613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 0
   objectToActivate: {fileID: 0}
@@ -58830,11 +58987,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  useBloodFog: 1
-  bloodRedColor: {r: 0.5, g: 0, b: 0, a: 1}
-  ritualFogDensity: 0.08
-  transitionSpeed: 2
-  directionalLight: {fileID: 0}
+  bloodRitualVolume: {fileID: 0}
+  fadeDuration: 5
+  ritualMusicSource: {fileID: 0}
+  bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 0}
   itemType: 10
   objectToActivate: {fileID: 0}
@@ -62837,9 +62993,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
+  - {fileID: 1374658123}
   - {fileID: 832575519}
   - {fileID: 1361669897}
   - {fileID: 1042222540}
+  - {fileID: 1559601398}
   - {fileID: 649148674}
   - {fileID: 1019408394}
   - {fileID: 1827674739}

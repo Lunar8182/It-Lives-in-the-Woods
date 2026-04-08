@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class Interactable : MonoBehaviour
 {
@@ -25,12 +26,11 @@ public class Interactable : MonoBehaviour
         Wrench
     }
 
-    [Header("Blood Ritual Settings")]
-    public bool useBloodFog = true;
-    public Color bloodRedColor = new Color(0.5f, 0, 0); 
-    public float ritualFogDensity = 0.08f;       
-    public float transitionSpeed = 2f;                 
-    public Light directionalLight;
+    [Header("Blood Ritual Visuals")]
+    public Volume bloodRitualVolume; 
+    public float fadeDuration = 5f;  
+    public AudioSource ritualMusicSource;
+    public AudioClip bloodRitualClip;
 
     [Header("Inventory Settings")]
     public Sprite itemIcon;
@@ -260,6 +260,10 @@ public class Interactable : MonoBehaviour
                         {
                             ritualSite.SetActive(true);
                         }
+                        if (bloodRitualVolume != null)
+                        {
+                            StartCoroutine(FadeInBloodRitual());
+                        }
 
                         StartCoroutine(ShowMapMessage());
 
@@ -287,37 +291,28 @@ public class Interactable : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private IEnumerator StartBloodRitualEnvironment()
+    private IEnumerator FadeInBloodRitual()
     {
-        RenderSettings.fog = true;
-        RenderSettings.fogMode = FogMode.ExponentialSquared;
-
         float elapsed = 0;
-        float duration = 5f; 
 
-        Color startFogColor = RenderSettings.fogColor;
-        Color startAmbient = RenderSettings.ambientLight;
-        float startDensity = RenderSettings.fogDensity;
-        float startLightIntensity = directionalLight != null ? directionalLight.intensity : 1f;
+        if (ritualMusicSource != null && bloodRitualClip != null)
+        {
+            ritualMusicSource.clip = bloodRitualClip;
+            ritualMusicSource.volume = 0.5f; 
+            ritualMusicSource.loop = true; 
+            ritualMusicSource.Play();
+        }
 
-        while (elapsed < duration)
+        while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-
-            RenderSettings.fogColor = Color.Lerp(startFogColor, bloodRedColor, t);
-            RenderSettings.fogDensity = Mathf.Lerp(startDensity, ritualFogDensity, t);
-
-            RenderSettings.ambientLight = Color.Lerp(startAmbient, bloodRedColor * 0.5f, t);
-
-            if (directionalLight != null)
-            {
-                directionalLight.intensity = Mathf.Lerp(startLightIntensity, 0.2f, t);
-                directionalLight.color = Color.Lerp(Color.white, Color.red, t);
-            }
-
+            bloodRitualVolume.weight = Mathf.Lerp(0, 1, elapsed / fadeDuration);
             yield return null;
         }
+
+        bloodRitualVolume.weight = 1f;
+
+        Debug.Log("The blood ritual environment is fully active!");
     }
 
     void OnTriggerEnter(Collider other)
