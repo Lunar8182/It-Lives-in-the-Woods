@@ -43151,7 +43151,7 @@ MonoBehaviour:
   searchColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   chaseColor: {r: 1, g: 0, b: 0, a: 1}
   stunColor: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
-  enragedColor: {r: 0, g: 1, b: 0.796659, a: 1}
+  enragedColor: {r: 1, g: 1, b: 1, a: 1}
   jumpscareLightOffset: {x: 0, y: -1.5, z: 1.5}
   currentState: 0
 --- !u!114 &1361669899
