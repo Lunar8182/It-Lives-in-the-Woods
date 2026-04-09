@@ -20,6 +20,7 @@ public class InventoryManager : MonoBehaviour
     public bool hasBlanket = false;
     public bool hasVoodooDoll = false;
     public bool hasWrench = false;
+    public bool hasIceBlock = false;
 
     [Header("Permanent Off-Hand Items")]
     public GameObject leftHandLantern;

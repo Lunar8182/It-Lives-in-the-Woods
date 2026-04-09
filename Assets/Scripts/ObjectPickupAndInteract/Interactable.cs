@@ -23,7 +23,9 @@ public class Interactable : MonoBehaviour
         Key,
         PrisonKey,
         VoodooDoll,
-        Wrench
+        Wrench,
+        IceBlock,
+        Pot
     }
 
     [Header("Ritual Settings")]
@@ -178,6 +180,10 @@ public class Interactable : MonoBehaviour
         {
             InventoryManager.instance.hasDoll = true;
         }
+        if (itemType == ItemType.IceBlock)
+        {
+            InventoryManager.instance.hasIceBlock = true;
+        }
         if (itemType == ItemType.BabyRattle)
         {
             InventoryManager.instance.hasRattle = true;
@@ -302,6 +308,34 @@ public class Interactable : MonoBehaviour
             pool.F_ToggleBloodPool();
             poolOn = true;
             keyPrompt.SetActive(false);
+            return;
+        }
+        if (itemType == ItemType.Pool)
+        {
+            if (poolOn) return;
+            pool.F_ToggleBloodPool();
+            poolOn = true;
+            keyPrompt.SetActive(false);
+            return;
+        }
+
+        if (itemType == ItemType.Pot)
+        {
+            GameObject itemInHand = InventoryManager.instance.GetSelectedItem();
+
+            if (itemInHand != null && InventoryManager.instance.hasIceBlock && itemInHand.name.Contains("Ice"))
+            {
+                InventoryManager.instance.hasIceBlock = false;
+                InventoryManager.instance.RemoveSelectedItem();
+
+                if (objectToActivate != null)
+                {
+                    objectToActivate.SetActive(true);
+                }
+
+                if (keyPrompt != null) keyPrompt.SetActive(false);
+            }
+
             return;
         }
 
