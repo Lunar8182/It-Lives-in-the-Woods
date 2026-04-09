@@ -10031,7 +10031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8757551085509158726, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19161,11 +19161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
-  enemy: {fileID: 0}
-  bloodRitualVolume: {fileID: 0}
+  enemy: {fileID: 1361669898}
+  bloodRitualVolume: {fileID: 1374658122}
   fadeDuration: 5
-  ritualMusicSource: {fileID: 0}
-  bloodRitualClip: {fileID: 0}
+  ritualMusicSource: {fileID: 1559601397}
+  bloodRitualClip: {fileID: 8300000, guid: 5d6a0e21122614dacbf5654dca8f31d0, type: 3}
   itemIcon: {fileID: 0}
   itemType: 6
   objectToActivate: {fileID: 0}
