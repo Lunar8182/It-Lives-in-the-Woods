@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
 {
-    public enum DoorType { Normal, Prison }
+    public enum DoorType { Normal, Prison, ComboLock }
     public DoorType doorType = DoorType.Normal;
 
     [Header("Movement Settings")]

@@ -1,4 +1,4 @@
-﻿// Script by Marcelli Michele - Modified for Zoom, Arrow Keys, and Letter-style Player Freezing
+﻿// Script by Marcelli Michele - Modified to snap Camera back on Destroy
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,10 @@ public class MoveRuller : MonoBehaviour
     public MonoBehaviour playerController;
     public GameObject cameraObject;
 
+    [Header("Selection Pointer Settings")]
+    public Transform selectionPointer;
+    public Vector3 pointerOffset = new Vector3(0, 0.05f, 0);
+
     [HideInInspector]
     public List<GameObject> _rullers = new List<GameObject>();
     private int _scroolRuller = 0;
@@ -24,9 +28,7 @@ public class MoveRuller : MonoBehaviour
 
     [HideInInspector]
     public int[] _numberArray = { 0, 0, 0, 0 };
-
     private int _numberRuller = 0;
-    private bool _isActveEmission = false;
 
     void Awake()
     {
@@ -44,6 +46,8 @@ public class MoveRuller : MonoBehaviour
 
         if (mainCamera == null) mainCamera = Camera.main;
         if (mainCamera != null) normalFOV = mainCamera.fieldOfView;
+
+        if (selectionPointer != null) selectionPointer.gameObject.SetActive(false);
     }
 
     void Update()
@@ -51,13 +55,13 @@ public class MoveRuller : MonoBehaviour
         if (_lockPassword.isUnlocked) return;
 
         HandleZoom();
-        UpdateEmissionVisuals();
 
         if (isZoomedIn)
         {
             MoveRulles();
             RotateRullers();
             _lockPassword.Password();
+            UpdatePointerPosition();
         }
     }
 
@@ -80,43 +84,31 @@ public class MoveRuller : MonoBehaviour
 
         if (isZoomedIn)
         {
-            // EXACT LOGIC FROM YOUR LETTER SCRIPT: FREEZE
             if (playerController != null) playerController.enabled = false;
 
             if (cameraObject != null)
             {
                 MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
-                foreach (MonoBehaviour s in scripts)
-                {
-                    s.enabled = false;
-                }
+                foreach (MonoBehaviour s in scripts) s.enabled = false;
+            }
+
+            if (selectionPointer != null)
+            {
+                selectionPointer.gameObject.SetActive(true);
+                UpdatePointerPosition();
             }
         }
         else
         {
-            // EXACT LOGIC FROM YOUR LETTER SCRIPT: UNFREEZE
             if (playerController != null) playerController.enabled = true;
 
             if (cameraObject != null)
             {
                 MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
-                foreach (MonoBehaviour s in scripts)
-                {
-                    s.enabled = true;
-                }
+                foreach (MonoBehaviour s in scripts) s.enabled = true;
             }
 
-            // Turn off emission completely if we zoom out
-            _isActveEmission = false;
-            foreach (var r in _rullers)
-            {
-                var emissionScript = r.GetComponent<PadLockEmissionColor>();
-                if (emissionScript != null)
-                {
-                    emissionScript._isSelect = false;
-                    emissionScript.BlinkingMaterial();
-                }
-            }
+            if (selectionPointer != null) selectionPointer.gameObject.SetActive(false);
         }
     }
 
@@ -124,7 +116,6 @@ public class MoveRuller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            _isActveEmission = true;
             _changeRuller++;
             _numberRuller += 1;
             if (_numberRuller > 3) _numberRuller = 0;
@@ -132,7 +123,6 @@ public class MoveRuller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _isActveEmission = true;
             _changeRuller--;
             _numberRuller -= 1;
             if (_numberRuller < 0) _numberRuller = 3;
@@ -141,16 +131,12 @@ public class MoveRuller : MonoBehaviour
         _changeRuller = (_changeRuller + _rullers.Count) % _rullers.Count;
     }
 
-    void UpdateEmissionVisuals()
+    void UpdatePointerPosition()
     {
-        for (int i = 0; i < _rullers.Count; i++)
+        if (selectionPointer != null && _rullers.Count > 0)
         {
-            if (_isActveEmission)
-            {
-                var emissionScript = _rullers[i].GetComponent<PadLockEmissionColor>();
-                emissionScript._isSelect = (_changeRuller == i);
-                emissionScript.BlinkingMaterial();
-            }
+            selectionPointer.position = _rullers[_changeRuller].transform.position;
+            selectionPointer.position += transform.TransformDirection(pointerOffset);
         }
     }
 
@@ -158,7 +144,6 @@ public class MoveRuller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            _isActveEmission = true;
             _scroolRuller = 36;
             _rullers[_changeRuller].transform.Rotate(-_scroolRuller, 0, 0, Space.Self);
 
@@ -168,12 +153,31 @@ public class MoveRuller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            _isActveEmission = true;
             _scroolRuller = 36;
             _rullers[_changeRuller].transform.Rotate(_scroolRuller, 0, 0, Space.Self);
 
             _numberArray[_changeRuller] -= 1;
             if (_numberArray[_changeRuller] < 0) _numberArray[_changeRuller] = 9;
+        }
+    }
+
+    // --- NEW SAFETY NET ---
+    // This runs exactly when Destroy(gameObject) triggers in the other script
+    private void OnDestroy()
+    {
+        // 1. Force the camera FOV back to normal instantly
+        if (mainCamera != null && normalFOV > 0)
+        {
+            mainCamera.fieldOfView = normalFOV;
+        }
+
+        // 2. Double-check that player movement is turned back on
+        if (playerController != null) playerController.enabled = true;
+
+        if (cameraObject != null)
+        {
+            MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour s in scripts) s.enabled = true;
         }
     }
 }

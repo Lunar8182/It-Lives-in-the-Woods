@@ -1,40 +1,39 @@
-﻿// Script by Marcelli Michele
-
+﻿// Script by Marcelli Michele - Modified for Solid Highlight instead of Blinking
 using UnityEngine;
 
 public class PadLockEmissionColor : MonoBehaviour
 {
-    TimeBlinking tb;
-
     private GameObject _myRuller;
 
     [HideInInspector]
     public bool _isSelect;
 
-    //[SerializeField] private float _timeBlinking = 0.5f;
+    [Header("Highlight Settings")]
+    [Tooltip("The color the dial turns when selected")]
+    public Color highlightColor = Color.yellow;
 
-    private void Awake()
-    {
-        tb = FindObjectOfType<TimeBlinking>();
-    }
+    [Tooltip("How bright the glow is. Keep it low so you can still read the numbers!")]
+    [Range(0f, 2f)] public float glowIntensity = 0.4f;
+
     void Start()
     {
         _myRuller = gameObject;
     }
 
-
     public void BlinkingMaterial()
     {
-        _myRuller.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-        
+        if (_myRuller == null) return;
+
+        Material mat = _myRuller.GetComponent<Renderer>().material;
+        mat.EnableKeyword("_EMISSION");
+
         if (_isSelect)
         {
-            _myRuller.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.Lerp(Color.clear, Color.yellow, Mathf.PingPong(Time.time, tb.blinkingTime)));
+            mat.SetColor("_EmissionColor", highlightColor * glowIntensity);
         }
-        if (_isSelect == false)
+        else
         {
-            _myRuller.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.clear);
+            mat.SetColor("_EmissionColor", Color.clear);
         }
-
     }
 }

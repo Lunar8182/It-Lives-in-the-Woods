@@ -1,4 +1,4 @@
-﻿// Script by Marcelli Michele - Modified to prevent spamming
+﻿// Script by Marcelli Michele - Modified to trigger DoorInteract
 using System.Linq;
 using UnityEngine;
 
@@ -8,7 +8,14 @@ public class PadLockPassword : MonoBehaviour
     public int[] _numberPassword = { 0, 0, 0, 0 };
 
     [HideInInspector]
-    public bool isUnlocked = false; // Added this to track success
+    public bool isUnlocked = false;
+
+    [Header("Unlock Events")]
+    [Tooltip("Drag the door you want to open into this slot")]
+    public DoorInteract connectedDoor; // --- NEW ---
+
+    public AudioClip unlockSound;
+    public float destroyDelay = 0.5f;
 
     private void Awake()
     {
@@ -19,23 +26,35 @@ public class PadLockPassword : MonoBehaviour
     {
         if (!isUnlocked && _moveRull._numberArray.SequenceEqual(_numberPassword))
         {
-            isUnlocked = true; // Stop checking once solved
+            isUnlocked = true;
 
-            // Here enter the event for the correct combination
-            Debug.Log("Password correct!");
+            Debug.Log("Password correct! Opening door and destroying lock.");
 
-            // Below the for loop disables Blinking Material after the correct password
-            for (int i = 0; i < _moveRull._rullers.Count; i++)
+            // 1. Play the sound
+            if (unlockSound != null)
             {
-                _moveRull._rullers[i].GetComponent<PadLockEmissionColor>()._isSelect = false;
-                _moveRull._rullers[i].GetComponent<PadLockEmissionColor>().BlinkingMaterial();
+                AudioSource.PlayClipAtPoint(unlockSound, transform.position);
             }
 
-            // Optional: Auto-zoom out when the lock is solved
-            if (_moveRull.mainCamera != null)
+            // 2. Zoom out
+            if (_moveRull != null)
             {
-                // You can add logic here to restore the camera FOV or trigger a door opening animation
+                _moveRull.ToggleZoom();
+
+                if (_moveRull.selectionPointer != null)
+                {
+                    _moveRull.selectionPointer.gameObject.SetActive(false);
+                }
             }
+
+            // 3. --- NEW: FORCE THE DOOR OPEN ---
+            if (connectedDoor != null)
+            {
+                connectedDoor.ForceOpenFromPuzzle();
+            }
+
+            // 4. Destroy the lock after a tiny delay
+            Destroy(gameObject, destroyDelay);
         }
     }
 }
