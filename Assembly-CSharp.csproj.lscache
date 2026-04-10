@@ -60,6 +60,11 @@ Assets/@PaulosCreations/DemonicAltar_HellGate_BloodPool/
  Demo/DemoControll.cs
  DemonicAltar/Scripts/DemonicAltar_Controller.cs
  HellGate/Scripts/HellGate_Controller.cs
+Assets/CombinationPadLock/Script/
+ MoveRuller.cs
+ PadLockEmissionColor.cs
+ PadLockPassword.cs
+ TimeBlinking.cs
 Assets/
  EnemyModel/PlayerHeartbeat.cs
  Footsteps/

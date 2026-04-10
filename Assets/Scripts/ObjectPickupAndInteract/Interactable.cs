@@ -25,7 +25,8 @@ public class Interactable : MonoBehaviour
         VoodooDoll,
         Wrench,
         IceBlock,
-        Pot
+        Pot,
+        ComboLock
     }
     public AudioClip thawingClip;
     public AudioClip cubeMessageClip;
@@ -179,6 +180,18 @@ public class Interactable : MonoBehaviour
         if (candle != null)
         {
             candle.Interact();
+            return;
+        }
+        if (itemType == ItemType.ComboLock)
+        {
+            MoveRuller lockScript = GetComponent<MoveRuller>();
+            if (lockScript != null)
+            {
+                lockScript.ToggleZoom();
+            }
+
+            if (keyPrompt != null) keyPrompt.SetActive(false);
+
             return;
         }
 
