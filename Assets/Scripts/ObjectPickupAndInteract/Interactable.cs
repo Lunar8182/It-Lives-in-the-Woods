@@ -27,6 +27,8 @@ public class Interactable : MonoBehaviour
         IceBlock,
         Pot
     }
+    public AudioClip thawingClip;
+    public AudioClip cubeMessageClip;
 
     [Header("Ritual Settings")]
     public EnemyAI enemy;
@@ -36,6 +38,7 @@ public class Interactable : MonoBehaviour
     public float fadeDuration = 5f;
     public AudioSource ritualMusicSource;
     public AudioClip bloodRitualClip;
+
 
     [Header("Inventory Settings")]
     public Sprite itemIcon;
@@ -47,6 +50,7 @@ public class Interactable : MonoBehaviour
     //Use this if you want to play music or a sound from an item.
     //Add the object that has the audio source attached (usually the same as object to activate) 
     public GameObject playerItem;
+    public GameObject potText;
     public DemonicAltar_Controller altar;
     public BloodPool_Controller pool;
     public HellGate_Controller hellGate;
@@ -72,6 +76,8 @@ public class Interactable : MonoBehaviour
     private bool poolOn = false;
     private bool portalOn = false;
     private bool alterOn = false;
+    private bool playedThawingAudio = false;
+    private bool playedCubeMessage = false;
 
     [Header("Music Box Settings")]
     public float stunRange = 5f;
@@ -183,6 +189,16 @@ public class Interactable : MonoBehaviour
         if (itemType == ItemType.IceBlock)
         {
             InventoryManager.instance.hasIceBlock = true;
+
+            if (!playedCubeMessage && cubeMessageClip != null)
+            {
+                playedCubeMessage = true;
+
+                AudioSource camSource = Camera.main.GetComponent<AudioSource>();
+                if (camSource == null) camSource = Camera.main.gameObject.AddComponent<AudioSource>();
+
+                camSource.PlayOneShot(cubeMessageClip);
+            }
         }
         if (itemType == ItemType.BabyRattle)
         {
@@ -191,6 +207,7 @@ public class Interactable : MonoBehaviour
         if (itemType == ItemType.Blanket)
         {
             InventoryManager.instance.hasBlanket = true;
+
         }
 
         if (itemType == ItemType.VoodooDoll)
@@ -302,14 +319,7 @@ public class Interactable : MonoBehaviour
             return;
         }
 
-        if (itemType == ItemType.Pool)
-        {
-            if (poolOn) return;
-            pool.F_ToggleBloodPool();
-            poolOn = true;
-            keyPrompt.SetActive(false);
-            return;
-        }
+
         if (itemType == ItemType.Pool)
         {
             if (poolOn) return;
@@ -322,21 +332,35 @@ public class Interactable : MonoBehaviour
         if (itemType == ItemType.Pot)
         {
             GameObject itemInHand = InventoryManager.instance.GetSelectedItem();
+            if (thawingClip != null && !playedThawingAudio && itemInHand != null && InventoryManager.instance.hasIceBlock && itemInHand.name.Contains("Ice"))
+            {
+                AudioSource potAudio = GetComponent<AudioSource>();
+                if (potAudio == null) potAudio = gameObject.AddComponent<AudioSource>();
+
+                potAudio.PlayOneShot(thawingClip);
+                playedThawingAudio = true;
+            }
 
             if (itemInHand != null && InventoryManager.instance.hasIceBlock && itemInHand.name.Contains("Ice"))
             {
                 InventoryManager.instance.hasIceBlock = false;
                 InventoryManager.instance.RemoveSelectedItem();
 
-                if (objectToActivate != null)
+                InventoryManager.instance.hasBlanket = true;
+
+                if (itemIcon != null && objectToActivate != null)
                 {
-                    objectToActivate.SetActive(true);
+                    InventoryManager.instance.AddItem(itemIcon, objectToActivate);
                 }
 
                 if (keyPrompt != null) keyPrompt.SetActive(false);
             }
+            else
+            {
+                StartCoroutine(ShowCookMessage());
+                return;
+            }
 
-            return;
         }
 
 
@@ -405,6 +429,16 @@ public class Interactable : MonoBehaviour
 
         if (mapUpdateMessage != null)
             mapUpdateMessage.SetActive(false);
+    }
+    private IEnumerator ShowCookMessage()
+    {
+        if (potText != null)
+            potText.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        if (potText != null)
+            potText.SetActive(false);
     }
 
 }

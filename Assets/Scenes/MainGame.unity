@@ -553,6 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -563,6 +565,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 539630126}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 539630126}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -2382,6 +2385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -2392,6 +2397,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1781736604}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -3194,6 +3200,7 @@ GameObject:
   - component: {fileID: 119184216}
   - component: {fileID: 119184215}
   - component: {fileID: 119184214}
+  - component: {fileID: 119184218}
   m_Layer: 13
   m_Name: IceCube_Ground
   m_TagString: Untagged
@@ -3213,7 +3220,8 @@ Transform:
   m_LocalPosition: {x: -154.17201, y: 1.018, z: -47.177}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1759147561}
   m_Father: {fileID: 1959681658}
   m_LocalEulerAnglesHint: {x: 0, y: 38.73, z: 0}
 --- !u!114 &119184214
@@ -3228,6 +3236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 8300000, guid: 53945666298b74462bff32dc4cf4af2f, type: 3}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -3235,9 +3245,10 @@ MonoBehaviour:
   bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 6b6e3ac3fcc9642aaa953d1b9868af43, type: 3}
   itemType: 15
-  objectToActivate: {fileID: 1184768455}
+  objectToActivate: {fileID: 1655194581}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -3329,6 +3340,103 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119184212}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &119184218
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119184212}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &124658071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0297c1d9dc5137043b0bde39f96ff5b2, type: 3}
@@ -4256,6 +4364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -4266,6 +4376,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -5826,6 +5937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -5836,6 +5949,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -6716,7 +6830,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4f3fe61000be441928d9c93224b820ac, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.16
   m_Pitch: 1
   Loop: 1
@@ -6726,7 +6840,7 @@ AudioSource:
   Priority: 144
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -6761,7 +6875,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -6931,16 +7045,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 8300000, guid: 878129255463b401e84698d6f34ab8d4, type: 3}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
   itemType: 16
   objectToActivate: {fileID: 761022324}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 1728704007}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -7392,6 +7509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -7402,6 +7521,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 1845097410}
@@ -7589,7 +7709,7 @@ Transform:
   - {fileID: 409839610}
   - {fileID: 1987834235}
   - {fileID: 1808325075}
-  - {fileID: 1184768456}
+  - {fileID: 1655194582}
   m_Father: {fileID: 2004189156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &307243258
@@ -8731,6 +8851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -8741,6 +8863,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 1404348651}
   hellGate: {fileID: 0}
@@ -10031,7 +10154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5810444791015640034, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8757551085509158726, guid: fab5d7fe551c24ab2bf078ff938d60be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10109,6 +10232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -10119,6 +10244,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 761022324}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -13891,6 +14017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -13901,6 +14029,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 0}
   playerItem: {fileID: 539630126}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -14490,6 +14619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -14500,6 +14631,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -17518,6 +17650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -17528,6 +17662,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -18349,6 +18484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -18359,6 +18496,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1808325076}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -19161,6 +19299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 1361669898}
   bloodRitualVolume: {fileID: 1374658122}
   fadeDuration: 5
@@ -19171,6 +19311,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 1063533230}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -20639,6 +20780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -20649,6 +20792,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 761022324}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -22678,6 +22822,118 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9480407949b1e0b43bef93cbdebe6c0e, type: 3}
+--- !u!1 &828839727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828839728}
+  - component: {fileID: 828839731}
+  - component: {fileID: 828839730}
+  - component: {fileID: 828839729}
+  m_Layer: 13
+  m_Name: Iceblanket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828839728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828839727}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1655194582}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &828839729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828839727}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &828839730
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828839727}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 35516e51da89149bab81ed9df6df9d2c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &828839731
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828839727}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &829116172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37413,6 +37669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -37423,6 +37681,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -38850,96 +39109,6 @@ Transform:
   - {fileID: 931584637}
   m_Father: {fileID: 1717107113}
   m_LocalEulerAnglesHint: {x: 0, y: 89.715, z: 0}
---- !u!1 &1184768455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1184768456}
-  - component: {fileID: 1184768458}
-  - component: {fileID: 1184768457}
-  m_Layer: 0
-  m_Name: IceCube_Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1184768456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184768455}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.221, y: 0.47400013, z: 0.694}
-  m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 301998111}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1184768457
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184768455}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 646da7770059241e8a0a5a131c036bee, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1184768458
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184768455}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1191210737
 GameObject:
   m_ObjectHideFlags: 0
@@ -45964,6 +46133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -45974,6 +46145,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1987834234}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -49217,6 +49389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -49227,6 +49401,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 243215573}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -51961,6 +52136,97 @@ PrefabInstance:
       addedObject: {fileID: 1466774945}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b8e3425f075924e8c2162dec62bf5f, type: 3}
+--- !u!1 &1655194581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655194582}
+  - component: {fileID: 1655194584}
+  - component: {fileID: 1655194583}
+  m_Layer: 13
+  m_Name: IceCube_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1655194582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655194581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.213, y: 0, z: 0.637}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 828839728}
+  m_Father: {fileID: 301998111}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1655194583
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655194581}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 646da7770059241e8a0a5a131c036bee, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1655194584
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655194581}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1660879870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52986,6 +53252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -52996,6 +53264,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1781736604}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -54279,6 +54548,118 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea47d58c97503b441a05ebc078ba1a89, type: 3}
+--- !u!1 &1759147560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1759147561}
+  - component: {fileID: 1759147564}
+  - component: {fileID: 1759147563}
+  - component: {fileID: 1759147562}
+  m_Layer: 13
+  m_Name: Iceblanket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1759147561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759147560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 119184213}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1759147562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759147560}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1759147563
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759147560}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 35516e51da89149bab81ed9df6df9d2c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1759147564
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759147560}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1759459182
 GameObject:
   m_ObjectHideFlags: 0
@@ -58019,6 +58400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -58029,6 +58412,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -58104,8 +58488,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 1, z: 4}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.70166016, y: 0.89153326, z: 0.5373688}
+  m_Center: {x: -0.14916992, y: 0.7274298, z: 0.06736755}
 --- !u!114 &1940734462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58118,6 +58502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -58128,6 +58514,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 823338484}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -58520,6 +58907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -58530,6 +58919,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -59699,6 +60089,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -59709,6 +60101,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
@@ -60074,6 +60467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3327700be26894b5e908bbcb95ce7464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  thawingClip: {fileID: 0}
+  cubeMessageClip: {fileID: 0}
   enemy: {fileID: 0}
   bloodRitualVolume: {fileID: 0}
   fadeDuration: 5
@@ -60084,6 +60479,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 0}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
+  potText: {fileID: 0}
   altar: {fileID: 0}
   pool: {fileID: 0}
   hellGate: {fileID: 0}
