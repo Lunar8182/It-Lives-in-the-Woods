@@ -63,7 +63,6 @@ public class LetterInteract : MonoBehaviour
             }
         }
 
-        // --- NEW LINE: Tell the journal we found this letter! ---
         if (JournalManager.instance != null)
         {
             JournalManager.instance.UnlockLetterInJournal(journalLetterID, letterText);
