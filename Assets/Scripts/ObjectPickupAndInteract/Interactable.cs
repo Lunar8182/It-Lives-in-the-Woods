@@ -360,6 +360,7 @@ public class Interactable : MonoBehaviour
                 StartCoroutine(ShowCookMessage());
                 return;
             }
+            return;
 
         }
 
