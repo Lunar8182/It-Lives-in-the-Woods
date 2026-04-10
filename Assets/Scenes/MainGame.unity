@@ -4634,6 +4634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteract
   doorType: 2
+  requiredKeyColor: 0
   player: {fileID: 649148674}
   openAngle: 90
   openSpeed: 3
@@ -12020,6 +12021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteract
   doorType: 1
+  requiredKeyColor: 1
   player: {fileID: 649148674}
   openAngle: 120
   openSpeed: 3
@@ -18605,7 +18607,7 @@ MonoBehaviour:
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 8262125143e5c4313a6aa5e9a5a42e49, type: 3}
-  itemType: 12
+  itemType: 19
   objectToActivate: {fileID: 1808325076}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
@@ -34653,6 +34655,8 @@ MonoBehaviour:
   hasVoodooDoll: 0
   hasWrench: 0
   hasIceBlock: 0
+  hasRedKey: 0
+  hasYellowKey: 0
   leftHandLantern: {fileID: 451330167}
   hasLantern: 0
 --- !u!114 &1019408396
@@ -46450,7 +46454,7 @@ MonoBehaviour:
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
   itemIcon: {fileID: 21300000, guid: 1b7dccde573874aacaa889864afff2ea, type: 3}
-  itemType: 11
+  itemType: 18
   objectToActivate: {fileID: 1987834234}
   keyPrompt: {fileID: 1863950022}
   playerItem: {fileID: 0}
@@ -47948,6 +47952,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6657700975186471646, guid: 1b3904c27daf8ec40998027dcc750477, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9d48e37acbae842c2884192fbae14cdf, type: 2}
     m_RemovedComponents:
     - {fileID: 1187255243599475381, guid: 1b3904c27daf8ec40998027dcc750477, type: 3}
     m_RemovedGameObjects: []
@@ -49114,6 +49122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteract
   doorType: 0
+  requiredKeyColor: 0
   player: {fileID: 649148674}
   openAngle: 90
   openSpeed: 3
@@ -51475,6 +51484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteract
   doorType: 0
+  requiredKeyColor: 2
   player: {fileID: 649148674}
   openAngle: 90
   openSpeed: 3

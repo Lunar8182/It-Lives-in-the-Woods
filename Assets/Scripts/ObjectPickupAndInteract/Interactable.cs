@@ -26,7 +26,9 @@ public class Interactable : MonoBehaviour
         Wrench,
         IceBlock,
         Pot,
-        ComboLock
+        ComboLock,
+        YellowKey,
+        RedKey
     }
     public AudioClip thawingClip;
     public AudioClip cubeMessageClip;
@@ -193,6 +195,14 @@ public class Interactable : MonoBehaviour
             if (keyPrompt != null) keyPrompt.SetActive(false);
 
             return;
+        }
+        if (itemType == ItemType.YellowKey)
+        {
+            InventoryManager.instance.hasYellowKey = true;
+        }
+        if (itemType == ItemType.RedKey)
+        {
+            InventoryManager.instance.hasRedKey = true;
         }
 
         if (itemType == ItemType.Doll)

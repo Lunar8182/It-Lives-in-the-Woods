@@ -4,7 +4,12 @@ using UnityEngine;
 public class DoorInteract : MonoBehaviour
 {
     public enum DoorType { Normal, Prison, ComboLock }
+    public enum KeyColor { None, Red, Yellow } // --- NEW: Color Dropdown ---
+
+    [Header("Door Settings")]
     public DoorType doorType = DoorType.Normal;
+    [Tooltip("What color key does this door need? (Only applies if Door Type is Normal)")]
+    public KeyColor requiredKeyColor = KeyColor.None; // --- NEW ---
 
     [Header("Movement Settings")]
     public Transform player;
@@ -37,6 +42,19 @@ public class DoorInteract : MonoBehaviour
 
         audioSource.spatialBlend = 1f;
         audioSource.playOnAwake = false;
+
+        // --- NEW: Automatically color the lock object to match the required key! ---
+        if (Lock != null && requiredKeyColor != KeyColor.None)
+        {
+            Renderer lockRenderer = Lock.GetComponent<Renderer>();
+            if (lockRenderer != null)
+            {
+                if (requiredKeyColor == KeyColor.Red)
+                    lockRenderer.material.color = Color.red;
+                else if (requiredKeyColor == KeyColor.Yellow)
+                    lockRenderer.material.color = Color.yellow;
+            }
+        }
     }
 
     void Update()
@@ -52,11 +70,19 @@ public class DoorInteract : MonoBehaviour
     {
         if (isLocked)
         {
-            if (doorType == DoorType.Normal && InventoryManager.instance.hasKey)
+            // --- NEW: Checking for colored keys ---
+            if (doorType == DoorType.Normal)
             {
-                Unlock();
+                if (requiredKeyColor == KeyColor.Red && InventoryManager.instance.hasRedKey)
+                    Unlock();
+                else if (requiredKeyColor == KeyColor.Yellow && InventoryManager.instance.hasYellowKey)
+                    Unlock();
+                else if (requiredKeyColor == KeyColor.None && InventoryManager.instance.hasKey)
+                    Unlock(); // Legacy check for your basic keys
+                else
+                    ShowLockedMessage();
             }
-            else if (doorType == DoorType.Prison && InventoryManager.instance.hasPrisonKey)
+            else if (doorType == DoorType.Prison && InventoryManager.instance.hasRedKey)
             {
                 Unlock();
             }
@@ -93,10 +119,7 @@ public class DoorInteract : MonoBehaviour
 
         if (isOpen)
         {
-            if (player == null)
-            {
-                return;
-            }
+            if (player == null) return;
 
             Vector3 doorToPlayer = player.position - transform.position;
             float direction = Vector3.Dot(transform.right, doorToPlayer);
@@ -107,15 +130,12 @@ public class DoorInteract : MonoBehaviour
                 openRotation = closedRotation * Quaternion.Euler(0, -openAngle, 0);
         }
     }
+
     public void ForceOpenFromPuzzle()
     {
         isLocked = false;
 
-        if (Lock != null)
-        {
-            Destroy(Lock);
-        }
-
+        if (Lock != null) Destroy(Lock);
 
         if (!isOpen)
         {
@@ -127,7 +147,6 @@ public class DoorInteract : MonoBehaviour
                 audioSource.PlayOneShot(prisonDoorSound);
 
             openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
-
         }
     }
 
