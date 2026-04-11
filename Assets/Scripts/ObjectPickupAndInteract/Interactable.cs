@@ -88,29 +88,34 @@ public class Interactable : MonoBehaviour
     public GameObject musicBoxPromptUI;
 
     void Update()
-{
-    if (itemType != ItemType.MusicBox) return;
-
-    if (musicBoxPromptUI != null && !musicBoxPromptUI.activeSelf)
     {
-        musicBoxPromptUI.SetActive(true);
-    }
+        if (itemType != ItemType.MusicBox) return;
 
-    if (Input.GetMouseButtonDown(0))
-    {
-        if (musicBoxPromptUI != null) musicBoxPromptUI.SetActive(false);
-        
-        UseMusicBox();
+        if (!gameObject.activeInHierarchy) return;
+
+        if (musicBoxPromptUI != null && !musicBoxPromptUI.activeSelf)
+        {
+            musicBoxPromptUI.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject heldItem = InventoryManager.instance.GetSelectedItem();
+            if (heldItem != null && heldItem == this.gameObject)
+            {
+                if (musicBoxPromptUI != null) musicBoxPromptUI.SetActive(false);
+                UseMusicBox();
+            }
+        }
     }
-}
 
     void OnDisable()
-{
-    if (itemType == ItemType.MusicBox && musicBoxPromptUI != null)
     {
-        musicBoxPromptUI.SetActive(false);
+        if (itemType == ItemType.MusicBox && musicBoxPromptUI != null)
+        {
+            musicBoxPromptUI.SetActive(false);
+        }
     }
-}
 
     public void UseMusicBox()
     {

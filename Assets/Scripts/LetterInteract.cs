@@ -59,6 +59,8 @@ public class LetterInteract : MonoBehaviour
             MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour s in scripts)
             {
+                if (s.GetType().Name.Contains("Universal") || s is Volume) continue;
+
                 s.enabled = false;
             }
         }
