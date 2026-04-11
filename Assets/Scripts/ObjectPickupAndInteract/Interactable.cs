@@ -85,19 +85,32 @@ public class Interactable : MonoBehaviour
     [Header("Music Box Settings")]
     public float stunRange = 5f;
     public AudioClip breakSound;
+    public GameObject musicBoxPromptUI;
 
     void Update()
-    {
-        if (itemType == ItemType.MusicBox && Input.GetMouseButtonDown(0))
-        {
-            GameObject heldItem = InventoryManager.instance.GetSelectedItem();
+{
+    if (itemType != ItemType.MusicBox) return;
 
-            if (heldItem != null && heldItem == this.gameObject)
-            {
-                UseMusicBox();
-            }
-        }
+    if (musicBoxPromptUI != null && !musicBoxPromptUI.activeSelf)
+    {
+        musicBoxPromptUI.SetActive(true);
     }
+
+    if (Input.GetMouseButtonDown(0))
+    {
+        if (musicBoxPromptUI != null) musicBoxPromptUI.SetActive(false);
+        
+        UseMusicBox();
+    }
+}
+
+    void OnDisable()
+{
+    if (itemType == ItemType.MusicBox && musicBoxPromptUI != null)
+    {
+        musicBoxPromptUI.SetActive(false);
+    }
+}
 
     public void UseMusicBox()
     {
