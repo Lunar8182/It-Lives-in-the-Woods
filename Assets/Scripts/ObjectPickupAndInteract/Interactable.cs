@@ -185,6 +185,12 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
+        DoorInteract door = GetComponent<DoorInteract>();
+        if (door != null)
+        {
+            door.Interact();
+            return;
+        }
 
         if (itemType == ItemType.Letter)
         {

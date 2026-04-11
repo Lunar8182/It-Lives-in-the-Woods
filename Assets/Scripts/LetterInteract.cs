@@ -70,7 +70,7 @@ public class LetterInteract : MonoBehaviour
             JournalManager.instance.UnlockLetterInJournal(journalLetterID, letterText);
         }
 
-        Cursor.lockState = CursorLockMode.None; // Changed this to None so you can click UI if needed
+        Cursor.lockState = CursorLockMode.Locked; 
         Cursor.visible = true;
 
         if (postProcessVolume != null) postProcessVolume.weight = 1f;

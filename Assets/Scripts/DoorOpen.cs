@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class DoorInteract : MonoBehaviour
 {
-    public enum DoorType { Normal, Prison, ComboLock }
-    public enum KeyColor { None, Red, Yellow } // --- NEW: Color Dropdown ---
+    public enum DoorType { Normal, Prison, ComboLock, Lockpick }
+    public enum KeyColor { None, Red, Yellow }
 
     [Header("Door Settings")]
     public DoorType doorType = DoorType.Normal;
-    [Tooltip("What color key does this door need? (Only applies if Door Type is Normal)")]
-    public KeyColor requiredKeyColor = KeyColor.None; // --- NEW ---
+    public KeyColor requiredKeyColor = KeyColor.None;
+
+    [Header("Lockpick Settings")]
+    public LockpickQTE lockpickMinigame;
+    public EnemyAI enemyScript;
 
     [Header("Movement Settings")]
     public Transform player;
@@ -34,32 +37,30 @@ public class DoorInteract : MonoBehaviour
     void Start()
     {
         closedRotation = transform.rotation;
-
-        // Setup audio
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-            audioSource = gameObject.AddComponent<AudioSource>();
-
+        if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 1f;
-        audioSource.playOnAwake = false;
 
-        // --- NEW: Automatically color the lock object to match the required key! ---
         if (Lock != null && requiredKeyColor != KeyColor.None)
         {
             Renderer lockRenderer = Lock.GetComponent<Renderer>();
             if (lockRenderer != null)
             {
-                if (requiredKeyColor == KeyColor.Red)
-                    lockRenderer.material.color = Color.red;
-                else if (requiredKeyColor == KeyColor.Yellow)
-                    lockRenderer.material.color = Color.yellow;
+                if (requiredKeyColor == KeyColor.Red) lockRenderer.material.color = Color.red;
+                else if (requiredKeyColor == KeyColor.Yellow) lockRenderer.material.color = Color.yellow;
             }
+        }
+
+        if (lockpickMinigame != null)
+        {
+            lockpickMinigame.onGameWin.AddListener(Unlock);
+
+            lockpickMinigame.onGameExit.AddListener(UnfreezePlayer);
         }
     }
 
     void Update()
     {
-        // Smooth rotation
         if (isOpen)
             transform.rotation = Quaternion.Lerp(transform.rotation, openRotation, Time.deltaTime * openSpeed);
         else
@@ -70,17 +71,44 @@ public class DoorInteract : MonoBehaviour
     {
         if (isLocked)
         {
-            // --- NEW: Checking for colored keys ---
-            if (doorType == DoorType.Normal)
+            if (doorType == DoorType.Lockpick)
             {
-                if (requiredKeyColor == KeyColor.Red && InventoryManager.instance.hasRedKey)
-                    Unlock();
-                else if (requiredKeyColor == KeyColor.Yellow && InventoryManager.instance.hasYellowKey)
-                    Unlock();
-                else if (requiredKeyColor == KeyColor.None && InventoryManager.instance.hasKey)
-                    Unlock(); // Legacy check for your basic keys
-                else
+                if (enemyScript != null && !enemyScript.hasBeenCaptured)
+                {
                     ShowLockedMessage();
+                    return;
+                }
+
+                if (lockpickMinigame != null)
+                {
+                    lockpickMinigame.StartGame();
+
+                    if (player != null)
+                    {
+                        MonoBehaviour pm = player.GetComponent("PlayerMovement") as MonoBehaviour;
+                        if (pm != null) pm.enabled = false;
+
+                        MonoBehaviour[] scripts = player.GetComponentsInChildren<MonoBehaviour>();
+                        foreach (MonoBehaviour s in scripts)
+                        {
+                            string scriptName = s.GetType().Name;
+                            if (scriptName.Contains("MouseLook") || scriptName.Contains("CameraLook") || scriptName.Contains("PlayerCam"))
+                            {
+                                s.enabled = false;
+                            }
+                        }
+                    }
+
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
+            else if (doorType == DoorType.Normal)
+            {
+                if (requiredKeyColor == KeyColor.Red && InventoryManager.instance.hasRedKey) Unlock();
+                else if (requiredKeyColor == KeyColor.Yellow && InventoryManager.instance.hasYellowKey) Unlock();
+                else if (requiredKeyColor == KeyColor.None && InventoryManager.instance.hasKey) Unlock();
+                else ShowLockedMessage();
             }
             else if (doorType == DoorType.Prison && InventoryManager.instance.hasRedKey)
             {
@@ -89,7 +117,6 @@ public class DoorInteract : MonoBehaviour
             else
             {
                 ShowLockedMessage();
-                return;
             }
         }
         else
@@ -98,36 +125,28 @@ public class DoorInteract : MonoBehaviour
         }
     }
 
-    void Unlock()
+    public void Unlock()
     {
         isLocked = false;
+        if (Lock != null) Destroy(Lock);
 
-        if (Lock != null)
-            Destroy(Lock);
-
+        UnfreezePlayer();
         ToggleDoor();
     }
 
     public void ToggleDoor()
     {
         isOpen = !isOpen;
-
         if (doorType == DoorType.Normal && normalDoorSound != null)
             audioSource.PlayOneShot(normalDoorSound);
-        else if (doorType == DoorType.Prison && prisonDoorSound != null)
+        else if ((doorType == DoorType.Prison || doorType == DoorType.Lockpick) && prisonDoorSound != null)
             audioSource.PlayOneShot(prisonDoorSound);
 
-        if (isOpen)
+        if (isOpen && player != null)
         {
-            if (player == null) return;
-
             Vector3 doorToPlayer = player.position - transform.position;
             float direction = Vector3.Dot(transform.right, doorToPlayer);
-
-            if (direction > 0)
-                openRotation = closedRotation * Quaternion.Euler(0, openAngle, 0);
-            else
-                openRotation = closedRotation * Quaternion.Euler(0, -openAngle, 0);
+            openRotation = (direction > 0) ? closedRotation * Quaternion.Euler(0, openAngle, 0) : closedRotation * Quaternion.Euler(0, -openAngle, 0);
         }
     }
 
@@ -164,5 +183,24 @@ public class DoorInteract : MonoBehaviour
         lockedMessage.SetActive(true);
         yield return new WaitForSeconds(2f);
         lockedMessage.SetActive(false);
+    }
+
+    public void UnfreezePlayer()
+    {
+        if (player != null)
+        {
+            MonoBehaviour pm = player.GetComponent("PlayerMovement") as MonoBehaviour;
+            if (pm != null) pm.enabled = true;
+
+            MonoBehaviour[] scripts = player.GetComponentsInChildren<MonoBehaviour>();
+            foreach (MonoBehaviour s in scripts)
+            {
+                string scriptName = s.GetType().Name;
+                if (scriptName.Contains("MouseLook") || scriptName.Contains("CameraLook") || scriptName.Contains("PlayerCam"))
+                {
+                    s.enabled = true;
+                }
+            }
+        }
     }
 }
