@@ -11,6 +11,10 @@ public class LockpickQTE : MonoBehaviour
     public RectTransform barBackground;
     public TextMeshProUGUI progressText;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip successSound;
+
     [Header("Collider Hitboxes")]
     public BoxCollider2D indicatorCollider;
     public BoxCollider2D targetCollider;
@@ -85,12 +89,19 @@ public class LockpickQTE : MonoBehaviour
 
     void CheckClick()
     {
-        // PURE MAGIC: Are the two BoxCollider2D boundaries touching right now?
+        Physics2D.SyncTransforms();
+
         if (indicatorCollider.bounds.Intersects(targetCollider.bounds))
         {
             Debug.Log("<color=green>HIT! The colliders are touching!</color>");
-            currentSuccesses++;
+
+            if (audioSource != null && successSound != null)
+            {
+                audioSource.PlayOneShot(successSound);
+            }
             
+            currentSuccesses++;
+
             if (currentSuccesses >= successesNeeded)
             {
                 Win();
@@ -99,7 +110,7 @@ public class LockpickQTE : MonoBehaviour
             {
                 UpdateUI();
                 RandomizeTarget();
-                currentMoveSpeed *= 1.25f; 
+                currentMoveSpeed *= 1.25f;
             }
         }
         else

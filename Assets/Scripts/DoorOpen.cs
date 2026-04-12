@@ -10,6 +10,10 @@ public class DoorInteract : MonoBehaviour
     public DoorType doorType = DoorType.Normal;
     public KeyColor requiredKeyColor = KeyColor.None;
 
+    [Header("References")]
+    public GameObject GameHUD;
+    public GameObject EButton;
+
     [Header("Lockpick Settings")]
     public LockpickQTE lockpickMinigame;
     public EnemyAI enemyScript;
@@ -21,6 +25,7 @@ public class DoorInteract : MonoBehaviour
     public bool isLocked = true;
 
     private bool isOpen = false;
+    private bool isPickingLock = false;
 
     [Header("Visuals & UI")]
     public GameObject Lock;
@@ -81,7 +86,11 @@ public class DoorInteract : MonoBehaviour
 
                 if (lockpickMinigame != null)
                 {
+                    isPickingLock = true;
+
                     lockpickMinigame.StartGame();
+                    if (GameHUD != null) GameHUD.SetActive(false);
+                    if (EButton != null) EButton.SetActive(false);
 
                     if (player != null)
                     {
@@ -187,6 +196,11 @@ public class DoorInteract : MonoBehaviour
 
     public void UnfreezePlayer()
     {
+        isPickingLock = false;
+
+        if (GameHUD != null) GameHUD.SetActive(true);
+        if (EButton != null) EButton.SetActive(true);
+
         if (player != null)
         {
             MonoBehaviour pm = player.GetComponent("PlayerMovement") as MonoBehaviour;
@@ -201,6 +215,14 @@ public class DoorInteract : MonoBehaviour
                     s.enabled = true;
                 }
             }
+        }
+    }
+    void LateUpdate()
+    {
+        if (isPickingLock)
+        {
+            if (EButton != null) EButton.SetActive(false);
+            if (GameHUD != null) GameHUD.SetActive(false);
         }
     }
 }

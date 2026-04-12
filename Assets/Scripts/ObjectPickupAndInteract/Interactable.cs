@@ -160,11 +160,6 @@ public class Interactable : MonoBehaviour
             if (camSource == null) camSource = Camera.main.gameObject.AddComponent<AudioSource>();
 
             camSource.PlayOneShot(breakSound);
-            Debug.Log("Break sound should be playing now!");
-        }
-        else
-        {
-            Debug.LogError("The breakSound clip is EMPTY in the Inspector!");
         }
 
         InventoryManager.instance.RemoveSelectedItem();
