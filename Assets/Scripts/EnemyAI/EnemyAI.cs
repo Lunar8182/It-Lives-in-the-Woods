@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject mainCanvas;
     public GameObject forestAmbience;
+    public GameObject MapIcon;
 
     [Header("Cameras")]
     public Camera playerCamera;
@@ -599,16 +600,17 @@ public class EnemyAI : MonoBehaviour
         if (forestAmbience != null) forestAmbience.SetActive(true);
     }
 
-    void EndJumpscare() 
-    { 
-        isGameOver = true; 
-        Time.timeScale = 0f; 
-        
+    void EndJumpscare()
+    {
+        isGameOver = true;
+        Time.timeScale = 0f;
+
         if (mainCanvas != null) mainCanvas.SetActive(true);
         if (gameOverScreen != null) gameOverScreen.SetActive(true);
-        
-        Cursor.lockState = CursorLockMode.None; 
-        Cursor.visible = true; 
+        if (MapIcon != null) MapIcon.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     void StartChasing()

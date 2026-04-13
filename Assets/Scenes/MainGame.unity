@@ -560,7 +560,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: db92fffa15ecb49e9a5c23a72071f621, type: 3}
+  itemIcon: {fileID: 21300000, guid: e93e509a22baa65468e7e6c931ebf02d, type: 3}
   itemType: 1
   objectToActivate: {fileID: 539630126}
   keyPrompt: {fileID: 1863950022}
@@ -4839,11 +4839,6 @@ CanvasRenderer:
 --- !u!1 &170374135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6960147845155314987, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
-  m_PrefabInstance: {fileID: 5776819714335889608}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &170374136 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7772290716434073489, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
   m_PrefabInstance: {fileID: 5776819714335889608}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &174024119 stripped
@@ -10841,7 +10836,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 06ef12b59f3c249bebfda160ac0ff9ca, type: 3}
+  itemIcon: {fileID: 21300000, guid: 80afb5e756301d843b5f2b0f7c5023fe, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
   keyPrompt: {fileID: 1863950022}
@@ -19176,7 +19171,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 8262125143e5c4313a6aa5e9a5a42e49, type: 3}
+  itemIcon: {fileID: 21300000, guid: b446c2d0c1cad204ab1a17fedf8bd0a8, type: 3}
   itemType: 19
   objectToActivate: {fileID: 1808325076}
   keyPrompt: {fileID: 1863950022}
@@ -40295,7 +40290,7 @@ PrefabInstance:
       addedObject: {fileID: 1819597218}
     - targetCorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 170374136}
+      addedObject: {fileID: 0}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1050212910998776, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
@@ -46010,6 +46005,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 1643444972}
   mainCanvas: {fileID: 1019408390}
   forestAmbience: {fileID: 1042222537}
+  MapIcon: {fileID: 0}
   playerCamera: {fileID: 649148673}
   jumpscareCamera: {fileID: 759266807}
   audioSource: {fileID: 1361669902}
@@ -47904,7 +47900,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 1b7dccde573874aacaa889864afff2ea, type: 3}
+  itemIcon: {fileID: 21300000, guid: 7cc800bdd72dbe74d9e565a09508739c, type: 3}
   itemType: 18
   objectToActivate: {fileID: 1987834234}
   keyPrompt: {fileID: 1863950022}
@@ -60379,7 +60375,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 3b26c78616e954f1c88326a0e7686861, type: 3}
+  itemIcon: {fileID: 21300000, guid: 4bdd2d49d71428d4194449e33944decb, type: 3}
   itemType: 3
   objectToActivate: {fileID: 823338484}
   keyPrompt: {fileID: 1863950022}
