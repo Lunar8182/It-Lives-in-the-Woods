@@ -12008,6 +12008,23 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &451330172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451330167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af6ce11bd1c64118a4f0f0d98d6cd34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  swayMultiplier: 2
+  swaySmoothness: 5
+  maxSwayAmount: 5
+  bobSpeed: 2
+  bobAmount: 0.02
 --- !u!4 &453759522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c781683900a0f432f88a2397741ff8f9, type: 3}
@@ -18803,6 +18820,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1383818733195300, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 451330170}
+    - targetCorrespondingSourceObject: {fileID: 1383818733195300, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451330172}
   m_SourcePrefab: {fileID: 100100000, guid: 5cc22dee4f3a39f48bbb851c41003c8c, type: 3}
 --- !u!1001 &688950300
 PrefabInstance:

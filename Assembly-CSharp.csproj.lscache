@@ -90,8 +90,10 @@ Assets/
   GlassShatter.cs
   InventoryManager.cs
   JournalManager.cs
+  LanternSway.cs
   LetterInteract.cs
   LightFlicker.cs
+  LockPickQTE.cs
   MapController.cs
   Movement/
    MoveCamera.cs
