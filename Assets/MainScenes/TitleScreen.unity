@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50818a2971104e98ad4ec66842bc191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleScreen
-  gameSceneName: MainGame
+  gameSceneName: IntroCutscene
 --- !u!114 &698794855
 MonoBehaviour:
   m_ObjectHideFlags: 0
