@@ -66,6 +66,7 @@ Assets/CombinationPadLock/Script/
  PadLockPassword.cs
  TimeBlinking.cs
 Assets/
+ CutsceneManager.cs
  EnemyModel/PlayerHeartbeat.cs
  Footsteps/
   FootstepsEnemy.cs
@@ -76,11 +77,7 @@ Assets/
  Lanterns/scripts/
   CameraFacing.cs
   ExtendedFlycam.cs
- Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/MouseLook.cs
- SazenGames/Skeleton/Scripts/
-  AnimationReplayer.cs
-  SimpleCameraController.cs
- Scripts/
+ MainScripts/
   CandlePuzzleManager.cs
   CandleScript.cs
   DoorOpen.cs
@@ -89,6 +86,9 @@ Assets/
    GameOverScreenManager.cs
    PauseScreenManager.cs
   GlassShatter.cs
+  IntroCutsceneScripts/
+   AutoDrive.cs
+   RoadLooper.cs
   InventoryManager.cs
   JournalManager.cs
   LanternSway.cs
@@ -119,6 +119,10 @@ Assets/
   VoiceLineScripts/
    EnemySeenVoice.cs
    FirstBodyVoice.cs
+ Polytope Studio/Lowpoly_Demos/Environment_Free/Helpers/MouseLook.cs
+ SazenGames/Skeleton/Scripts/
+  AnimationReplayer.cs
+  SimpleCameraController.cs
  Seaport/EffectExamples/Shared/Scripts/
   DecalDestroyer.cs
   ExtinguishableFire.cs
