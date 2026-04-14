@@ -46346,7 +46346,7 @@ MonoBehaviour:
   voiceLine1: {fileID: 0}
   voiceLine2: {fileID: 0}
   pressETextCar: {fileID: 751327511}
-  alternateEndingSceneName: AlternateEnding
+  alternateEndingSceneName: AlternateEndingCutscene
 --- !u!4 &1311870031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1731621413674928719, guid: 9090dfe2bb858f8458fb9275a1c6e090, type: 3}
