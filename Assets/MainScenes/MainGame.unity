@@ -4507,7 +4507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585060622950652, guid: 86d84285ef39db64c986f37878b14861, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4317999
+      value: 0.8029534
       objectReference: {fileID: 0}
     - target: {fileID: 4585060622950652, guid: 86d84285ef39db64c986f37878b14861, type: 3}
       propertyPath: m_LocalScale.z
@@ -4519,7 +4519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4585060622950652, guid: 86d84285ef39db64c986f37878b14861, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.029
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4585060622950652, guid: 86d84285ef39db64c986f37878b14861, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6834,8 +6834,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4077250215902563898, guid: 62e81355ef1080e40ba0992e9b794f05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1146193888}
   m_SourcePrefab: {fileID: 100100000, guid: 62e81355ef1080e40ba0992e9b794f05, type: 3}
+--- !u!1 &220391294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4077250215902563898, guid: 62e81355ef1080e40ba0992e9b794f05, type: 3}
+  m_PrefabInstance: {fileID: 220391293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &225525750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: b70eb1cf1be37564f8063fba2095584b, type: 3}
@@ -41515,6 +41523,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3737598276802811008, guid: 62e81355ef1080e40ba0992e9b794f05, type: 3}
   m_PrefabInstance: {fileID: 220391293}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1146193888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220391294}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 5.5, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1147919293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4624117985890803363, guid: d77e27b1b5977d74692f0691160c5571, type: 3}
@@ -48219,6 +48248,8 @@ MonoBehaviour:
   enragedRoarSound: {fileID: 8300000, guid: 207acbda22ad7424b995e93b546cb2bc, type: 3}
   enragedSpeed: 15
   enragedWaitTime: 0.2
+  enragedIntensityMult: 2
+  enragedRangeMult: 1.5
   detectionRange: 35
   fieldOfView: 100
   chaseSpeed: 10
@@ -48590,7 +48621,7 @@ GameObject:
   - component: {fileID: 1374658123}
   - component: {fileID: 1374658122}
   m_Layer: 0
-  m_Name: BloodFogVolume
+  m_Name: FinaleVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48609,9 +48640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
   m_IsGlobal: 1
-  priority: 0
+  priority: 2
   blendDistance: 0
-  weight: 0
+  weight: 1
   sharedProfile: {fileID: 11400000, guid: f1eb05dd39cd44665918c350b8654960, type: 2}
 --- !u!4 &1374658123
 Transform:
@@ -64716,7 +64747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4203199286425600, guid: 42612f8b6c0dce8468648f3f08db6d96, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4317999
+      value: 2.588694
       objectReference: {fileID: 0}
     - target: {fileID: 4203199286425600, guid: 42612f8b6c0dce8468648f3f08db6d96, type: 3}
       propertyPath: m_LocalScale.z

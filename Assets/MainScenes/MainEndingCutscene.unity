@@ -32989,6 +32989,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: af606dcc194574cfda00c8701123c08d, type: 2}
+    - target: {fileID: 847610599517488689, guid: 42781b002af1a452fb2059dc0fe06e02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 863064979526094027, guid: 42781b002af1a452fb2059dc0fe06e02, type: 3}
       propertyPath: m_Material
       value: 
@@ -51182,6 +51186,8 @@ MonoBehaviour:
   enragedRoarSound: {fileID: 0}
   enragedSpeed: 15
   enragedWaitTime: 0.2
+  enragedIntensityMult: 2
+  enragedRangeMult: 1.5
   detectionRange: 35
   fieldOfView: 90
   chaseSpeed: 10

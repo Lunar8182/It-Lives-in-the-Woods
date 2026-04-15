@@ -37,6 +37,8 @@ public class EnemyAI : MonoBehaviour
     public float enragedSpeed = 15f;
     public float enragedWaitTime = 0.2f;
     private bool isEnraged = false;
+    public float enragedIntensityMult = 2f;
+    public float enragedRangeMult = 1.5f;
 
     [Header("Movement")]
     public float detectionRange = 50f;
@@ -185,7 +187,12 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Roaming:
                 if (playerVisible) { StartChasing(); return; }
 
-                if (enemyLight != null) enemyLight.color = roamColor;
+                if (enemyLight != null)
+                {
+                    enemyLight.color = roamColor;
+                    enemyLight.intensity = originalLightIntensity;
+                    enemyLight.range = originalLightRange;
+                }
                 anim.SetInteger(animStateHash, 0);
                 Roam();
                 break;
@@ -193,13 +200,23 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Enraged:
                 if (playerVisible) { StartChasing(); return; }
 
-                if (enemyLight != null) enemyLight.color = enragedColor;
+                if (enemyLight != null)
+                {
+                    enemyLight.color = enragedColor;
+                    enemyLight.intensity = originalLightIntensity * enragedIntensityMult;
+                    enemyLight.range = originalLightRange * enragedRangeMult;
+                }
                 anim.SetInteger(animStateHash, 7);
                 EnragedRoam();
                 break;
 
             case EnemyState.Chasing:
-                if (enemyLight != null) enemyLight.color = isEnraged ? enragedColor : chaseColor;
+                if (enemyLight != null)
+                {
+                    enemyLight.color = isEnraged ? enragedColor : chaseColor;
+                    enemyLight.intensity = isEnraged ? (originalLightIntensity * enragedIntensityMult) : originalLightIntensity;
+                    enemyLight.range = isEnraged ? (originalLightRange * enragedRangeMult) : originalLightRange;
+                }
                 anim.SetInteger(animStateHash, 1);
                 Chase();
 
@@ -277,7 +294,7 @@ public class EnemyAI : MonoBehaviour
                         currentState = EnemyState.Staring;
                         StartCoroutine(CaptureSequence());
                     }
-                    else 
+                    else
                     {
                         EndJumpscare();
                     }
@@ -286,13 +303,13 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyState.Staring:
                 if (enemyLight != null) enemyLight.color = isEnraged ? enragedColor : searchColor;
-                
+
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
                 anim.SetInteger(animStateHash, 6);
                 Vector3 lookDir = (player.position - transform.position).normalized;
                 lookDir.y = 0;
-                if (lookDir != Vector3.zero) 
+                if (lookDir != Vector3.zero)
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 5f);
                 }
@@ -309,7 +326,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (currentState != EnemyState.Jumpscare && !isGameOver)
         {
-            isEnraged = true; 
+            isEnraged = true;
             currentState = EnemyState.Enraged;
             PlayEnragedRoar();
         }
@@ -417,10 +434,10 @@ public class EnemyAI : MonoBehaviour
         {
             if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.5f)
             {
-                if (pointWaitTimer > 0) 
-                { 
-                    pointWaitTimer -= Time.deltaTime; 
-                    LookAround(); 
+                if (pointWaitTimer > 0)
+                {
+                    pointWaitTimer -= Time.deltaTime;
+                    LookAround();
                 }
                 else
                 {
@@ -462,56 +479,60 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
 
-    void LookAround() 
-    { 
-        anim.SetInteger(animStateHash, 4); 
-        transform.Rotate(0, 40f * Time.deltaTime, 0); 
+    void LookAround()
+    {
+        anim.SetInteger(animStateHash, 4);
+        transform.Rotate(0, 40f * Time.deltaTime, 0);
     }
 
     void PlayStateSound()
     {
-        if (isSequenceRunning || currentState == EnemyState.Staring || currentState == EnemyState.Jumpscare || audioSource == null) return;
+        if (isSequenceRunning || currentState == EnemyState.Staring || currentState == EnemyState.Jumpscare || audioSource == null)
+            return;
+
+        if (audioSource.isPlaying)
+            return;
 
         AudioClip[] clipsToPlay = (currentState == EnemyState.Roaming) ? roamSounds :
                                   (currentState == EnemyState.Chasing || currentState == EnemyState.Enraged) ? chaseSounds :
                                   searchSounds;
 
-        if (clipsToPlay != null && clipsToPlay.Length > 0) 
-        { 
-            audioSource.PlayOneShot(clipsToPlay[Random.Range(0, clipsToPlay.Length)]); 
+        if (clipsToPlay != null && clipsToPlay.Length > 0)
+        {
+            audioSource.PlayOneShot(clipsToPlay[Random.Range(0, clipsToPlay.Length)]);
         }
     }
 
     void StartJumpscare()
     {
         if (isSequenceRunning || isGameOver) return;
-        
-        isSequenceRunning = true; 
-        isJumpscaring = true; 
+
+        isSequenceRunning = true;
+        isJumpscaring = true;
         currentState = EnemyState.Jumpscare;
-        
+
         if (audioSource.isPlaying) audioSource.Stop();
-        
+
         agent.isStopped = true;
-        anim.SetInteger(animStateHash, 3); 
+        anim.SetInteger(animStateHash, 3);
         anim.SetTrigger("Jumpscare");
-        
+
         jumpscareTimer = jumpscareDuration;
-        
-        if (enemyLight != null) 
-        { 
-            enemyLight.enabled = true; 
-            enemyLight.transform.localPosition = originalLightPosition + jumpscareLightOffset; 
+
+        if (enemyLight != null)
+        {
+            enemyLight.enabled = true;
+            enemyLight.transform.localPosition = originalLightPosition + jumpscareLightOffset;
         }
-        
+
         transform.rotation = Quaternion.LookRotation(new Vector3(player.position.x - transform.position.x, 0, player.position.z - transform.position.z));
-        
+
         if (jumpscareSound != null) audioSource.PlayOneShot(jumpscareSound);
         if (playerCamScript != null) playerCamScript.enabled = false;
         if (playerController != null) playerController.enabled = false;
         if (mainCanvas != null) mainCanvas.SetActive(false);
-        
-        playerCamera.gameObject.SetActive(false); 
+
+        playerCamera.gameObject.SetActive(false);
         jumpscareCamera.gameObject.SetActive(true);
     }
 
@@ -526,77 +547,77 @@ public class EnemyAI : MonoBehaviour
     IEnumerator CaptureSequence()
     {
         if (forestAmbience != null) forestAmbience.SetActive(false);
-        
-        if (blackoutPanel != null) 
-        { 
-            blackoutPanel.SetActive(true); 
-            Image img = blackoutPanel.GetComponent<Image>(); 
-            if (img != null) img.color = Color.black; 
+
+        if (blackoutPanel != null)
+        {
+            blackoutPanel.SetActive(true);
+            Image img = blackoutPanel.GetComponent<Image>();
+            if (img != null) img.color = Color.black;
         }
-        
+
         if (audioSource != null) audioSource.Stop();
         if (captureVoiceline != null) audioSource.PlayOneShot(captureVoiceline);
         if (shuttingCell != null) audioSource.PlayOneShot(shuttingCell);
-        
+
         yield return new WaitForSeconds(1.0f);
-        
+
         if (playerController != null) playerController.enabled = false;
         if (enemyPostCaptureSpawn != null) agent.Warp(enemyPostCaptureSpawn.position);
-        
-        if (playerPrisonSpawn != null) 
-        { 
-            player.position = playerPrisonSpawn.position; 
-            player.rotation = playerPrisonSpawn.rotation; 
+
+        if (playerPrisonSpawn != null)
+        {
+            player.position = playerPrisonSpawn.position;
+            player.rotation = playerPrisonSpawn.rotation;
         }
-        
-        yield return new WaitForFixedUpdate(); 
+
+        yield return new WaitForFixedUpdate();
         yield return new WaitForEndOfFrame();
-        
+
         if (playerController != null) playerController.enabled = true;
-        
-        jumpscareCamera.gameObject.SetActive(false); 
+
+        jumpscareCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);
-        isJumpscaring = false; 
-        
+        isJumpscaring = false;
+
         if (playerCamScript != null) playerCamScript.enabled = true;
-        
-        if (enemyLight != null) 
-        { 
-            enemyLight.transform.localPosition = originalLightPosition; 
-            enemyLight.intensity = originalLightIntensity; 
-            enemyLight.color = isEnraged ? enragedColor : searchColor; 
+
+        if (enemyLight != null)
+        {
+            enemyLight.transform.localPosition = originalLightPosition;
+            enemyLight.intensity = originalLightIntensity;
+            enemyLight.color = isEnraged ? enragedColor : searchColor;
         }
-        
-        if (blackoutPanel != null) 
-        { 
-            Image img = blackoutPanel.GetComponent<Image>(); 
-            if (img != null) 
-            { 
-                float a = 1f; 
-                while (a > 0f) 
-                { 
-                    a -= Time.deltaTime * fadeInSpeed; 
-                    img.color = new Color(0, 0, 0, a); 
-                    yield return null; 
-                } 
-            } 
-            blackoutPanel.SetActive(false); 
+
+        if (blackoutPanel != null)
+        {
+            Image img = blackoutPanel.GetComponent<Image>();
+            if (img != null)
+            {
+                float a = 1f;
+                while (a > 0f)
+                {
+                    a -= Time.deltaTime * fadeInSpeed;
+                    img.color = new Color(0, 0, 0, a);
+                    yield return null;
+                }
+            }
+            blackoutPanel.SetActive(false);
         }
-        
-        if (staringVoiceline != null) 
-        { 
-            audioSource.clip = staringVoiceline; 
-            audioSource.Play(); 
+
+        if (staringVoiceline != null)
+        {
+            audioSource.clip = staringVoiceline;
+            audioSource.Play();
         }
-        
+
         yield return new WaitForSeconds(stareDuration);
-        
+
         if (enemyWalkAwayPoint != null) agent.SetDestination(enemyWalkAwayPoint.position);
         if (mainCanvas != null) mainCanvas.SetActive(true);
 
         currentState = isEnraged ? EnemyState.Enraged : EnemyState.Roaming;
         isSequenceRunning = false;
-        
+
         if (forestAmbience != null) forestAmbience.SetActive(true);
     }
 
