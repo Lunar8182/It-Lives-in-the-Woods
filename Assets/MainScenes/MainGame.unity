@@ -48642,7 +48642,7 @@ MonoBehaviour:
   m_IsGlobal: 1
   priority: 2
   blendDistance: 0
-  weight: 1
+  weight: 0
   sharedProfile: {fileID: 11400000, guid: f1eb05dd39cd44665918c350b8654960, type: 2}
 --- !u!4 &1374658123
 Transform:
@@ -69575,7 +69575,7 @@ PrefabInstance:
     - target: {fileID: 8937341871042838017, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
       propertyPath: itemIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 479c0c775dcf74a91ad6679b400ba88b, type: 3}
+      objectReference: {fileID: 21300000, guid: 9e3d541ada85542f883cd1cb55dcb507, type: 3}
     - target: {fileID: 8937341871042838017, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
       propertyPath: itemType
       value: 13
