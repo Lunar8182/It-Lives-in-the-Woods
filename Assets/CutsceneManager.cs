@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -11,13 +12,14 @@ public class CarCutsceneManager : MonoBehaviour
     public float lookAngleThreshold = 45f;
 
     [Header("New Music Sequence")]
-    public AudioClip introMusic;        // The 10-second country song
-    public AudioClip radioSilenceSound; // The static/silence sound
-    public AudioClip sinisterMusic;     // The scary music that starts when they spawn
+    public AudioClip introMusic;        
+    public AudioClip radioSilenceSound; 
+    public AudioClip sinisterMusic;     
 
     [Header("References")]
     public GameObject enemyDummy;
     public Animator enemyAnimator;
+    public CanvasGroup fadeGroup;
 
     [Header("Cameras")]
     public Camera drivingCamera;
@@ -30,7 +32,7 @@ public class CarCutsceneManager : MonoBehaviour
     public AudioSource enemyAudioSource;
 
     [Header("Enemy Audio SFX")]
-    public AudioClip voicelineSound;    // The enemy laughing
+    public AudioClip voicelineSound;    
     public AudioClip jumpscareSound;
 
     [Header("End Scene")]
@@ -44,7 +46,6 @@ public class CarCutsceneManager : MonoBehaviour
         if (enemyDummy != null) enemyDummy.SetActive(false);
         if (jumpscareCamera != null) jumpscareCamera.gameObject.SetActive(false);
 
-        // If you forget to attach an enemy audio source, it will make one for you automatically
         if (enemyAudioSource == null) enemyAudioSource = gameObject.AddComponent<AudioSource>();
 
         StartCoroutine(CarSpawnSequence());
@@ -60,7 +61,16 @@ public class CarCutsceneManager : MonoBehaviour
 
     private IEnumerator CarSpawnSequence()
     {
-        // --- PHASE 1: The Country Song (Plays from the Radio) ---
+        float timer = 0;
+        while (timer < 2f)
+        {
+            timer += Time.deltaTime;
+            fadeGroup.alpha = 1 - (timer / 2f);
+            yield return null;
+        }
+        fadeGroup.alpha = 0;
+
+
         if (radioAudioSource != null && introMusic != null)
         {
             radioAudioSource.clip = introMusic;
@@ -69,7 +79,6 @@ public class CarCutsceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(introMusicDuration);
 
-        // --- PHASE 2: Radio Silence (Plays from the Radio) ---
         if (radioAudioSource != null)
         {
             if (radioSilenceSound != null)
@@ -85,26 +94,19 @@ public class CarCutsceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(radioSilenceDuration);
 
-        // --- PHASE 3: The Reveal (Plays from the Enemy) ---
-
-        // FIX 1: Explicitly shut off the radio so the static stops looping!
         if (radioAudioSource != null) radioAudioSource.Stop();
 
-        // FIX 2: Wake up the Enemy Dummy FIRST, before asking it to make noise!
         if (enemyDummy != null) enemyDummy.SetActive(true);
         enemySpawned = true;
 
-        // NOW play the scary audio, since the enemy is actually awake to broadcast it
         if (enemyAudioSource != null)
         {
-            // Start the scary background music
             if (sinisterMusic != null)
             {
                 enemyAudioSource.clip = sinisterMusic;
                 enemyAudioSource.Play();
             }
 
-            // Play the laughing voice line over the top of the scary music
             if (voicelineSound != null)
             {
                 enemyAudioSource.PlayOneShot(voicelineSound);
@@ -128,10 +130,8 @@ public class CarCutsceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(stareTimeBeforeJumpscare);
 
-        // Stop the sinister background music right as the jumpscare happens
         if (enemyAudioSource != null) enemyAudioSource.Stop();
 
-        // Play the loud scream!
         if (jumpscareSound != null && enemyAudioSource != null)
         {
             enemyAudioSource.PlayOneShot(jumpscareSound);
@@ -144,7 +144,6 @@ public class CarCutsceneManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        // --- END SCENE ---
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         SceneManager.LoadScene(nextSceneName);
