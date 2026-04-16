@@ -48913,10 +48913,10 @@ MonoBehaviour:
   enragedWaitTime: 0.2
   enragedIntensityMult: 2
   enragedRangeMult: 1.5
-  detectionRange: 35
+  detectionRange: 45
   fieldOfView: 100
-  chaseSpeed: 10
-  roamSpeed: 5
+  chaseSpeed: 11
+  roamSpeed: 6
   patrolWaitTime: 3
   searchDuration: 15
   loseSightDelay: 2
@@ -49027,7 +49027,7 @@ AudioSource:
   Priority: 131
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 40
+  MaxDistance: 65
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -49116,17 +49116,17 @@ AudioSource:
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: -3
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 133
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 65
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
