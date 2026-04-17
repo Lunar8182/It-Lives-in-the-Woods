@@ -21,6 +21,10 @@ public class MoveRuller : MonoBehaviour
     public Transform selectionPointer;
     public Vector3 pointerOffset = new Vector3(0, 0.05f, 0);
 
+    [Header("External UI & Objects")]
+    public GameObject lanternObject;
+    public GameObject EButton;
+
     [HideInInspector]
     public List<GameObject> _rullers = new List<GameObject>();
     private int _scroolRuller = 0;
@@ -84,6 +88,9 @@ public class MoveRuller : MonoBehaviour
 
         if (isZoomedIn)
         {
+            if (lanternObject != null) lanternObject.SetActive(false);
+            if (EButton != null) EButton.SetActive(false);
+
             if (playerController != null) playerController.enabled = false;
 
             if (cameraObject != null)
@@ -100,6 +107,9 @@ public class MoveRuller : MonoBehaviour
         }
         else
         {
+            if (lanternObject != null) lanternObject.SetActive(true);
+            if (EButton != null) EButton.SetActive(true);
+
             if (playerController != null) playerController.enabled = true;
 
             if (cameraObject != null)
@@ -178,6 +188,20 @@ public class MoveRuller : MonoBehaviour
         {
             MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
             foreach (MonoBehaviour s in scripts) s.enabled = true;
+        }
+
+        if (lanternObject != null) lanternObject.SetActive(true);
+        if (EButton != null) EButton.SetActive(true);
+    }
+
+    void LateUpdate()
+    {
+        if (isZoomedIn && EButton != null)
+        {
+            if (EButton.activeSelf)
+            {
+                EButton.SetActive(false);
+            }
         }
     }
 }

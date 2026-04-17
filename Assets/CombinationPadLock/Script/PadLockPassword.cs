@@ -1,5 +1,4 @@
-﻿// Script by Marcelli Michele - Modified to trigger DoorInteract
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 public class PadLockPassword : MonoBehaviour
@@ -12,7 +11,7 @@ public class PadLockPassword : MonoBehaviour
 
     [Header("Unlock Events")]
     [Tooltip("Drag the door you want to open into this slot")]
-    public DoorInteract connectedDoor; // --- NEW ---
+    public DoorInteract connectedDoor; 
 
     public AudioClip unlockSound;
     public float destroyDelay = 0.5f;
@@ -30,13 +29,11 @@ public class PadLockPassword : MonoBehaviour
 
             Debug.Log("Password correct! Opening door and destroying lock.");
 
-            // 1. Play the sound
             if (unlockSound != null)
             {
                 AudioSource.PlayClipAtPoint(unlockSound, transform.position);
             }
 
-            // 2. Zoom out
             if (_moveRull != null)
             {
                 _moveRull.ToggleZoom();
@@ -47,13 +44,11 @@ public class PadLockPassword : MonoBehaviour
                 }
             }
 
-            // 3. --- NEW: FORCE THE DOOR OPEN ---
             if (connectedDoor != null)
             {
                 connectedDoor.ForceOpenFromPuzzle();
             }
 
-            // 4. Destroy the lock after a tiny delay
             Destroy(gameObject, destroyDelay);
         }
     }
