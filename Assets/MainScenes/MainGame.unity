@@ -687,7 +687,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: e93e509a22baa65468e7e6c931ebf02d, type: 3}
+  itemIcon: {fileID: 21300000, guid: 48d26a1f1252ec649949b831f0858d6b, type: 3}
   itemType: 1
   objectToActivate: {fileID: 539630126}
   keyPrompt: {fileID: 1863950022}
@@ -3812,7 +3812,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 6b6e3ac3fcc9642aaa953d1b9868af43, type: 3}
+  itemIcon: {fileID: 21300000, guid: 70b909a05b511354d902ad24b1c21d96, type: 3}
   itemType: 15
   objectToActivate: {fileID: 1655194581}
   keyPrompt: {fileID: 1863950022}
@@ -7417,6 +7417,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &232551547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232551549}
+  - component: {fileID: 232551548}
+  m_Layer: 0
+  m_Name: CompassManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &232551548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232551547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe9102b584c3664b8ec2eefe9afc915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerTransform: {fileID: 2004189156}
+  playerArrowUI: {fileID: 590785433}
+  orientationOffset: -90
+--- !u!4 &232551549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232551547}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 628.215, y: -0, z: -1079.7986}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235884061
 GameObject:
   m_ObjectHideFlags: 0
@@ -12111,7 +12158,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 80afb5e756301d843b5f2b0f7c5023fe, type: 3}
+  itemIcon: {fileID: 21300000, guid: f4e9149e17ace6e4186e41dd62859a20, type: 3}
   itemType: 5
   objectToActivate: {fileID: 761022324}
   keyPrompt: {fileID: 1863950022}
@@ -17833,6 +17880,81 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9480407949b1e0b43bef93cbdebe6c0e, type: 3}
+--- !u!1 &590785432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 590785433}
+  - component: {fileID: 590785435}
+  - component: {fileID: 590785434}
+  m_Layer: 5
+  m_Name: CompassArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &590785433
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590785432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1011053733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 62.6856, y: 62.6147}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &590785434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590785432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b0a488053b222a14ebd84ceaadff3b33, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &590785435
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590785432}
+  m_CullTransparentMesh: 1
 --- !u!1001 &596746702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21254,7 +21376,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: b446c2d0c1cad204ab1a17fedf8bd0a8, type: 3}
+  itemIcon: {fileID: 21300000, guid: 017ad476a80ab824abbfe827d5ff84f1, type: 3}
   itemType: 19
   objectToActivate: {fileID: 1808325076}
   keyPrompt: {fileID: 1863950022}
@@ -30562,6 +30684,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010575290}
+  m_CullTransparentMesh: 1
+--- !u!1 &1011053732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011053733}
+  - component: {fileID: 1011053735}
+  - component: {fileID: 1011053734}
+  m_Layer: 5
+  m_Name: CompassBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1011053733
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011053732}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 590785433}
+  m_Father: {fileID: 1114728480}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1169.4515, y: 224.89264}
+  m_SizeDelta: {x: 241.0972, y: 198.2148}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1011053734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011053732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9bf96c77fceddca4cbc33f78d5c861a8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1011053735
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011053732}
   m_CullTransparentMesh: 1
 --- !u!1 &1012546762
 GameObject:
@@ -41817,6 +42015,7 @@ RectTransform:
   - {fileID: 390387341}
   - {fileID: 40531330}
   - {fileID: 243405714}
+  - {fileID: 1011053733}
   m_Father: {fileID: 1019408394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -52071,7 +52270,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 7cc800bdd72dbe74d9e565a09508739c, type: 3}
+  itemIcon: {fileID: 21300000, guid: d4e5ae0e145b7df45a5e91f858e86040, type: 3}
   itemType: 18
   objectToActivate: {fileID: 1987834234}
   keyPrompt: {fileID: 1863950022}
@@ -56019,7 +56218,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 61c5adc247b704341ab8bbd67b6be69a, type: 3}
+  itemIcon: {fileID: 21300000, guid: 4382b25a905ec07408870b3ae7ed92a4, type: 3}
   itemType: 14
   objectToActivate: {fileID: 243215573}
   keyPrompt: {fileID: 1863950022}
@@ -66297,7 +66496,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 4bdd2d49d71428d4194449e33944decb, type: 3}
+  itemIcon: {fileID: 21300000, guid: b0356fb5c85b0a04881a37e33f4ea37b, type: 3}
   itemType: 3
   objectToActivate: {fileID: 823338484}
   keyPrompt: {fileID: 1863950022}
@@ -73018,3 +73217,4 @@ SceneRoots:
   - {fileID: 245713110}
   - {fileID: 1089655642}
   - {fileID: 162716612}
+  - {fileID: 232551549}
