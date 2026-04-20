@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
     public float enragedIntensityMult = 2f;
     public float enragedRangeMult = 1.5f;
 
-    [Header("Movement")]
+    [Header("Movement & Sight")]
     public float detectionRange = 50f;
     public float fieldOfView = 90f;
     public float chaseSpeed = 12f;
@@ -49,6 +49,10 @@ public class EnemyAI : MonoBehaviour
     public float searchDuration = 10f;
     public float loseSightDelay = 2f;
     public float searchRadius = 15f;
+
+    [Header("Hearing Settings")]
+    public float hearingRadius = 8f;
+    public float hearingMovementThreshold = 0.5f;
 
     [Header("Stun Settings")]
     public float stunDuration = 5f;
@@ -89,10 +93,12 @@ public class EnemyAI : MonoBehaviour
 
     private NavMeshAgent agent;
     private PlayerCam playerCamScript;
-    private CharacterController playerController;
 
     private Vector3 lastSeenPosition;
     private Vector3 initialJumpscareCamLocalPos;
+
+    private Vector3 playerLastPos;
+    private float playerSpeed;
 
     private float searchTimer;
     private float loseSightTimer;
@@ -119,7 +125,6 @@ public class EnemyAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         playerCamScript = player.GetComponentInChildren<PlayerCam>();
-        playerController = player.GetComponent<CharacterController>();
 
         if (enemyLight != null) enemyLight.enabled = true;
 
@@ -141,6 +146,8 @@ public class EnemyAI : MonoBehaviour
 
         if (blackoutPanel != null) blackoutPanel.SetActive(false);
 
+        playerLastPos = player.position;
+
         patrolTimer = patrolWaitTime;
         currentState = EnemyState.Roaming;
         previousState = currentState;
@@ -153,14 +160,33 @@ public class EnemyAI : MonoBehaviour
     {
         if (isGameOver) return;
 
+        if (Time.deltaTime > 0f)
+        {
+            playerSpeed = Vector3.Distance(player.position, playerLastPos) / Time.deltaTime;
+        }
+        playerLastPos = player.position;
+
         anim.SetFloat("Speed", agent.velocity.magnitude);
 
         bool playerVisible = CanSeePlayer();
+        float distToPlayer = Vector3.Distance(transform.position, player.position);
 
-        if (!isJumpscaring && !isSequenceRunning && currentState != EnemyState.Stunned && Vector3.Distance(transform.position, player.position) <= jumpscareDistance)
+        if (!isJumpscaring && !isSequenceRunning && currentState != EnemyState.Stunned)
         {
-            StartJumpscare();
-            return;
+            if (distToPlayer <= jumpscareDistance)
+            {
+                StartJumpscare();
+                return;
+            }
+
+            if (distToPlayer <= hearingRadius)
+            {
+                if (playerSpeed >= hearingMovementThreshold)
+                {
+                    StartJumpscare();
+                    return;
+                }
+            }
         }
 
         if (currentState != previousState && currentState != EnemyState.Jumpscare)
@@ -186,7 +212,6 @@ public class EnemyAI : MonoBehaviour
         {
             case EnemyState.Roaming:
                 if (playerVisible) { StartChasing(); return; }
-
                 if (enemyLight != null)
                 {
                     enemyLight.color = roamColor;
@@ -199,7 +224,6 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyState.Enraged:
                 if (playerVisible) { StartChasing(); return; }
-
                 if (enemyLight != null)
                 {
                     enemyLight.color = enragedColor;
@@ -248,7 +272,6 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyState.Searching:
                 if (playerVisible) { StartChasing(); return; }
-
                 if (enemyLight != null) enemyLight.color = isEnraged ? enragedColor : searchColor;
                 anim.SetInteger(animStateHash, 2);
                 Search();
@@ -264,7 +287,6 @@ public class EnemyAI : MonoBehaviour
                     agent.isStopped = false;
                     if (afterStunSound != null) audioSource.PlayOneShot(afterStunSound);
 
-                    // Fix: Skip searching if waking up from a stun while enraged
                     if (isEnraged)
                     {
                         currentState = EnemyState.Enraged;
@@ -303,7 +325,6 @@ public class EnemyAI : MonoBehaviour
 
             case EnemyState.Staring:
                 if (enemyLight != null) enemyLight.color = isEnraged ? enragedColor : searchColor;
-
                 agent.isStopped = true;
                 agent.velocity = Vector3.zero;
                 anim.SetInteger(animStateHash, 6);
@@ -403,7 +424,6 @@ public class EnemyAI : MonoBehaviour
     {
         agent.isStopped = false;
         agent.speed = isEnraged ? enragedSpeed : chaseSpeed;
-
         if (Vector3.Distance(agent.destination, player.position) > 1f)
             agent.SetDestination(player.position);
     }
@@ -462,7 +482,6 @@ public class EnemyAI : MonoBehaviour
         {
             if (i == lastPatrolIndex) continue;
             float distanceToPlayer = Vector3.Distance(patrolPoints[i].position, player.position);
-
             float score = (isEnraged) ? -distanceToPlayer : (Random.value * 20f - distanceToPlayer);
             if (score > bestScore) { bestScore = score; chosenIndex = i; }
         }
@@ -490,8 +509,7 @@ public class EnemyAI : MonoBehaviour
         if (isSequenceRunning || currentState == EnemyState.Staring || currentState == EnemyState.Jumpscare || audioSource == null)
             return;
 
-        if (audioSource.isPlaying)
-            return;
+        if (audioSource.isPlaying) return;
 
         AudioClip[] clipsToPlay = (currentState == EnemyState.Roaming) ? roamSounds :
                                   (currentState == EnemyState.Chasing || currentState == EnemyState.Enraged) ? chaseSounds :
@@ -529,8 +547,17 @@ public class EnemyAI : MonoBehaviour
 
         if (jumpscareSound != null) audioSource.PlayOneShot(jumpscareSound);
         if (playerCamScript != null) playerCamScript.enabled = false;
-        if (playerController != null) playerController.enabled = false;
         if (mainCanvas != null) mainCanvas.SetActive(false);
+
+        Rigidbody playerRb = player.GetComponent<Rigidbody>();
+        if (playerRb != null)
+        {
+            playerRb.velocity = Vector3.zero;
+            playerRb.isKinematic = true;
+        }
+
+        MonoBehaviour moveScript = player.GetComponent("PlayerMovement") as MonoBehaviour;
+        if (moveScript != null) moveScript.enabled = false;
 
         playerCamera.gameObject.SetActive(false);
         jumpscareCamera.gameObject.SetActive(true);
@@ -561,9 +588,8 @@ public class EnemyAI : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
-        if (playerController != null) playerController.enabled = false;
+        // Teleport Player
         if (enemyPostCaptureSpawn != null) agent.Warp(enemyPostCaptureSpawn.position);
-
         if (playerPrisonSpawn != null)
         {
             player.position = playerPrisonSpawn.position;
@@ -573,7 +599,11 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForFixedUpdate();
         yield return new WaitForEndOfFrame();
 
-        if (playerController != null) playerController.enabled = true;
+        Rigidbody playerRb = player.GetComponent<Rigidbody>();
+        MonoBehaviour moveScript = player.GetComponent("PlayerMovement") as MonoBehaviour;
+
+        if (playerRb != null) playerRb.isKinematic = false;
+        if (moveScript != null) moveScript.enabled = true;
 
         jumpscareCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);

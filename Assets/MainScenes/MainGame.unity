@@ -50434,6 +50434,8 @@ MonoBehaviour:
   searchDuration: 10
   loseSightDelay: 2
   searchRadius: 15
+  hearingRadius: 5
+  hearingMovementThreshold: 0.5
   stunDuration: 5
   jumpscareDistance: 3
   jumpscareDuration: 2
