@@ -24,7 +24,7 @@ TagManager:
   - 
   - PlayerBody
   - Interactable
-  - 
+  - ignoreNavmesh
   - 
   - 
   - 

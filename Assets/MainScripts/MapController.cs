@@ -6,6 +6,7 @@ public class MapController : MonoBehaviour
     [Header("Map Settings")]
     public RectTransform mapPanel;
     public float slideDuration = 0.4f;
+    public GameObject compass;
 
     [Header("Positions")]
     // (0,0) is the center of the screen if anchored correctly
@@ -37,6 +38,11 @@ public class MapController : MonoBehaviour
     void ToggleMap()
     {
         isMapOpen = !isMapOpen;
+
+        if (compass != null)
+        {
+            compass.SetActive(isMapOpen);
+        }
 
         // If a slide is already happening, stop it so we can reverse directions smoothly
         if (slideCoroutine != null)
