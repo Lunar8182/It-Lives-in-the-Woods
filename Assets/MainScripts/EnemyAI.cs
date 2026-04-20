@@ -552,7 +552,7 @@ public class EnemyAI : MonoBehaviour
         Rigidbody playerRb = player.GetComponent<Rigidbody>();
         if (playerRb != null)
         {
-            playerRb.velocity = Vector3.zero;
+            playerRb.linearVelocity = Vector3.zero;
             playerRb.isKinematic = true;
         }
 
