@@ -43922,9 +43922,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1819597218}
-    - targetCorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1050212910998776, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
@@ -50268,10 +50265,10 @@ MonoBehaviour:
   enragedRangeMult: 1.5
   detectionRange: 45
   fieldOfView: 100
-  chaseSpeed: 11
+  chaseSpeed: 12
   roamSpeed: 6
   patrolWaitTime: 3
-  searchDuration: 15
+  searchDuration: 10
   loseSightDelay: 2
   searchRadius: 15
   stunDuration: 5
@@ -50357,7 +50354,7 @@ MonoBehaviour:
   roamStepInterval: 0.6
   searchStepInterval: 0.35
   chaseStepInterval: 0.25
-  disorientPlayer: 1
+  enragedStepInterval: 0.1
 --- !u!82 &1361669902
 AudioSource:
   m_ObjectHideFlags: 0
@@ -73218,3 +73215,4 @@ SceneRoots:
   - {fileID: 1089655642}
   - {fileID: 162716612}
   - {fileID: 232551549}
+  - {fileID: 5776819714335889608}
