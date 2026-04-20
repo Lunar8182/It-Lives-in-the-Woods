@@ -3505,12 +3505,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   audioSource: {fileID: 649148681}
-  footstepSounds:
-  - {fileID: 8300000, guid: 6c80331e87dc946feb0c92bcadbeca59, type: 3}
-  - {fileID: 8300000, guid: 1e590ded257c74c7380f3f081662416b, type: 3}
-  - {fileID: 8300000, guid: 22290e94e7f484f7d927cfea77cc8a2a, type: 3}
-  - {fileID: 8300000, guid: 25679d9c86f6e4a199eb7cabf9da28ec, type: 3}
-  - {fileID: 8300000, guid: 59b50e3761eae45a6a329db8394a35c3, type: 3}
+  defaultSounds: []
+  grassSounds: []
+  woodSounds: []
+  metalSounds: []
   walkStepInterval: 0.5
   sprintStepInterval: 0.3
 --- !u!114 &649148679
@@ -4148,7 +4146,7 @@ AudioSource:
   m_GameObject: {fileID: 661625450}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ebabe150873944494875da50797ee11a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -6696,6 +6694,16 @@ MonoBehaviour:
   letter1ButtonText: {fileID: 956779409}
   letter2Button: {fileID: 15756203}
   letter2ButtonText: {fileID: 1246145652}
+  letter3Button: {fileID: 0}
+  letter3ButtonText: {fileID: 0}
+  letter4Button: {fileID: 0}
+  letter4ButtonText: {fileID: 0}
+  letter5Button: {fileID: 0}
+  letter5ButtonText: {fileID: 0}
+  letter6Button: {fileID: 0}
+  letter6ButtonText: {fileID: 0}
+  letter7Button: {fileID: 0}
+  letter7ButtonText: {fileID: 0}
   playerController: {fileID: 649148669}
   cameraObject: {fileID: 2004189155}
 --- !u!1 &1026523750
@@ -8818,7 +8826,7 @@ AudioSource:
   m_GameObject: {fileID: 1308028098}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: ebabe150873944494875da50797ee11a, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
