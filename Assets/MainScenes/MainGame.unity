@@ -2960,7 +2960,7 @@ MonoBehaviour:
   fadeDuration: 5
   ritualMusicSource: {fileID: 0}
   bloodRitualClip: {fileID: 0}
-  itemIcon: {fileID: 21300000, guid: 3bf1166bd767d468a80928e2325d0a96, type: 3}
+  itemIcon: {fileID: 21300000, guid: edbef447bad55874b964ec245f0e3951, type: 3}
   itemType: 4
   objectToActivate: {fileID: 1781736604}
   keyPrompt: {fileID: 1863950022}
@@ -73918,7 +73918,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
 --- !u!4 &5776819714335889609 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7772290716434073489, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7555433567335420027, guid: 8be225238228142bbacf008e73c92fe0, type: 3}
   m_PrefabInstance: {fileID: 5776819714335889608}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
