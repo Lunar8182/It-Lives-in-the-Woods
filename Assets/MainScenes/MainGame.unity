@@ -43069,13 +43069,13 @@ PrefabInstance:
       objectReference: {fileID: 451330171}
     - target: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
       propertyPath: letterText
-      value: "A rattle left on porcelain white,\nA key in a trailer, hidden from
-        sight.\nA doll in the garage, 'midst oil and gear,\nA blanket in a tent,
-        where the woods are near.\n\nBring these four to the altar\u2019s flame,\nTo
-        call the spirit and speak its name.\nFrom the ritual\u2019s ash, a Voodoo
-        shall rise,\nWith button-sewn lips and hollowed-out eyes.\n\nTake the stitched
-        heart to the graveyard stones,\nWhere the earth is heavy with ancient bones.\nBurn
-        the doll where the shadows lie,\nTo break the curse and say goodbye."
+      value: "A rattle left on porcelain white,\nA key in a tower, hidden from sight,\nA
+        doll in the garage, 'midst oil and gear,\nA blanket frozen in time, waiting
+        to shine.\n\nBring these four to the altar\u2019s flame,\nTo call the spirit
+        and speak its name.\nFrom the ritual\u2019s ash, a Voodoo shall rise,\nWith
+        button-sewn lips and hollowed-out eyes.\n\nTake the stitched heart to the
+        graveyard stones,\nWhere the earth is heavy with ancient bones.\nBurn the
+        doll where the shadows lie,\nTo break the curse and say goodbye."
       objectReference: {fileID: 0}
     - target: {fileID: -8436175889512777566, guid: 926cf4bb0e348bf4d953e12a313b97c1, type: 3}
       propertyPath: pressESCMsg
