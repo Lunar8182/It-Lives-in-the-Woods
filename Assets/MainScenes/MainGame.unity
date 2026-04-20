@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 10031336}
   m_Layer: 10
   m_Name: TowerRamp (3)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 48907513}
   m_Layer: 0
   m_Name: Hitbox (1)
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1827,7 +1827,7 @@ GameObject:
   - component: {fileID: 55626901}
   m_Layer: 10
   m_Name: TowerRamp (8)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4468,7 +4468,7 @@ GameObject:
   - component: {fileID: 144789699}
   m_Layer: 10
   m_Name: TowerRamp (6)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4492,8 +4492,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.84882015, z: 1}
-  m_Center: {x: -2.6352603e-10, y: -0.07559009, z: 0}
+  m_Size: {x: 1, y: 1.2909019, z: 1}
+  m_Center: {x: 4.540415e-15, y: 0.145451, z: 3.8754294e-13}
 --- !u!23 &144789700
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19497,12 +19497,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   audioSource: {fileID: 649148681}
-  footstepSounds:
+  defaultSounds: []
+  grassSounds:
   - {fileID: 8300000, guid: 6c80331e87dc946feb0c92bcadbeca59, type: 3}
   - {fileID: 8300000, guid: 1e590ded257c74c7380f3f081662416b, type: 3}
   - {fileID: 8300000, guid: 22290e94e7f484f7d927cfea77cc8a2a, type: 3}
   - {fileID: 8300000, guid: 25679d9c86f6e4a199eb7cabf9da28ec, type: 3}
   - {fileID: 8300000, guid: 59b50e3761eae45a6a329db8394a35c3, type: 3}
+  woodSounds:
+  - {fileID: 8300000, guid: 33e982ad6d0774374a73740fe490ff48, type: 3}
+  - {fileID: 8300000, guid: 1a880e931bfc44ce7856c380ecb93baa, type: 3}
+  - {fileID: 8300000, guid: 3d3684855ec5f4233a573d2162b04e89, type: 3}
+  - {fileID: 8300000, guid: cca89c9e3f05b47338560d20d0a236ab, type: 3}
+  metalSounds:
+  - {fileID: 8300000, guid: 13f35c2ce654c4e8f94a18efd8e4aea1, type: 3}
+  - {fileID: 8300000, guid: 5942ff3421eb243d3944b8832cf6564d, type: 3}
+  - {fileID: 8300000, guid: 75adf56963b1f426a8812d2974aa9a94, type: 3}
   walkStepInterval: 0.5
   sprintStepInterval: 0.3
 --- !u!114 &649148679
@@ -19713,6 +19723,118 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &654973219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 654973220}
+  - component: {fileID: 654973223}
+  - component: {fileID: 654973222}
+  - component: {fileID: 654973221}
+  m_Layer: 0
+  m_Name: HitboxFloor
+  m_TagString: Wood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &654973220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654973219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.32, y: 0.06, z: -0.02}
+  m_LocalScale: {x: 10, y: 0.2, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1176237307}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &654973221
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654973219}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.92683035, y: 1.375958, z: 1}
+  m_Center: {x: 0.036584932, y: 0.18798079, z: 0.0000000025733962}
+--- !u!23 &654973222
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654973219}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &654973223
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654973219}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &657074541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29914,7 +30036,7 @@ GameObject:
   - component: {fileID: 978012967}
   m_Layer: 10
   m_Name: TowerRamp (1)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39466,7 +39588,7 @@ GameObject:
   - component: {fileID: 1051045876}
   m_Layer: 0
   m_Name: Hitbox (2)
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39775,7 +39897,7 @@ GameObject:
   - component: {fileID: 1059087960}
   m_Layer: 0
   m_Name: Collider (3)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41185,7 +41307,7 @@ GameObject:
   - component: {fileID: 1097243160}
   m_Layer: 10
   m_Name: TowerRamp (5)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41209,8 +41331,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.84882015, z: 1}
-  m_Center: {x: -2.6352603e-10, y: -0.07559009, z: 0}
+  m_Size: {x: 1, y: 1.1274087, z: 1}
+  m_Center: {x: 3.094508e-14, y: 0.06370422, z: 2.625407e-13}
 --- !u!23 &1097243161
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -43837,6 +43959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabin
       objectReference: {fileID: 0}
+    - target: {fileID: 1050212910998776, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.6251647
@@ -43940,6 +44066,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5776819714335889609}
+    - targetCorrespondingSourceObject: {fileID: 4382890705706664, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 654973220}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1050212910998776, guid: c472a7c3f85525f4c98177cf92fa98de, type: 3}
       insertIndex: -1
@@ -48947,7 +49076,7 @@ GameObject:
   - component: {fileID: 1316113485}
   m_Layer: 10
   m_Name: TowerRamp (9)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48971,8 +49100,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.84882015, z: 1}
-  m_Center: {x: -2.6352603e-10, y: -0.07559009, z: 0}
+  m_Size: {x: 1, y: 1.1721803, z: 1}
+  m_Center: {x: -9.148744e-14, y: 0.08608998, z: 9.514584e-13}
 --- !u!23 &1316113486
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52624,7 +52753,7 @@ GameObject:
   - component: {fileID: 1411152756}
   m_Layer: 0
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54853,7 +54982,7 @@ GameObject:
   - component: {fileID: 1489799003}
   m_Layer: 10
   m_Name: TowerRamp
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55244,7 +55373,7 @@ GameObject:
   - component: {fileID: 1501971810}
   m_Layer: 10
   m_Name: TowerRamp (4)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55268,8 +55397,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.84882015, z: 1}
-  m_Center: {x: -2.6352603e-10, y: -0.07559009, z: 0}
+  m_Size: {x: 1.1427883, y: 1.1734886, z: 1}
+  m_Center: {x: 0.071394086, y: 0.08674461, z: -2.9236575e-11}
 --- !u!23 &1501971811
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58502,7 +58631,7 @@ GameObject:
   - component: {fileID: 1620227605}
   m_Layer: 10
   m_Name: TowerRamp (2)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58668,6 +58797,10 @@ PrefabInstance:
     - target: {fileID: 100014, guid: 824b045cfb5412444a2d59824cb98223, type: 3}
       propertyPath: m_Name
       value: Trailer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 824b045cfb5412444a2d59824cb98223, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 824b045cfb5412444a2d59824cb98223, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60327,7 +60460,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b937543fc3d5b483b96cffcf2d9bc79d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::ApplyPhysicsMaterial
   frictionlessMaterial: {fileID: 13400000, guid: af606dcc194574cfda00c8701123c08d, type: 2}
 --- !u!1001 &1700576570
 PrefabInstance:
@@ -64275,6 +64408,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2295894438927271483, guid: 1086c82f42afbce42aeb0c51f40c9293, type: 3}
+      propertyPath: m_TagString
+      value: Metal
+      objectReference: {fileID: 0}
     - target: {fileID: 4774500703297726868, guid: 1086c82f42afbce42aeb0c51f40c9293, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -65273,7 +65410,7 @@ GameObject:
   - component: {fileID: 1867117216}
   m_Layer: 10
   m_Name: TowerRamp (7)
-  m_TagString: Untagged
+  m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65886,7 +66023,7 @@ GameObject:
   - component: {fileID: 1905078070}
   m_Layer: 10
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -72308,6 +72445,10 @@ PrefabInstance:
     - target: {fileID: 2594713235057194443, guid: 0b26cd811d173394ea7ee69051b77c63, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 2594713235057194443, guid: 0b26cd811d173394ea7ee69051b77c63, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 5586883784297662417, guid: 0b26cd811d173394ea7ee69051b77c63, type: 3}
       propertyPath: m_Layer

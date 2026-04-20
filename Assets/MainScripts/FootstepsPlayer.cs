@@ -3,21 +3,26 @@ using UnityEngine;
 public class FootstepsPlayer : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip[] footstepSounds; 
-    
+
+    [Header("Footstep Sounds by Material")]
+    public AudioClip[] defaultSounds;
+    public AudioClip[] grassSounds;
+    public AudioClip[] woodSounds;
+    public AudioClip[] metalSounds;
+
     [Header("Pacing")]
-    public float walkStepInterval = 0.5f;   
-    public float sprintStepInterval = 0.3f; 
-    
-    private float currentStepInterval;     
+    public float walkStepInterval = 0.5f;
+    public float sprintStepInterval = 0.3f;
+
+    private float currentStepInterval;
     private float stepTimer;
-    
+
     private Vector3 lastPosition;
 
     void Start()
     {
         lastPosition = transform.position;
-        currentStepInterval = walkStepInterval; 
+        currentStepInterval = walkStepInterval;
     }
 
     void Update()
@@ -36,17 +41,17 @@ public class FootstepsPlayer : MonoBehaviour
 
         if (currentSpeed > 0.1f)
         {
-            stepTimer += Time.deltaTime; 
+            stepTimer += Time.deltaTime;
 
             if (stepTimer >= currentStepInterval)
             {
                 PlayStep();
-                stepTimer = 0f; 
+                stepTimer = 0f;
             }
         }
         else
         {
-            stepTimer = 0f; 
+            stepTimer = 0f;
         }
 
         lastPosition = transform.position;
@@ -54,13 +59,31 @@ public class FootstepsPlayer : MonoBehaviour
 
     void PlayStep()
     {
-        if (footstepSounds.Length > 0)
+        AudioClip[] arrayToPlay = defaultSounds;
+
+
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
         {
-            int randomIndex = Random.Range(0, footstepSounds.Length);
-            
+            switch (hit.collider.tag)
+            {
+                case "Wood":
+                    arrayToPlay = woodSounds;
+                    break;
+                case "Metal":
+                    arrayToPlay = metalSounds;
+                    break;
+                case "Grass":
+                    arrayToPlay = grassSounds;
+                    break;
+            }
+        }
+
+        if (arrayToPlay.Length > 0)
+        {
+            int randomIndex = Random.Range(0, arrayToPlay.Length);
+
             audioSource.pitch = Random.Range(0.9f, 1.1f);
-            
-            audioSource.PlayOneShot(footstepSounds[randomIndex]);
+            audioSource.PlayOneShot(arrayToPlay[randomIndex]);
         }
     }
 }

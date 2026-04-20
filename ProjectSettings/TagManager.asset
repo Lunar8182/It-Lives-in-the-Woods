@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Lamps
   - Enemy
+  - Grass
+  - Metal
+  - Wood
   layers:
   - Default
   - TransparentFX
