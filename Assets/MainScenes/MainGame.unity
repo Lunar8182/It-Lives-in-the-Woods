@@ -4372,8 +4372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f2a3f25eee04e7fac49403f1aef96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  voiceLine: {fileID: 0}
-  raycastDistance: 1000
 --- !u!135 &139414099
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -50086,8 +50084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2f2a3f25eee04e7fac49403f1aef96a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  voiceLine: {fileID: 1301236132}
-  raycastDistance: 1000
 --- !u!135 &1301236129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52202,9 +52198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e75dbf10cada45b58b75ceb365cc70c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  scarySound: {fileID: 8300000, guid: babdaac8e8bc8452ca9f2d823cd6ed32, type: 3}
-  voiceLine: {fileID: 8300000, guid: 74a403dce192c47b39a0151e9711238a, type: 3}
-  playerAudio: {fileID: 649148668}
 --- !u!65 &1361669900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72531,8 +72524,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
