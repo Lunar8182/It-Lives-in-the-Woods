@@ -40,7 +40,6 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt("FPSLimit", fpsIndex);
         PlayerPrefs.Save();
 
-        // Apply it immediately
         ApplyFPS(fpsIndex);
     }
 
