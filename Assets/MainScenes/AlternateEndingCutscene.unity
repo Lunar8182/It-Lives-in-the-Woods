@@ -1320,7 +1320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &295053404
 Transform:
   m_ObjectHideFlags: 0
@@ -4104,7 +4104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43d4c2a38ad246feacc1d19eb40d69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  introMusicDuration: 30
+  introMusicDuration: 25
   radioSilenceDuration: 5
   stareTimeBeforeJumpscare: 3
   lookAngleThreshold: 45
@@ -6658,6 +6658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapController
   mapPanel: {fileID: 243405714}
   slideDuration: 0.4
+  compass: {fileID: 0}
   onScreenPosition: {x: 0, y: 0}
   offScreenPosition: {x: 0, y: -1000}
 --- !u!114 &1019408397
