@@ -12,9 +12,9 @@ public class CarCutsceneManager : MonoBehaviour
     public float lookAngleThreshold = 45f;
 
     [Header("New Music Sequence")]
-    public AudioClip introMusic;        
-    public AudioClip radioSilenceSound; 
-    public AudioClip sinisterMusic;     
+    public AudioClip introMusic;
+    public AudioClip radioSilenceSound;
+    public AudioClip sinisterMusic;
 
     [Header("References")]
     public GameObject enemyDummy;
@@ -26,13 +26,11 @@ public class CarCutsceneManager : MonoBehaviour
     public Camera jumpscareCamera;
 
     [Header("Audio Sources (Drag these in!)")]
-    [Tooltip("The AudioSource physically attached to your Radio object")]
     public AudioSource radioAudioSource;
-    [Tooltip("The AudioSource attached to this Cutscene Manager or the Enemy")]
     public AudioSource enemyAudioSource;
 
     [Header("Enemy Audio SFX")]
-    public AudioClip voicelineSound;    
+    public AudioClip voicelineSound;
     public AudioClip jumpscareSound;
 
     [Header("End Scene")]

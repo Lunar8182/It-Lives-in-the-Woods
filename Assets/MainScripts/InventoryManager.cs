@@ -6,10 +6,8 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager instance;
 
     [Header("UI Slots")]
-    // Make sure these are the child "Icon" images, not the backgrounds!
     public Image[] inventorySlots;
 
-    // NOTE: Removed 'isFull' array because checking for an empty sprite is much safer!
 
     [Header("Hand Items")]
     public GameObject[] handItems;
@@ -42,7 +40,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (inventorySlots[i].sprite == null)
             {
-                inventorySlots[i].color = new Color(1, 1, 1, 0f); // 0f = perfectly invisible
+                inventorySlots[i].color = new Color(1, 1, 1, 0f);
             }
         }
 
@@ -73,23 +71,21 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            // Only adjust visibility/colors if there is actually an item in this slot!
             if (inventorySlots[i].sprite != null)
             {
                 if (i == selectedSlot)
                 {
                     inventorySlots[i].rectTransform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                    inventorySlots[i].color = new Color(1, 1, 1, 1f); // 1f = fully visible
+                    inventorySlots[i].color = new Color(1, 1, 1, 1f);
                 }
                 else
                 {
                     inventorySlots[i].rectTransform.localScale = new Vector3(1f, 1f, 1f);
-                    inventorySlots[i].color = new Color(1, 1, 1, 0.5f); // 0.5f = slightly faded out
+                    inventorySlots[i].color = new Color(1, 1, 1, 0.5f);
                 }
             }
             else
             {
-                // Keep empty slots invisible so they don't look like white boxes
                 inventorySlots[i].color = new Color(1, 1, 1, 0f);
             }
 
@@ -146,7 +142,6 @@ public class InventoryManager : MonoBehaviour
         {
             inventorySlots[selectedSlot].sprite = null;
 
-            // Make the slot completely invisible again now that it's empty
             inventorySlots[selectedSlot].color = new Color(1, 1, 1, 0f);
 
             // Clear the hand item

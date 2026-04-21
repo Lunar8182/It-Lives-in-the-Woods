@@ -93,13 +93,12 @@ public class LockpickQTE : MonoBehaviour
 
         if (indicatorCollider.bounds.Intersects(targetCollider.bounds))
         {
-            Debug.Log("<color=green>HIT! The colliders are touching!</color>");
 
             if (audioSource != null && successSound != null)
             {
                 audioSource.PlayOneShot(successSound);
             }
-            
+
             currentSuccesses++;
 
             if (currentSuccesses >= successesNeeded)
@@ -115,7 +114,6 @@ public class LockpickQTE : MonoBehaviour
         }
         else
         {
-            Debug.Log("<color=red>MISS! The colliders are not touching.</color>");
             Fail();
         }
     }
