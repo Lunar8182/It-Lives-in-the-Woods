@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 public class LetterInteract : MonoBehaviour
 {
     [Header("Journal Settings")]
-    [Tooltip("Type 1 for the first letter, 2 for the second letter.")]
     public int journalLetterID = 1;
 
     [Header("UI Panels")]

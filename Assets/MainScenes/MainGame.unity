@@ -14,13 +14,13 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.012
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.9811321, g: 0.9302243, b: 0.9302243, a: 1}
+  m_AmbientSkyColor: {r: 0.05660379, g: 0.055802792, b: 0.055802792, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -4269,6 +4269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   voiceLine: {fileID: 0}
   raycastDistance: 1000
+  triggered: 0
+  cam: {fileID: 0}
 --- !u!135 &139414099
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -49523,6 +49525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   voiceLine: {fileID: 1301236132}
   raycastDistance: 1000
+  triggered: 0
+  cam: {fileID: 0}
 --- !u!135 &1301236129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -51679,6 +51683,7 @@ MonoBehaviour:
   scarySound: {fileID: 8300000, guid: babdaac8e8bc8452ca9f2d823cd6ed32, type: 3}
   voiceLine: {fileID: 8300000, guid: 74a403dce192c47b39a0151e9711238a, type: 3}
   playerAudio: {fileID: 649148668}
+  triggered: 0
 --- !u!65 &1361669900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71925,6 +71930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   voiceLine: {fileID: 0}
   raycastDistance: 1000
+  triggered: 0
+  cam: {fileID: 0}
 --- !u!135 &2051608596
 SphereCollider:
   m_ObjectHideFlags: 0
