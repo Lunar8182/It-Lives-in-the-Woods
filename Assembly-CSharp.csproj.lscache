@@ -2,12 +2,10 @@ version=1
 
 # This file caches language service data to improve the performance of C# Dev Kit.
 # It is not intended for manual editing. It can safely be deleted and will be
-# regenerated automatically.
+# regenerated automatically. For more information, see https://aka.ms/lscache
 #
-# To exclude from version control, add *.lscache to your .gitignore file.
-#
-# To disable caching, add the following to your VS Code settings:
-#   "dotnet.projectsystem.enableLanguageServiceCache": false
+# To control where cache files are stored, use the following VS Code setting:
+#   "dotnet.projectsystem.cacheInProjectFolder": true
 
 [project]
 language=C#
@@ -94,7 +92,6 @@ Assets/MainScripts/
  DoorOpen.cs
  EndingCutsceneManager.cs
  EnemyAI.cs
- EnemySeenVoice.cs
  FadeIn.cs
  FirstBodyVoice.cs
  FootstepsEnemy.cs
@@ -130,8 +127,8 @@ Assets/MainScripts/
  SettingsManager.cs
  SmokeSound.cs
  TelescopeTarget.cs
- TelescopeZoom.cs
  TitleScreen.cs
+ VolumeManager.cs
 Assets/UnityMisc/TextMesh Pro/Examples & Extras/Scripts/
  Benchmark01.cs
  Benchmark01_UGUI.cs
@@ -167,7 +164,6 @@ Assets/UnityMisc/TextMesh Pro/Examples & Extras/Scripts/
  VertexShakeB.cs
  VertexZoom.cs
  WarpTextExample.cs
-Assets/VolumeManager.cs
 Temp/obj/Assembly-CSharp/.NETStandard,Version=v2.1.AssemblyAttributes.cs
 
 [metadataReferences]

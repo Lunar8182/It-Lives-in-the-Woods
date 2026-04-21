@@ -9,16 +9,14 @@ public class CompassController : MonoBehaviour
     public RectTransform playerArrowUI;
 
     [Header("Settings")]
-    public float orientationOffset = 90f; // Add 90 degrees if your image points right by default
+    public float orientationOffset = 90f;
 
     void Update()
     {
-        // Safety check to prevent errors if something isn't assigned
         if (playerTransform == null || playerArrowUI == null) return;
 
         float playerHeading = playerTransform.eulerAngles.y;
 
-        // Apply the rotation with the offset
         playerArrowUI.localEulerAngles = new Vector3(0, 0, -playerHeading + orientationOffset);
     }
 }
