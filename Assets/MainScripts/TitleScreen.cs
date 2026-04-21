@@ -4,7 +4,9 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour
 {
     public string gameSceneName = "MainGame";
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject titleScreen;
+    public GameObject settingsScreen;
+
     public void StartGame()
     {
         Time.timeScale = 1f;
@@ -13,7 +15,18 @@ public class TitleScreen : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
     }
 
-    // Update is called once per frame
+    public void OpenSettings()
+    {
+        if (titleScreen != null) titleScreen.SetActive(false);
+        if (settingsScreen != null) settingsScreen.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        if (titleScreen != null) titleScreen.SetActive(true);
+        if (settingsScreen != null) settingsScreen.SetActive(false);
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit Game");

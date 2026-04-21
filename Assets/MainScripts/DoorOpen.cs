@@ -146,7 +146,7 @@ public class DoorInteract : MonoBehaviour
     public void ToggleDoor()
     {
         isOpen = !isOpen;
-        if (doorType == DoorType.Normal && normalDoorSound != null)
+        if ((doorType == DoorType.Normal || doorType == DoorType.ComboLock) && normalDoorSound != null)
             audioSource.PlayOneShot(normalDoorSound);
         else if ((doorType == DoorType.Prison || doorType == DoorType.Lockpick) && prisonDoorSound != null)
             audioSource.PlayOneShot(prisonDoorSound);
