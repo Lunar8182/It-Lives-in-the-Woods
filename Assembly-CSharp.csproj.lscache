@@ -99,6 +99,7 @@ Assets/MainScripts/
  Friction.cs
  GameOverScreenManager.cs
  GlassShatter.cs
+ Headphones.cs
  IntroCutsceneManager.cs
  InventoryManager.cs
  JournalManager.cs
@@ -126,7 +127,6 @@ Assets/MainScripts/
  RoadLooper.cs
  SettingsManager.cs
  SmokeSound.cs
- TelescopeTarget.cs
  TitleScreen.cs
  VolumeManager.cs
 Assets/UnityMisc/TextMesh Pro/Examples & Extras/Scripts/
