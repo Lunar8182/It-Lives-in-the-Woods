@@ -11,7 +11,7 @@ public class PadLockPassword : MonoBehaviour
 
     [Header("Unlock Events")]
     [Tooltip("Drag the door you want to open into this slot")]
-    public DoorInteract connectedDoor; 
+    public DoorInteract connectedDoor;
 
     public AudioClip unlockSound;
     public float destroyDelay = 0.5f;
@@ -36,7 +36,10 @@ public class PadLockPassword : MonoBehaviour
 
             if (_moveRull != null)
             {
-                _moveRull.ToggleZoom();
+                if (_moveRull != null && _moveRull.IsZoomedIn())
+                {
+                    _moveRull.ForceExitZoom();
+                }
 
                 if (_moveRull.selectionPointer != null)
                 {

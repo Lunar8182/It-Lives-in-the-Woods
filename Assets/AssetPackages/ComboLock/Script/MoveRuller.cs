@@ -76,7 +76,7 @@ public class MoveRuller : MonoBehaviour
         float targetFOV = isZoomedIn ? zoomFOV : normalFOV;
         mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, targetFOV, Time.deltaTime * zoomSpeed);
 
-        if (isZoomedIn && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)))
+        if (isZoomedIn && Input.GetKeyDown(KeyCode.Escape))
         {
             ToggleZoom();
         }
@@ -203,5 +203,33 @@ public class MoveRuller : MonoBehaviour
                 EButton.SetActive(false);
             }
         }
+    }
+
+    public void ForceExitZoom()
+    {
+        if (!isZoomedIn) return;
+
+        isZoomedIn = false;
+
+        if (lanternObject != null) lanternObject.SetActive(true);
+        if (EButton != null) EButton.SetActive(true);
+
+        if (playerController != null) playerController.enabled = true;
+
+        if (cameraObject != null)
+        {
+            MonoBehaviour[] scripts = cameraObject.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour s in scripts) s.enabled = true;
+        }
+
+        if (selectionPointer != null)
+        {
+            selectionPointer.gameObject.SetActive(false);
+        }
+    }
+
+    public bool IsZoomedIn()
+    {
+        return isZoomedIn;
     }
 }

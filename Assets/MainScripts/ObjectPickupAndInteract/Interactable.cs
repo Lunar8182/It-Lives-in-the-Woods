@@ -208,10 +208,13 @@ public class Interactable : MonoBehaviour
             MoveRuller lockScript = GetComponent<MoveRuller>();
             if (lockScript != null)
             {
-                lockScript.ToggleZoom();
-            }
+                if (!lockScript.IsZoomedIn())
+                {
+                    lockScript.ToggleZoom();
 
-            if (keyPrompt != null) keyPrompt.SetActive(false);
+                    if (keyPrompt != null) keyPrompt.SetActive(false);
+                }
+            }
 
             return;
         }
