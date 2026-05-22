@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MainScenes/MainEndingCutscene.unity
     guid: 18a51b41c939340c187c611c58206d6e
+  - enabled: 1
+    path: Assets/MainScenes/Credits.unity
+    guid: b94ee9cdec26342a58350abe4f8c42eb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
