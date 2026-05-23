@@ -14,6 +14,6 @@ public class EndingCutsceneManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("Credits");
     }
 }

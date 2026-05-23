@@ -4120,7 +4120,7 @@ MonoBehaviour:
   enemyAudioSource: {fileID: 1570932875}
   voicelineSound: {fileID: 8300000, guid: f413365973c02411f92a219061b24e0a, type: 3}
   jumpscareSound: {fileID: 8300000, guid: 644ff6c37e817436cb300e4bc8899403, type: 3}
-  nextSceneName: TitleScreen
+  nextSceneName: Credits
 --- !u!4 &661625452
 Transform:
   m_ObjectHideFlags: 0
@@ -6536,7 +6536,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
