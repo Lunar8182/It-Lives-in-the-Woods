@@ -32,6 +32,8 @@ public class PauseManager : MonoBehaviour
         if (settingsMenuUI != null) settingsMenuUI.SetActive(false);
 
         Time.timeScale = 1f;
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = -1;
         isPaused = false;
 
         Cursor.lockState = CursorLockMode.Locked;
